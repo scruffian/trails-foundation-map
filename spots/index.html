@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spots | Trails Foundation</title>
+    <meta name="description" content="Draft UK trails spot listings for Trails Foundation.">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script type="module" src="/assets/js/spots.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="/" aria-label="Trails Foundation home"><span class="brand-mark"></span><span>Trails Foundation</span></a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="/map/">Map</a>
+          <a href="/spots/" aria-current="page">Spots</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <header class="page-header">
+        <div class="section">
+          <p class="eyebrow">Draft listings</p>
+          <h1>Spots</h1>
+          <p class="lead">A static listing view backed by JSON data. Entries shown here are development data and still need verification.</p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="spots-toolbar">
+          <p id="spots-count" class="eyebrow">Loading listings</p>
+          <label>
+            <span class="eyebrow">Region</span>
+            <select class="select" id="spots-region"></select>
+          </label>
+        </div>
+        <div class="spots-layout">
+          <div id="spots-list" class="stack" aria-live="polite"></div>
+          <div id="spot-detail" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__inner">
+        <div>
+          <strong>Trails Foundation</strong>
+          <p>Pre-launch website for a planned UK charity.</p>
+        </div>
+        <p><a href="mailto:hello@trails.foundation">hello@trails.foundation</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
