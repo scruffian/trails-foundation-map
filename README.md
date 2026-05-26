@@ -10,24 +10,17 @@ Pre-launch. Currently building a static v1 prototype of the website. WordPress i
 
 ## Local development
 
-Run a local static server from the repository root:
+It's just static HTML — open `index.html` in a browser. All links and asset paths are relative, so no server is needed.
 
-```sh
-npm start
-```
+The site is just plain HTML pages with one shared stylesheet:
 
-Then open `http://localhost:4173`.
+- `index.html` — homepage
+- `map/index.html` — placeholder while the map is built separately
+- `spots/index.html` — placeholder until verified listings are ready
+- `about/index.html` — project context
+- `assets/css/styles.css` — shared styling
 
-The current static site uses:
-
-- `index.html` for the homepage
-- `map/index.html` as a placeholder route while map work happens separately
-- `spots/index.html` for draft spot listings
-- `about/index.html` for project context
-- `data/spots.json` for draft development spot data
-- `assets/css/styles.css` and `assets/js/` for shared presentation and listing behavior
-
-Spot entries in `data/spots.json` are development data only. They still need verification before launch.
+The `<header>` nav block is duplicated across each page. When the nav changes, update all four files. Spot data lives in `docs/spots-seed.md` for now.
 
 ## For coding agents
 
