@@ -1,0 +1,13 @@
+{
+  "name": "trails-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pre-launch website for Trails Foundation, a planned UK charity supporting grassroots trails.",
+  "scripts": {
+    "dev": "serve -l 3143 .",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
