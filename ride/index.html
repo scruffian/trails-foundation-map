@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <base href="/ride/">
+    <title>Map | Trails Foundation</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="filterPanel" class="side-panel" aria-label="Menu" aria-hidden="true" inert>
+        <header class="brand">
+          <div>
+            <p class="eyebrow"><a href="/">Trails Foundation</a></p>
+            <h1>UK Bike Park Map</h1>
+          </div>
+          <div class="panel-actions">
+            <button id="filterClose" class="icon-button" type="button" aria-label="Close menu">&times;</button>
+          </div>
+        </header>
+
+        <div class="panel-tabs" role="tablist" aria-label="Menu sections">
+          <button
+            id="filtersTabBtn"
+            class="panel-tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="filtersTab"
+            data-tab="filters"
+          >Filters</button>
+          <button
+            id="aboutTabBtn"
+            class="panel-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="aboutTab"
+            data-tab="about"
+          >About</button>
+        </div>
+
+        <div id="filtersTab" class="panel-tab-content is-active" role="tabpanel" aria-labelledby="filtersTabBtn">
+          <div class="filters" aria-label="Filters">
+            <label class="field">
+              <span>Search</span>
+              <input id="searchInput" type="search" placeholder="Spot, county, feature">
+            </label>
+
+            <div class="filters-actions">
+              <span class="spot-count" data-spot-count aria-label="Matching spots">0</span>
+              <button id="clearFiltersBtn" class="text-button" type="button">Clear all</button>
+            </div>
+
+            <div class="filter-row">
+              <div class="field filter-group">
+                <span id="featureFilterLabel">Feature</span>
+                <div id="featureFilter" class="option-row" role="group" aria-labelledby="featureFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="trailGradeFilterLabel">Trail grade</span>
+                <div id="trailGradeFilter" class="option-row" role="group" aria-labelledby="trailGradeFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="bikeTypeFilterLabel">Bike type</span>
+                <div id="bikeTypeFilter" class="option-row" role="group" aria-labelledby="bikeTypeFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="seasonalityFilterLabel">Seasonality</span>
+                <div id="seasonalityFilter" class="option-row" role="group" aria-labelledby="seasonalityFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="upliftFilterLabel">Uplift</span>
+                <div id="upliftFilter" class="option-row" role="group" aria-labelledby="upliftFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="costFilterLabel">Cost</span>
+                <div id="costFilter" class="option-row" role="group" aria-labelledby="costFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="ownershipFilterLabel">Ownership</span>
+                <div id="ownershipFilter" class="option-row" role="group" aria-labelledby="ownershipFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="statusFilterLabel">Status</span>
+                <div id="statusFilter" class="option-row" role="group" aria-labelledby="statusFilterLabel"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="aboutTab" class="panel-tab-content" role="tabpanel" aria-labelledby="aboutTabBtn" hidden>
+          <div class="about-content">
+            <section>
+              <h2>What's on this map</h2>
+              <p>
+                A curated map of UK bike parks — official trails with permission from the landowner, where members of the public are welcome to ride.
+              </p>
+            </section>
+
+            <section>
+              <h2>How a spot qualifies</h2>
+              <p>
+                The map lists official bike parks — trails with permission from the landowner, where members of the public are welcome to ride.
+              </p>
+            </section>
+
+            <section>
+              <h2>Official vs informal</h2>
+              <p>
+                For now, only official or formalised spots are listed — those with a land agreement, lease, council partnership, commercial operation, or established public access. Informal or under-the-radar spots aren't listed, partly to protect them, partly because the map's purpose is to demonstrate the value of formal status.
+              </p>
+            </section>
+
+            <section>
+              <h2>Suggest a change</h2>
+              <p>
+                Spotted something missing, out of date, or wrong? Get in touch and we'll update it.
+              </p>
+              <p>
+                <a class="contact-link" href="https://ben.blog/contact/" target="_blank" rel="noreferrer">Contact us →</a>
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <div class="view-toggle" role="tablist" aria-label="View">
+        <button
+          id="viewMapBtn"
+          class="view-toggle-btn is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="map"
+          data-view="map"
+        >Map</button>
+        <button
+          id="viewListBtn"
+          class="view-toggle-btn"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="listView"
+          data-view="list"
+        >List</button>
+      </div>
+
+      <div class="content-stack">
+        <section id="listView" class="list-view" aria-label="Spot list" aria-hidden="true">
+          <div class="list-toolbar">
+            <button id="locateBtn" class="locate-btn" type="button">
+              <span>Sort by distance</span>
+            </button>
+          </div>
+          <ul id="spotList" class="spot-list"></ul>
+        </section>
+
+        <section class="map-wrap" aria-label="Map">
+          <div id="map"></div>
+          <button
+            id="recenterBtn"
+            class="recenter-btn"
+            type="button"
+            aria-label="Find my location"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <line x1="12" y1="2" x2="12" y2="5"></line>
+              <line x1="12" y1="19" x2="12" y2="22"></line>
+              <line x1="2" y1="12" x2="5" y2="12"></line>
+              <line x1="19" y1="12" x2="22" y2="12"></line>
+            </svg>
+          </button>
+        </section>
+      </div>
+
+      <button
+        id="filterToggle"
+        class="filter-toggle"
+        type="button"
+        aria-controls="filterPanel"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <span class="hamburger" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+    <script src="spots-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
