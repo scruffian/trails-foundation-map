@@ -164,7 +164,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Paid",
     "ownership": "Government",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Known locally as Tullecombe. Primarily downhill with jump features. Attracts riders nationally. Closure from April 2026 is for essential forest management work (first in 15 years), expected to reopen mid-2027. Status audit 2026-05-25: Forestry England says the bike park closed from 13 April 2026 for forest management; existing trails will be removed during works and future operation/management is subject to a later phase. Removed unsupported specific reopening date. Access update 2026-05-25: B1KE uses an account/PAYG membership system; do not label this as annual-members-only. Access details: Cost: Paid day pass / B1KE PAYG membership-account system when open; Ownership: Council / Forestry (Forestry England, run by Triple S Bikes); Status: Temporarily closed (from 13 April 2026 for forestry work and redevelopment / future management review).",
     "urls": [
       "https://www.b1ke.com/b1keparks/rogate",
@@ -254,7 +254,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Paid",
     "ownership": "Commercial",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Being rebuilt as of late 2025 with purpose-built dirt jumps. Sandy soil drains well year-round. Grade audit 2026-05-25: Official estate update confirms the bike park remains in rebuild/planning. Do not treat the previous Blue/Red/Black/Orange list as final verified grades until the operator publishes a trail map. World-renowned UK dirt jump destination — home spot of Matt Jones, regularly visited by Brendan Fairclough, Andreu Lacondeguy. \"Somewhat legendary in UK dirt jump circles\" per MBUK. The sandy soil at Woburn Sands is famous and the area's home-grown talent includes Matt Jones. Currently in major rebuild led by Matt Jones with Woburn Estate support — formal public bike park layout with purpose-built flow trails, dirt jumps, progression zones. Will use a lane system with blue, black, green, blue, black, double black and black lines. Documented through Matt Jones' YouTube build series. Note: distinct from Woburn Bike Trails (XC red/blue trails by same area, managed separately, currently open). Status update 2026-05-25: treated as temporarily closed while rebuild/reopening work is in progress. Status audit 2026-05-25: official Woburn update gives a working June 2026 target but no definitive reopening date, and final public trail grades are not yet published. Access details: Cost: Paid (permit); Ownership: Commercial (Bedford Estates); Status: Temporarily closed (rebuild/planning; target reopening not yet definitive).",
     "urls": [
       "https://www.b1ke.com/b1keparks/woburn-bike-park",
@@ -297,7 +297,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Paid",
     "ownership": "Community",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Mix of downhill and dirt jump trails. Year-round — chalk/flint base, drains well; Chilterns DH venue rideable in all seasons. Temporarily closed; rebuild/reopening is in progress under Bike Park Chilterns CIC with rebuilt trails planned. Status audit 2026-05-25: Forestry England/Bike Park Chilterns reopening work is in progress; treat as temporarily closed until open access is confirmed. Access details: Ownership: Forestry England land; 10-year lease awarded to Bike Park Chilterns CIC (2025); Status: Temporarily closed (rebuild/reopening in progress).",
     "urls": [
       "https://www.astonhill.co.uk/",
@@ -2001,7 +2001,7 @@ const SPOTS = [
     "trailGrades": [
       "Red",
       "Black",
-      "Severe Black"
+      "Double Black"
     ],
     "bikeTypes": [
       "DH",
@@ -4291,7 +4291,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Paid",
     "ownership": "Commercial",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Trails on castle grounds since 2002. Family-focused now with old-school technical singletrack also available. Farthingbank pump track loop. Status audit 2026-05-25: official Drumlanrig page states all MTB trails are currently closed due to storm damage. Access details: Cost: Paid parking (~£2.50); Ownership: Commercial (Queensberry Estate); Status: Temporarily closed (all MTB trails closed due to storm damage).",
     "urls": [
       "https://www.drumlanrigcastle.co.uk/walking-cycling",
@@ -5012,7 +5012,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Free",
     "ownership": "Government",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Short but highly-rated 6.7km red — singletrack descent over a rocky ridge with stunning views over the valley and waterfall. Jumps, drop-offs, technical features. Rated by MBR magazine as one of the best trails in the UK. Funded via Cilycwm Local Community Association. Post-storm-damage status needs verification. Status audit 2026-05-25: NRW confirms most of the MTB trail remains closed, with the final section of singletrack descent open via a temporary route from the car park. Access details: Ownership: Council / Forestry (Natural Resources Wales); Status: Partial (most MTB trail closed due to storm damage; final 2km descent open via diversion).",
     "urls": [
       "https://naturalresources.wales/days-out/places-to-visit/south-west-wales/cwm-rhaeadr/?lang=en",
@@ -5316,7 +5316,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Paid",
     "ownership": "Commercial",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "Compact 3.5-acre park with four short progressive trails plus dual slalom. Blue with rollers, tabletops, optional trick jump. Red with tight berms, tabletops, step-downs, step-up finish. \"Three's a Crowd\" dual slalom with paired jumps. \"Dopamine\" black with gaps, tables and step-down to finish gap. Built by Forte Trailscapes in partnership with the owners (motocross background). Booking required online. E-MTBs and dirt scooters welcome. Private commercial park with progressive jump lines, open year-round. Grade audit 2026-05-25: iBikeRide lists blue/red/black trails but says the park is temporarily closed for rebuild. I have not counted it as current verified until the reopened layout is published. Status update 2026-05-25: treated as temporarily closed while reopening/rebuild work is in progress. Status audit 2026-05-25: reopening remains dependent on rebuild/drainage work, so pricing/access should not imply current riding. Access update 2026-05-25: Exeter should not be read as currently selling normal ride access while closed; use pass/membership wording for when open. Access details: Cost: Paid pass/membership model when open; Ownership: Commercial (family farm); Uplift: No (push-up).",
     "urls": [
       "https://exeterbikepark.uk",
@@ -6865,7 +6865,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Membership",
     "ownership": "Community",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "\"Mini Revs\" reputation — four steep, rooty, technical downhill tracks. Top-to-bottom ~90 seconds, allowing for many runs per uplift day. Forestry Commission recognised venue, run by the Foel DH Riders club (formed 2005). Replaced the infamous \"Scouse Track\" at Llangwyfan. The user's \"Clocaenog Forest\" entry refers to this venue. Membership-only access other than uplift days. Grade audit 2026-05-25: Sources confirm Foel as a four-track DH park, but current public listings mark it temporarily closed until further notice and I found no reliable current colour-grade table. Not counted as verified. Status update 2026-05-25: treated as temporarily closed; access/riding remains closed until the venue reopens. Status audit 2026-05-25: third-party trail status says Foel Gasnach is currently closed and riding is not allowed; current uplift/cost wording should not imply present ride access. Access update 2026-05-25: Foel should not be labelled annual-members-only; when operating, access has historically used membership/day-pass style access, but current riding is closed. Access details: Cost: Historically membership/day-pass model; no riding while temporarily closed; Ownership: Community (Foel DH Riders / FDHR club, on Forestry Commission/NRW land); Uplift: Temporarily unavailable while closed (historically booked FDHR uplift days).",
     "urls": [
       "https://www.facebook.com/FDHRACING/",
@@ -7229,7 +7229,7 @@ const SPOTS = [
     "uplift": "No",
     "cost": "Free",
     "ownership": "Community",
-    "status": "Temporarily closed",
+    "status": "Under construction",
     "notes": "16 trails at Pooley Country Park. Three short DH runs graded red and black, one blue XC trail suitable for all abilities, plus skills area with rollers/jumps and tight berms. Maintained by Pooley Park Mountain Bike Club for ~6 years. Trail-building/maintenance agreement was halted by Warwickshire County Council in early 2025 but reassessment with professional surveyors is underway as of March 2025 — check current status before visiting. Tea house, toilets and washrooms on-site at the country park. Status audit 2026-05-25: trail building/restoration has restarted after the prior council halt, so status is better described as restoration/rebuild in progress rather than simply uncertain. Access details: Cost: Free (£1.50–2.50 parking); Ownership: Council / Forestry (Warwickshire County Council) + community (Pooley Park Mountain Bike Club); Status: Restoration/rebuild in progress.",
     "urls": [
       "https://www.facebook.com/pooleyparkbmx/",

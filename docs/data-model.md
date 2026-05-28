@@ -38,7 +38,7 @@ Each spot is a custom post type in WordPress with the following fields.
 
 | Field | Type | Notes |
 |---|---|---|
-| Status | Select | Open, Temporarily closed, Permanently closed |
+| Status | Select | Open, Under construction, Permanently closed |
 | Last verified | Date | When the listing was last checked |
 | Source notes | Text | Internal notes on where info came from |
 
