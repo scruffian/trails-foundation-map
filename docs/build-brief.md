@@ -60,7 +60,7 @@ Implement as a custom post type via code in the theme's `functions.php` (not via
 | `instagram_url` | URL | No | |
 | `hero_image` | Image | No | Single featured photo |
 | `gallery` | Gallery | No | Additional photos |
-| `status` | Select | Yes | Open, Temporarily closed, Permanently closed |
+| `status` | Select | Yes | Open, Under construction, Permanently closed |
 | `last_verified` | Date | Yes | Defaults to today |
 
 Use WordPress taxonomies (not ACF select fields) for `region` and `features` — this gives proper filtering, URLs per category, and better long-term flexibility.

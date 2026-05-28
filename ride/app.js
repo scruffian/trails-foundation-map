@@ -20,7 +20,6 @@ const trailGradeOptions = [
   "Blue",
   "Red",
   "Black",
-  "Severe Black",
   "Double Black",
   "Orange",
   "Grey",
@@ -43,14 +42,13 @@ const seasonalityOptions = ["Spring", "Summer", "Autumn", "Winter"];
 const upliftOptions = ["Yes", "No"];
 const costOptions = ["Free", "Paid", "Membership"];
 const ownershipOptions = ["Community", "Commercial", "Government"];
-const statusOptions = ["Open", "Partial", "Temporarily closed", "Closed"];
+const statusOptions = ["Open", "Partial", "Under construction"];
 
 const gradeColors = {
   Green: "#2f8f57",
   Blue: "#25608a",
   Red: "#c83f31",
   Black: "#202124",
-  "Severe Black": "#111111",
   "Double Black": "#000000",
   Orange: "#f08a24",
   Grey: "#6c7378",
@@ -156,7 +154,7 @@ const map = L.map("map", {
   scrollWheelZoom: true,
 }).setView([53.2, -2.7], 6);
 
-L.control.zoom({ position: "topright" }).addTo(map);
+L.control.zoom({ position: "bottomright" }).addTo(map);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -166,6 +164,14 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 const markers = new Map();
 const markerLayer = L.layerGroup().addTo(map);
+
+map.on("popupopen", (event) => {
+  const el = event.popup.getElement();
+  const text = el?.querySelector(".popup-notes-text");
+  if (text && text.scrollHeight <= text.clientHeight) {
+    el.querySelector(".popup-notes")?.classList.add("popup-notes--fits");
+  }
+});
 
 const elements = {
   filterClose: document.querySelector("#filterClose"),
@@ -408,8 +414,8 @@ function handleLocationFix(position, { fly }) {
     map.flyTo([latitude, longitude], Math.max(map.getZoom(), 9), {
       duration: 0.7,
     });
+    render();
   }
-  render();
 }
 
 function setLocateStatus(text, busy = false) {
@@ -706,21 +712,16 @@ function renderPopupContent(spot) {
 
   return `
     <article class="popup-card">
-      <h3 class="popup-title">${
-        spot.sourceUrl
-          ? `<a href="${spot.sourceUrl}" target="_blank" rel="noreferrer">${spot.name}</a>`
-          : spot.name
-      }</h3>
-      ${spot.address ? `<p class="popup-location">${formatAddress(spot.address)}</p>` : ""}
+      <div class="spot-card-head">
+        <h3 class="spot-card-title">${
+          spot.sourceUrl
+            ? `<a href="${spot.sourceUrl}" target="_blank" rel="noreferrer">${spot.name}</a>`
+            : spot.name
+        }</h3>
+        ${spot.address ? `<span class="spot-card-region">${formatAddress(spot.address)}</span>` : ""}
+      </div>
+      ${renderLinkIcons(spot)}
       <dl class="popup-facts">
-        <div>
-          <dt>Primary type</dt>
-          <dd>${spot.primaryType}</dd>
-        </div>
-        <div>
-          <dt>Primary bike</dt>
-          <dd>${spot.primaryBike}</dd>
-        </div>
         <div>
           <dt>Features</dt>
           <dd>${featureTags ? `<div class="meta-line">${featureTags}</div>` : "—"}</dd>
@@ -730,7 +731,7 @@ function renderPopupContent(spot) {
           <dd>${gradeTags ? `<div class="meta-line">${gradeTags}</div>` : "—"}</dd>
         </div>
         <div>
-          <dt>Bike types</dt>
+          <dt>Bikes</dt>
           <dd>${spot.bikeTypes
             .map(
               (type) =>
@@ -759,7 +760,6 @@ function renderPopupContent(spot) {
           <dd>${spot.status}</dd>
         </div>
       </dl>
-      ${spot.notes ? `<section class="popup-section"><h4>Notes</h4><p>${spot.notes}</p></section>` : ""}
       ${(() => {
         const links = getSpotLinks(spot);
         if (links.length === 0) return "";
@@ -770,8 +770,9 @@ function renderPopupContent(spot) {
               `<li><a href="${url}" target="_blank" rel="noreferrer">${linkLabels[type]}</a></li>`,
           )
           .join("");
-        return `<section class="popup-section"><h4>${heading}</h4><ul class="popup-links">${items}</ul></section>`;
+        return `<section class="popup-section popup-section--inline"><h4>${heading}</h4><ul class="popup-links">${items}</ul></section>`;
       })()}
+      ${spot.notes ? `<details class="popup-section popup-notes"><summary><h4>Notes</h4><p class="popup-notes-text">${spot.notes}</p><span class="popup-notes-toggle"></span></summary></details>` : ""}
     </article>
   `;
 }
