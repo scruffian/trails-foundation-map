@@ -9,7 +9,6 @@
   --line-strong: #0a0a0a;
   --accent: #0a0a0a;
   --accent-soft: #2a2a2a;
-  --blue: #25608a;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
   --surface: #ffffff;
   --surface-strong: #ffffff;
@@ -36,7 +35,6 @@
     --line-strong: #f5f5f4;
     --accent: #f5f5f4;
     --accent-soft: #d4d4d4;
-    --blue: #8fb8d4;
     --shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
     --surface: #141414;
     --surface-strong: #141414;
@@ -179,8 +177,17 @@ h1 {
 .panel-actions {
   display: flex;
   align-items: center;
+  align-self: flex-start;
   flex: 0 0 auto;
   gap: 8px;
+  /* Pull the close button up into the panel's top-right corner. */
+  margin: -12px -8px 0 0;
+}
+
+#filterClose {
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
 }
 
 .filters {
@@ -422,17 +429,6 @@ input:focus {
   padding: 0 8px;
 }
 
-.tag.green {
-  background: var(--tag-strong-bg);
-  color: var(--tag-strong-ink);
-}
-
-.tag.blue {
-  background: transparent;
-  color: var(--tag-outline-ink);
-  padding: 0;
-}
-
 .content-stack {
   display: flex;
   flex: 1 1 auto;
@@ -461,27 +457,55 @@ input:focus {
   filter: var(--tile-filter);
 }
 
+.leaflet-control-zoom.leaflet-bar {
+  display: grid;
+  gap: 2px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.leaflet-control-zoom.leaflet-bar a {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-strong);
+  color: var(--ink);
+  line-height: 44px;
+}
+
+.leaflet-control-zoom.leaflet-bar a + a {
+  border-top: 1px solid var(--line);
+}
+
+.leaflet-control-zoom.leaflet-bar a:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
 .recenter-btn {
-  box-sizing: content-box;
   position: absolute;
-  right: 10px;
-  top: 94px;
+  right: 12px;
+  top: 118px;
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  background: #fff;
-  background-clip: padding-box;
-  color: #000;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--ink);
   cursor: pointer;
   padding: 0;
   z-index: 600;
 }
 
 .recenter-btn:hover {
-  background: #f4f4f4;
+  background: var(--surface);
 }
 
 .recenter-btn[hidden] {
@@ -622,13 +646,6 @@ body.view-list::before {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 400;
-}
-
-.spot-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
 }
 
 .spot-card-links {
@@ -785,22 +802,100 @@ body.view-list::before {
   z-index: 600;
 }
 
-.hamburger {
-  display: grid;
-  gap: 5px;
-  width: 20px;
-}
-
-.hamburger span {
+.filter-icon {
   display: block;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 0;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 .filters-open .filter-toggle {
   opacity: 0;
   pointer-events: none;
+}
+
+.active-filters {
+  position: fixed;
+  top: 64px;
+  left: 12px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  /* Stack down the left edge below the menu button; scroll if the column runs
+     past the viewport. */
+  max-height: calc(100% - 76px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.active-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.active-filters[hidden] {
+  display: none;
+}
+
+.filters-open .active-filters {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The chips are a map overlay; in list view they'd sit on top of the list. */
+body.view-list .active-filters {
+  display: none;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 4px 0 12px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.active-filter-chip--grade {
+  background: var(--chip-color);
+  color: #fff;
+}
+
+.active-filter-chip .chip-remove {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: 400 18px/1 "Helvetica Neue", Arial, sans-serif;
+}
+
+.active-filter-chip .chip-remove:hover {
+  background: var(--ink);
+  color: var(--on-accent);
+}
+
+.active-filter-chip--grade .chip-remove:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.active-filter-chip .chip-remove:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--ink);
 }
 
 .bottom-sheet {
@@ -1013,23 +1108,6 @@ body.view-list::before {
   height: 110%;
   display: block;
   pointer-events: none;
-}
-
-.marker-feature-count {
-  position: absolute;
-  right: -3px;
-  bottom: -4px;
-  display: grid;
-  place-items: center;
-  min-width: 18px;
-  height: 18px;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 0.58rem;
-  font-weight: 950;
-  line-height: 1;
 }
 
 .leaflet-popup-pane {
@@ -1278,6 +1356,7 @@ body.view-list::before {
   }
 
   .filter-toggle,
+  .active-filters,
   #filterClose,
   .panel-backdrop {
     display: none;
