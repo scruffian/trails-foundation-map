@@ -522,8 +522,10 @@ body.view-list::before {
     position: sticky;
     top: 0;
     z-index: 5;
-    margin-bottom: 0;
-    padding: 12px 0;
+    width: auto;
+    max-width: none;
+    margin: 0 -12px;
+    padding: 12px;
     background: var(--panel);
     box-shadow: 0 8px 8px -6px rgba(0, 0, 0, 0.12);
   }
