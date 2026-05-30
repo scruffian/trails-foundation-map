@@ -56,21 +56,6 @@ const gradeColors = {
   Unmarked: "#7a5c2e",
 };
 
-const featureCodes = {
-  "Dirt jumps": "DJ",
-  "Jump trail": "JT",
-  Slopestyle: "SS",
-  "Flow trail": "FT",
-  Downhill: "DH",
-  Freeride: "FR",
-  XC: "XC",
-  "Dual / 4X": "4X",
-  "Pump track": "PT",
-  "BMX track": "BX",
-  "Skills area": "SK",
-  "Cyclo-cross course": "CX",
-};
-
 const bikeIcons = {
   DH: "/map/icons/dh.svg",
   XC: "/map/icons/xc.svg",
@@ -870,10 +855,6 @@ function getGradeGradient(grades) {
     return [`${color} ${start}%`, `${color} ${end}%`];
   });
   return `conic-gradient(${segments.join(", ")})`;
-}
-
-function getFeatureCode(feature) {
-  return featureCodes[feature] ?? feature.slice(0, 2).toUpperCase();
 }
 
 function fitMapToSpots(filtered) {
