@@ -344,6 +344,39 @@ input:focus {
   align-content: start;
 }
 
+.filter-more {
+  display: grid;
+  gap: 14px;
+}
+
+.filter-more summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  list-style: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filter-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-more[open] summary {
+  display: none;
+}
+
+.filter-more-label::before {
+  content: "More";
+}
+
+.filter-more-content {
+  display: grid;
+  gap: 14px;
+  margin-top: 14px;
+}
+
 .option-row {
   display: flex;
   flex-wrap: wrap;
@@ -404,6 +437,13 @@ input:focus {
   background: var(--chip-color);
   color: #fff;
   box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .option-chip--grade,
+  .option-chip--grade:hover {
+    background: #f5f5f4;
+  }
 }
 
 .icon-button {
@@ -596,7 +636,8 @@ body.view-list::before {
 }
 
 .spot-card-summary {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
@@ -643,7 +684,7 @@ body.view-list::before {
 .spot-card-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   margin-top: 4px;
 }
 
@@ -657,6 +698,11 @@ body.view-list::before {
   background: transparent;
   color: var(--ink);
   text-decoration: none;
+}
+
+.spot-link-icon svg {
+  width: 23px;
+  height: 23px;
 }
 
 .spot-link-icon:hover {
@@ -684,6 +730,7 @@ body.view-list::before {
 
 .spot-card-bike {
   display: grid;
+  justify-self: end;
   place-items: center;
   width: 56px;
   height: 56px;
@@ -819,9 +866,33 @@ body.view-list::before {
   fill: currentColor;
 }
 
+.filter-count {
+  position: fixed;
+  left: 56px;
+  top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 10px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 600;
+}
+
 .filters-open .filter-toggle {
   opacity: 0;
   pointer-events: none;
+}
+
+.filters-open .filter-count {
+  opacity: 0;
 }
 
 .active-filters {
@@ -978,8 +1049,7 @@ body.view-list .active-filters {
   zoom: 1.15;
 }
 
-.bottom-sheet:not(.is-expanded) .spot-card-body .popup-facts > div:nth-child(n + 5),
-.bottom-sheet:not(.is-expanded) .spot-card-body .popup-section {
+.bottom-sheet:not(.is-expanded) .spot-card-body {
   display: none;
 }
 
@@ -1120,6 +1190,13 @@ body.view-list .active-filters {
   pointer-events: none;
 }
 
+.marker-construction-icon {
+  width: 60%;
+  height: 60%;
+  display: block;
+  pointer-events: none;
+}
+
 .leaflet-popup-pane {
   z-index: 760;
 }
@@ -1255,17 +1332,31 @@ body.view-list .active-filters {
   align-items: baseline;
 }
 
-.popup-notes summary {
+.popup-more {
   display: grid;
-  grid-template-columns: 66px 1fr auto;
-  gap: 20px;
-  align-items: baseline;
-  cursor: pointer;
-  list-style: none;
+  gap: 7px;
 }
 
-.popup-notes summary::-webkit-details-marker {
+.popup-more summary {
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 500;
+  list-style: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.popup-more summary::-webkit-details-marker {
   display: none;
+}
+
+.popup-more[open] summary {
+  display: none;
+}
+
+.popup-more-label::before {
+  content: "More";
 }
 
 .popup-notes-text {
@@ -1273,40 +1364,10 @@ body.view-list .active-filters {
   color: var(--muted);
   font-size: 0.84rem;
   line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-.popup-notes[open] .popup-notes-text {
-  -webkit-line-clamp: unset;
-  display: block;
-}
-
-.popup-notes-toggle {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  white-space: nowrap;
-}
-
-.popup-notes-toggle::before {
-  content: "See more";
-}
-
-.popup-notes[open] .popup-notes-toggle::before {
-  content: "See less";
-}
-
-.popup-notes--fits .popup-notes-toggle {
-  display: none;
-}
-
-.popup-notes--fits summary {
-  cursor: default;
+.popup-notes {
+  margin-top: 8px;
 }
 
 @media (max-width: 900px) {
@@ -1394,6 +1455,7 @@ body.view-list .active-filters {
   }
 
   .filter-toggle,
+  .filter-count,
   .active-filters,
   #filterClose,
   .panel-backdrop {

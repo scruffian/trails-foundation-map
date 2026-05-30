@@ -64,13 +64,14 @@ const bikeIcons = {
   "Dirt jump": "icons/dirtjump.svg",
   BMX: "icons/bmx.svg",
 };
+const constructionIcon = "icons/construction.svg";
 
 const linkIconSvgs = {
-  website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
-  maps: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
-  instagram: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>`,
-  facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
-  komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
+  website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
+  maps: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>`,
+  facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
+  komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
 };
 
 const linkLabels = {
@@ -201,6 +202,7 @@ const elements = {
   panelTabBtns: [...document.querySelectorAll(".panel-tab")],
   filtersTab: document.querySelector("#filtersTab"),
   aboutTab: document.querySelector("#aboutTab"),
+  advancedFilters: document.querySelector("#advancedFilters"),
   clearFiltersBtn: document.querySelector("#clearFiltersBtn"),
   bottomSheet: document.querySelector("#bottomSheet"),
   bottomSheetContent: document.querySelector("#bottomSheetContent"),
@@ -273,6 +275,11 @@ function syncFiltersUi() {
     chip.classList.toggle("is-active", active);
     chip.setAttribute("aria-pressed", String(active));
   });
+  if (elements.advancedFilters) {
+    elements.advancedFilters.open = ["bikeType", "seasonality", "ownership"].some(
+      (filterName) => state.filters[filterName].size > 0,
+    );
+  }
 }
 
 function populateFilters() {
@@ -796,7 +803,8 @@ function render() {
   syncSelectedSpotUi();
   const countLabel = `${filtered.length} selected`;
   elements.spotCounts.forEach((spotCount) => {
-    spotCount.textContent = countLabel;
+    spotCount.textContent =
+      spotCount.dataset.countFormat === "number" ? filtered.length : countLabel;
   });
 }
 
@@ -834,7 +842,6 @@ function renderSpotCardInner(spot, { open = false } = {}) {
   return `
     <details class="spot-card"${open ? " open" : ""}>
       <summary class="spot-card-summary">
-        ${bikeBadge}
         <div class="spot-card-main">
           <div class="spot-card-head">
             <h3 class="spot-card-title">${spot.name}</h3>
@@ -842,6 +849,7 @@ function renderSpotCardInner(spot, { open = false } = {}) {
           </div>
           ${renderLinkIcons(spot)}
         </div>
+        ${bikeBadge}
       </summary>
       <div class="spot-card-body">
         ${renderPopupContent(spot)}
@@ -874,7 +882,10 @@ function renderMarkers(filtered) {
 function renderMarkerIcon(spot) {
   const iconSrc = bikeIcons[spot.primaryBike];
   const iconKey = iconSrc ? iconSrc.replace(/^icons\/|\.svg$/g, "") : "";
-  const inner = iconSrc
+  const isUnderConstruction = spot.status === "Under construction";
+  const inner = isUnderConstruction
+    ? `<img class="marker-construction-icon" src="${constructionIcon}" alt="">`
+    : iconSrc
     ? `<img class="marker-bike-icon" data-bike="${iconKey}" src="${iconSrc}" alt="">`
     : `<span class="marker-feature-code">?</span>`;
   return `
@@ -935,6 +946,18 @@ function renderPopupContent(spot) {
         `<span class="tag" style="background:${gradeColors[grade] ?? "var(--tag-bg)"};color:#fff">${grade}</span>`,
     )
     .join("");
+  const linkSection = (() => {
+    const links = getSpotLinks(spot);
+    if (links.length === 0) return "";
+    const heading = links.length === 1 ? "Link" : "Links";
+    const items = links
+      .map(
+        ({ url, type }) =>
+          `<li><a href="${url}" target="_blank" rel="noreferrer">${linkLabels[type]}</a></li>`,
+      )
+      .join("");
+    return `<section class="popup-section popup-section--inline"><h4>${heading}</h4><ul class="popup-links">${items}</ul></section>`;
+  })();
 
   return `
     <article class="popup-card">
@@ -965,6 +988,22 @@ function renderPopupContent(spot) {
           <dd>${gradeTags ? `<div class="meta-line">${gradeTags}</div>` : "—"}</dd>
         </div>
         <div>
+          <dt>Uplift</dt>
+          <dd>${spot.uplift}</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>${spot.status}</dd>
+        </div>
+        <div>
+          <dt>Cost</dt>
+          <dd>${spot.cost}</dd>
+        </div>
+      </dl>
+      <details class="popup-more">
+        <summary><span class="popup-more-label"></span></summary>
+        <dl class="popup-facts">
+        <div>
           <dt>Bikes</dt>
           <dd>${spot.bikeTypes
             .map(
@@ -978,35 +1017,13 @@ function renderPopupContent(spot) {
           <dd>${spot.seasonality.join(", ")}</dd>
         </div>
         <div>
-          <dt>Uplift</dt>
-          <dd>${spot.uplift}</dd>
-        </div>
-        <div>
-          <dt>Cost</dt>
-          <dd>${spot.cost}</dd>
-        </div>
-        <div>
           <dt>Ownership</dt>
           <dd>${spot.ownership}</dd>
         </div>
-        <div>
-          <dt>Status</dt>
-          <dd>${spot.status}</dd>
-        </div>
-      </dl>
-      ${(() => {
-        const links = getSpotLinks(spot);
-        if (links.length === 0) return "";
-        const heading = links.length === 1 ? "Link" : "Links";
-        const items = links
-          .map(
-            ({ url, type }) =>
-              `<li><a href="${url}" target="_blank" rel="noreferrer">${linkLabels[type]}</a></li>`,
-          )
-          .join("");
-        return `<section class="popup-section popup-section--inline"><h4>${heading}</h4><ul class="popup-links">${items}</ul></section>`;
-      })()}
-      ${spot.notes ? `<details class="popup-section popup-notes"><summary><h4>Notes</h4><p class="popup-notes-text">${spot.notes}</p><span class="popup-notes-toggle"></span></summary></details>` : ""}
+        </dl>
+        ${linkSection}
+        ${spot.notes ? `<section class="popup-section popup-section--inline popup-notes"><h4>Notes</h4><p class="popup-notes-text">${spot.notes}</p></section>` : ""}
+      </details>
     </article>
   `;
 }
@@ -1036,6 +1053,11 @@ function syncSelectedSpotUi({ revealListItem = false } = {}) {
     item.classList.toggle("is-selected", isSelected);
     const details = item.querySelector(".spot-card");
     if (details && details.open !== isSelected) details.open = isSelected;
+    if (!isSelected) {
+      item.querySelectorAll(".popup-more").forEach((more) => {
+        more.open = false;
+      });
+    }
   });
 
   markers.forEach((marker, id) => {
