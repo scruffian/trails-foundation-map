@@ -9,7 +9,6 @@
   --line-strong: #0a0a0a;
   --accent: #0a0a0a;
   --accent-soft: #2a2a2a;
-  --blue: #25608a;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
   --surface: #ffffff;
   --surface-strong: #ffffff;
@@ -36,7 +35,6 @@
     --line-strong: #f5f5f4;
     --accent: #f5f5f4;
     --accent-soft: #d4d4d4;
-    --blue: #8fb8d4;
     --shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
     --surface: #141414;
     --surface-strong: #141414;
@@ -413,17 +411,6 @@ input:focus {
   padding: 0 8px;
 }
 
-.tag.green {
-  background: var(--tag-strong-bg);
-  color: var(--tag-strong-ink);
-}
-
-.tag.blue {
-  background: transparent;
-  color: var(--tag-outline-ink);
-  padding: 0;
-}
-
 .content-stack {
   display: flex;
   flex: 1 1 auto;
@@ -578,13 +565,6 @@ body.view-list .map-wrap {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 400;
-}
-
-.spot-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
 }
 
 .spot-card-links {
@@ -1053,23 +1033,6 @@ body.view-list .active-filters {
   height: 110%;
   display: block;
   pointer-events: none;
-}
-
-.marker-feature-count {
-  position: absolute;
-  right: -3px;
-  bottom: -4px;
-  display: grid;
-  place-items: center;
-  min-width: 18px;
-  height: 18px;
-  border: 2px solid #fff;
-  border-radius: 999px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 0.58rem;
-  font-weight: 950;
-  line-height: 1;
 }
 
 .leaflet-popup-pane {
