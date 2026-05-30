@@ -57,12 +57,12 @@ const gradeColors = {
 };
 
 const bikeIcons = {
-  DH: "/map/icons/dh.svg",
-  XC: "/map/icons/xc.svg",
-  Trail: "/map/icons/trail.svg",
-  Enduro: "/map/icons/enduro.svg",
-  "Dirt jump": "/map/icons/dirtjump.svg",
-  BMX: "/map/icons/bmx.svg",
+  DH: "icons/dh.svg",
+  XC: "icons/xc.svg",
+  Trail: "icons/trail.svg",
+  Enduro: "icons/enduro.svg",
+  "Dirt jump": "icons/dirtjump.svg",
+  BMX: "icons/bmx.svg",
 };
 
 const linkIconSvgs = {
