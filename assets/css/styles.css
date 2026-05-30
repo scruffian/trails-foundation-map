@@ -339,8 +339,8 @@ h3 {
 
 .section--split {
   display: grid;
-  gap: 2.5rem;
-  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
 }
 
 .section__intro {
