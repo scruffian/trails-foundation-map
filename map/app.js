@@ -214,6 +214,7 @@ const elements = {
   bottomSheet: document.querySelector("#bottomSheet"),
   bottomSheetContent: document.querySelector("#bottomSheetContent"),
   bottomSheetClose: document.querySelector("#bottomSheetClose"),
+  bottomSheetHandle: document.querySelector("#bottomSheetHandle"),
 };
 
 const desktopQuery = window.matchMedia("(min-width: 900px)");
@@ -395,6 +396,11 @@ function bindEvents() {
   );
 
   elements.bottomSheetClose.addEventListener("click", hideBottomSheet);
+  elements.bottomSheetHandle.addEventListener("click", () => {
+    setBottomSheetExpanded(
+      !elements.bottomSheet.classList.contains("is-expanded"),
+    );
+  });
   elements.bottomSheet.addEventListener("touchstart", handleBottomSheetTouchStart, {
     passive: true,
   });
@@ -1035,6 +1041,7 @@ function showBottomSheet(spot) {
   elements.bottomSheetContent.innerHTML = renderSpotCardInner(spot, { open: true });
   elements.bottomSheet.hidden = false;
   elements.bottomSheet.classList.remove("is-expanded");
+  elements.bottomSheetHandle.setAttribute("aria-expanded", "false");
   document.body.classList.add("spot-selected");
   requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
 }
@@ -1042,6 +1049,7 @@ function showBottomSheet(spot) {
 function hideBottomSheet({ preserveSelection = false } = {}) {
   elements.bottomSheet.hidden = true;
   elements.bottomSheet.classList.remove("is-expanded");
+  elements.bottomSheetHandle.setAttribute("aria-expanded", "false");
   elements.bottomSheetContent.innerHTML = "";
   document.body.classList.remove("spot-selected");
   if (!preserveSelection) {
@@ -1050,20 +1058,42 @@ function hideBottomSheet({ preserveSelection = false } = {}) {
   bottomSheetTouchStartY = null;
 }
 
+function setBottomSheetExpanded(expanded) {
+  elements.bottomSheet.classList.toggle("is-expanded", expanded);
+  elements.bottomSheetHandle.setAttribute("aria-expanded", String(expanded));
+  requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
+}
+
 function handleBottomSheetTouchStart(event) {
   bottomSheetTouchStartY = event.touches[0]?.clientY ?? null;
 }
 
 function handleBottomSheetTouchMove(event) {
-  if (bottomSheetTouchStartY === null || elements.bottomSheet.classList.contains("is-expanded")) {
-    return;
-  }
+  if (bottomSheetTouchStartY === null) return;
   const currentY = event.touches[0]?.clientY;
   if (currentY === undefined) return;
-  if (bottomSheetTouchStartY - currentY > bottomSheetExpandSwipeDistance) {
-    elements.bottomSheet.classList.add("is-expanded");
-    bottomSheetTouchStartY = null;
-    requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
+  const delta = bottomSheetTouchStartY - currentY;
+  const isExpanded = elements.bottomSheet.classList.contains("is-expanded");
+
+  if (delta > bottomSheetExpandSwipeDistance) {
+    // Swipe up: reveal more details.
+    if (!isExpanded) {
+      setBottomSheetExpanded(true);
+      bottomSheetTouchStartY = null;
+    }
+  } else if (delta < -bottomSheetExpandSwipeDistance) {
+    // Swipe down: first collapse the details, then hide the panel.
+    if (isExpanded) {
+      // Only collapse once the content is scrolled to the top, so the
+      // gesture doesn't fight with reading scrolled content.
+      if (elements.bottomSheet.scrollTop <= 0) {
+        setBottomSheetExpanded(false);
+        bottomSheetTouchStartY = null;
+      }
+    } else {
+      hideBottomSheet();
+      bottomSheetTouchStartY = null;
+    }
   }
 }
 
