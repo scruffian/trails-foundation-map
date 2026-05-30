@@ -350,25 +350,11 @@ input:focus {
 }
 
 .filter-more summary {
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 500;
   list-style: none;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .filter-more summary::-webkit-details-marker {
   display: none;
-}
-
-.filter-more[open] summary {
-  display: none;
-}
-
-.filter-more-label::before {
-  content: "More";
 }
 
 .filter-more-content {
@@ -464,6 +450,64 @@ input:focus {
 
 .icon-button:hover {
   background: var(--tag-bg);
+}
+
+.disclosure-icon-button {
+  grid-auto-flow: column;
+  justify-content: start;
+  gap: 2px;
+  width: auto;
+  height: 24px;
+  padding: 0;
+  color: var(--ink);
+}
+
+.disclosure-icon-button:hover,
+.disclosure-icon-button:active {
+  background: transparent;
+}
+
+.disclosure-arrow {
+  display: block;
+}
+
+.disclosure-label {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.filter-more .disclosure-label {
+  color: var(--muted);
+  font-size: 0.73rem;
+}
+
+.popup-more .disclosure-label {
+  color: var(--ink);
+  font-size: 0.7rem;
+}
+
+.disclosure-arrow--open,
+.disclosure-label--open,
+.filter-more[open] .disclosure-arrow--closed,
+.filter-more[open] .disclosure-label--closed,
+.popup-more[open] .disclosure-arrow--closed {
+  display: none;
+}
+
+.filter-more[open] .disclosure-arrow--open,
+.filter-more[open] .disclosure-label--open,
+.popup-more[open] .disclosure-arrow--open {
+  display: block;
+}
+
+.popup-more[open] .disclosure-label--closed {
+  display: none;
+}
+
+.popup-more[open] .disclosure-label--open {
+  display: block;
 }
 
 .meta-line {
@@ -1338,25 +1382,11 @@ body.view-list .active-filters {
 }
 
 .popup-more summary {
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 0.84rem;
-  font-weight: 500;
   list-style: none;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .popup-more summary::-webkit-details-marker {
   display: none;
-}
-
-.popup-more[open] summary {
-  display: none;
-}
-
-.popup-more-label::before {
-  content: "More";
 }
 
 .popup-notes-text {

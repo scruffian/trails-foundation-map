@@ -80,7 +80,16 @@
               </div>
 
               <details id="advancedFilters" class="filter-more">
-                <summary><span class="filter-more-label"></span></summary>
+                <summary class="icon-button disclosure-icon-button" aria-label="Toggle filters" title="Toggle filters">
+                  <span class="disclosure-label disclosure-label--closed">MORE</span>
+                  <span class="disclosure-label disclosure-label--open">LESS</span>
+                  <svg class="disclosure-arrow disclosure-arrow--closed" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor">
+                    <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"></path>
+                  </svg>
+                  <svg class="disclosure-arrow disclosure-arrow--open" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                  </svg>
+                </summary>
                 <div class="filter-more-content">
                   <div class="field filter-group">
                     <span id="bikeTypeFilterLabel">Bikes</span>
