@@ -192,6 +192,7 @@ const elements = {
   filterClose: document.querySelector("#filterClose"),
   filterPanel: document.querySelector("#filterPanel"),
   filterToggle: document.querySelector("#filterToggle"),
+  activeFilters: document.querySelector("#activeFilters"),
   spotCounts: [...document.querySelectorAll("[data-spot-count]")],
   searchInput: document.querySelector("#searchInput"),
   featureFilter: document.querySelector("#featureFilter"),
@@ -337,6 +338,12 @@ function bindEvents() {
 
   elements.clearFiltersBtn.addEventListener("click", clearAllFilters);
 
+  elements.activeFilters.addEventListener("click", (event) => {
+    const remove = event.target.closest(".chip-remove");
+    if (!remove) return;
+    removeFilter(remove.dataset.filter, remove.dataset.value);
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setFiltersOpen(false);
@@ -448,6 +455,56 @@ function toggleFilterOption(filterName, value) {
   } else {
     values.add(value);
   }
+}
+
+function removeFilter(filterName, value) {
+  state.filters[filterName].delete(value);
+  syncFiltersUi();
+  writeStateToUrl();
+  render();
+  updateMapViewport();
+}
+
+function activeFilterLabel(filterName, value) {
+  if (filterName === "uplift") return value === "Yes" ? "Uplift" : "No uplift";
+  if (filterName === "bikeType") return bikeTypeLabels[value]?.title ?? value;
+  return value;
+}
+
+function renderActiveFilters() {
+  const container = elements.activeFilters;
+  container.textContent = "";
+
+  const chips = FILTER_KEYS.flatMap((filterName) =>
+    [...state.filters[filterName]].map((value) => ({ filterName, value })),
+  );
+
+  container.hidden = chips.length === 0;
+
+  chips.forEach(({ filterName, value }) => {
+    const label = activeFilterLabel(filterName, value);
+    const chip = document.createElement("span");
+    chip.className = "active-filter-chip";
+    if (filterName === "trailGrade") {
+      chip.classList.add("active-filter-chip--grade");
+      chip.style.setProperty("--chip-color", gradeColors[value]);
+    }
+
+    const text = document.createElement("span");
+    text.className = "active-filter-chip-label";
+    text.textContent = label;
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "chip-remove";
+    remove.dataset.filter = filterName;
+    remove.dataset.value = value;
+    remove.setAttribute("aria-label", `Remove ${label} filter`);
+    remove.textContent = "×";
+
+    chip.append(text, remove);
+    container.append(chip);
+  });
 }
 
 function setView(view) {
@@ -703,6 +760,7 @@ function render() {
 
   renderMarkers(filtered);
   renderList(filtered);
+  renderActiveFilters();
   syncSelectedSpotUi();
   const countLabel = `${filtered.length} selected`;
   elements.spotCounts.forEach((spotCount) => {
