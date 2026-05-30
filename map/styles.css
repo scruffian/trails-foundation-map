@@ -94,12 +94,12 @@ select {
 
 .side-panel {
   position: fixed;
-  left: 12px;
-  top: 12px;
-  bottom: 12px;
+  left: 0;
+  top: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  width: min(430px, calc(100vw - 24px));
+  width: min(430px, calc(100vw - 48px));
   min-width: 0;
   min-height: 0;
   background: var(--surface-strong);
@@ -108,7 +108,7 @@ select {
   opacity: 0;
   overflow: auto;
   pointer-events: none;
-  transform: translateY(calc(-100% - 24px));
+  transform: translateX(-100%);
   transition:
     opacity 180ms ease,
     transform 180ms ease;
@@ -118,7 +118,7 @@ select {
 .filters-open .side-panel {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .brand {
@@ -212,10 +212,16 @@ input:focus {
 
 .list-toolbar {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   max-width: 720px;
   margin: 0 auto 12px;
+}
+
+.list-search {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .locate-btn {
@@ -223,6 +229,7 @@ input:focus {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  flex: none;
   min-height: 38px;
   padding: 0 14px;
   border: 0;
@@ -490,7 +497,7 @@ body.view-list .map-wrap {
 
 .spot-list {
   display: grid;
-  gap: 10px;
+  gap: 0;
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
@@ -507,6 +514,16 @@ body.view-list .map-wrap {
 
 .spot-card[open] {
   box-shadow: inset 3px 0 0 var(--ink);
+}
+
+.spot-list-item.is-selected .spot-card {
+  box-shadow: inset 3px 0 0 var(--accent, var(--ink));
+}
+
+/* In the list view, drop the card fill and separate parks with a top border. */
+.list-view .spot-card {
+  background: transparent;
+  border-top: 1px solid var(--line);
 }
 
 .spot-card-summary {
@@ -575,14 +592,14 @@ body.view-list .map-wrap {
   height: 30px;
   border: 0;
   border-radius: 0;
-  background: var(--tag-bg);
+  background: transparent;
   color: var(--ink);
   text-decoration: none;
 }
 
 .spot-link-icon:hover {
-  background: var(--ink);
-  color: var(--on-accent);
+  background: transparent;
+  color: var(--accent, var(--ink));
 }
 
 .spot-link-icon:focus-visible {
@@ -788,27 +805,14 @@ body.view-list .map-wrap {
   padding-right: 48px;
 }
 
-.bottom-sheet:not(.is-expanded) .spot-card-summary .spot-card-links,
 .bottom-sheet:not(.is-expanded) .spot-card-body .popup-facts > div:nth-child(n + 5),
 .bottom-sheet:not(.is-expanded) .spot-card-body .popup-section {
   display: none;
 }
 
-body.spot-selected .filter-toggle,
-body.spot-selected .view-toggle {
-  opacity: 0;
-  pointer-events: none;
-}
-
 @media (min-width: 900px) {
   .bottom-sheet {
     display: none !important;
-  }
-
-  body.spot-selected .filter-toggle,
-  body.spot-selected .view-toggle {
-    opacity: 1;
-    pointer-events: auto;
   }
 }
 
@@ -909,6 +913,10 @@ body.spot-selected .view-toggle {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   color: var(--ink);
   padding: 5px;
+}
+
+.jump-marker.is-selected {
+  border-color: var(--ink);
 }
 
 .marker-feature-label {
@@ -1173,6 +1181,40 @@ body.spot-selected .view-toggle {
 
   .view-toggle {
     display: none;
+  }
+}
+
+@media (min-width: 1300px) {
+  .app-shell {
+    flex-direction: row;
+  }
+
+  .side-panel {
+    position: relative;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    flex: 0 0 360px;
+    width: 360px;
+    height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    box-shadow: none;
+    border-right: 1px solid var(--line);
+    z-index: auto;
+  }
+
+  .filter-toggle,
+  #filterClose {
+    display: none;
+  }
+
+  .content-stack {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    flex-direction: row;
   }
 }
 
