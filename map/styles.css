@@ -816,6 +816,10 @@ body.view-list .map-wrap {
   padding-right: 48px;
 }
 
+.bottom-sheet-content {
+  zoom: 1.15;
+}
+
 .bottom-sheet:not(.is-expanded) .spot-card-body .popup-facts > div:nth-child(n + 5),
 .bottom-sheet:not(.is-expanded) .spot-card-body .popup-section {
   display: none;
