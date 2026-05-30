@@ -73,6 +73,7 @@ const linkIconSvgs = {
   facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
   komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
 };
+const disclosureArrowSvgs = `<span class="disclosure-label disclosure-label--closed">MORE</span><span class="disclosure-label disclosure-label--open">LESS</span><svg class="disclosure-arrow disclosure-arrow--closed" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg><svg class="disclosure-arrow disclosure-arrow--open" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>`;
 
 const linkLabels = {
   website: "Website",
@@ -1037,7 +1038,7 @@ function renderPopupContent(spot) {
         }
       </dl>
       <details class="popup-more">
-        <summary><span class="popup-more-label"></span></summary>
+        <summary class="icon-button disclosure-icon-button" aria-label="Toggle details" title="Toggle details">${disclosureArrowSvgs}</summary>
         <dl class="popup-facts">
         <div>
           <dt>Bikes</dt>
