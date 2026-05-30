@@ -146,6 +146,17 @@ const state = {
   userLocation: null,
 };
 
+const FILTER_KEYS = [
+  "feature",
+  "trailGrade",
+  "bikeType",
+  "seasonality",
+  "uplift",
+  "cost",
+  "ownership",
+  "status",
+];
+
 let userLocationMarker = null;
 let locationWatchId = null;
 
@@ -208,7 +219,9 @@ const elements = {
 const desktopQuery = window.matchMedia("(min-width: 900px)");
 
 function init() {
+  readStateFromUrl();
   populateFilters();
+  syncFiltersUi();
   bindEvents();
   render();
   requestAnimationFrame(() => {
@@ -219,6 +232,45 @@ function init() {
   window.addEventListener("resize", () => {
     map.invalidateSize();
     fitMapToSpots(getFilteredSpots());
+  });
+}
+
+function readStateFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get("q");
+  if (q) state.query = q.toLowerCase();
+  FILTER_KEYS.forEach((key) => {
+    const raw = params.get(key);
+    if (!raw) return;
+    raw
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .forEach((value) => state.filters[key].add(value));
+  });
+}
+
+function writeStateToUrl() {
+  const params = new URLSearchParams();
+  if (state.query) params.set("q", state.query);
+  FILTER_KEYS.forEach((key) => {
+    const values = [...state.filters[key]];
+    if (values.length > 0) params.set(key, values.join(","));
+  });
+  const query = params.toString();
+  const url = query
+    ? `${window.location.pathname}?${query}`
+    : window.location.pathname;
+  window.history.replaceState(null, "", url);
+}
+
+function syncFiltersUi() {
+  if (state.query) elements.searchInput.value = state.query;
+  elements.filterPanel.querySelectorAll(".option-chip").forEach((chip) => {
+    const set = state.filters[chip.dataset.filter];
+    const active = !!set && set.has(chip.dataset.value);
+    chip.classList.toggle("is-active", active);
+    chip.setAttribute("aria-pressed", String(active));
   });
 }
 
@@ -287,6 +339,7 @@ function bindEvents() {
 
   elements.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value.trim().toLowerCase();
+    writeStateToUrl();
     render();
     fitMapToSpots(getFilteredSpots());
   });
@@ -369,6 +422,7 @@ function bindEvents() {
       "aria-pressed",
       String(state.filters[option.dataset.filter].has(option.dataset.value)),
     );
+    writeStateToUrl();
     render();
     fitMapToSpots(getFilteredSpots());
   });
@@ -529,6 +583,7 @@ function clearAllFilters() {
       chip.classList.remove("is-active");
       chip.setAttribute("aria-pressed", "false");
     });
+  writeStateToUrl();
   render();
   fitMapToSpots(getFilteredSpots());
 }
