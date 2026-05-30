@@ -165,7 +165,7 @@ const map = L.map("map", {
   scrollWheelZoom: true,
 }).setView([53.2, -2.7], 6);
 
-L.control.zoom({ position: "bottomright" }).addTo(map);
+L.control.zoom({ position: "topright" }).addTo(map);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -175,14 +175,18 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 const markers = new Map();
 const markerLayer = L.layerGroup().addTo(map);
+const selectedSpotZoom = 10;
+const selectedSpotScrollDuration = 180;
+const bottomSheetExpandSwipeDistance = 34;
+let bottomSheetTouchStartY = null;
 
-map.on("popupopen", (event) => {
-  const el = event.popup.getElement();
-  const text = el?.querySelector(".popup-notes-text");
-  if (text && text.scrollHeight <= text.clientHeight) {
-    el.querySelector(".popup-notes")?.classList.add("popup-notes--fits");
+function checkNotesOverflow(root) {
+  const text = root?.querySelector(".popup-notes-text");
+  if (!text) return;
+  if (text.scrollHeight <= text.clientHeight) {
+    text.closest(".popup-notes")?.classList.add("popup-notes--fits");
   }
-});
+}
 
 const elements = {
   filterClose: document.querySelector("#filterClose"),
@@ -207,7 +211,12 @@ const elements = {
   filtersTab: document.querySelector("#filtersTab"),
   aboutTab: document.querySelector("#aboutTab"),
   clearFiltersBtn: document.querySelector("#clearFiltersBtn"),
+  bottomSheet: document.querySelector("#bottomSheet"),
+  bottomSheetContent: document.querySelector("#bottomSheetContent"),
+  bottomSheetClose: document.querySelector("#bottomSheetClose"),
 };
+
+const desktopQuery = window.matchMedia("(min-width: 900px)");
 
 function init() {
   readStateFromUrl();
@@ -342,7 +351,7 @@ function bindEvents() {
   elements.locateBtn.addEventListener("click", requestUserLocation);
 
   elements.recenterBtn.addEventListener("click", () => {
-    map.closePopup();
+    hideBottomSheet();
     if (!state.userLocation) {
       requestUserLocation();
       return;
@@ -364,8 +373,44 @@ function bindEvents() {
     const item = summary.closest(".spot-list-item");
     if (!item?.dataset.spotId) return;
     if (!isMapVisible()) return;
-    selectSpot(item.dataset.spotId, true);
+    selectSpot(item.dataset.spotId, { moveMap: true });
   });
+
+  elements.spotList.addEventListener("toggle", (event) => {
+    if (event.target.matches(".spot-card") && event.target.open) {
+      checkNotesOverflow(event.target);
+      elements.spotList
+        .querySelectorAll(".spot-card[open]")
+        .forEach((card) => {
+          if (card !== event.target) card.open = false;
+        });
+    }
+  }, true);
+
+  elements.bottomSheetClose.addEventListener("click", hideBottomSheet);
+  elements.bottomSheet.addEventListener("touchstart", handleBottomSheetTouchStart, {
+    passive: true,
+  });
+  elements.bottomSheet.addEventListener("touchmove", handleBottomSheetTouchMove, {
+    passive: true,
+  });
+  elements.bottomSheetContent.addEventListener("click", (event) => {
+    const linkIcon = event.target.closest(".spot-link-icon");
+    if (linkIcon) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.open(linkIcon.href, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (event.target.closest(".spot-card-summary")) {
+      event.preventDefault();
+    }
+  });
+  elements.bottomSheetContent.addEventListener("toggle", (event) => {
+    if (event.target.matches(".spot-card") && event.target.open) {
+      checkNotesOverflow(event.target);
+    }
+  }, true);
 
   elements.filterPanel.addEventListener("click", (event) => {
     const option = event.target.closest(".option-chip");
@@ -399,8 +444,8 @@ function setView(view) {
   elements.listView.setAttribute("aria-hidden", String(!isList));
 
   if (isList) {
-    setPanelTab("filters");
-    setFiltersOpen(true);
+    hideBottomSheet();
+    setFiltersOpen(false);
   }
 
   elements.viewToggleBtns.forEach((button) => {
@@ -628,6 +673,7 @@ function render() {
   }
   if (!filtered.some((spot) => spot.id === state.selectedId)) {
     state.selectedId = filtered[0]?.id ?? null;
+    if (!elements.bottomSheet.hidden) hideBottomSheet();
   }
 
   renderMarkers(filtered);
@@ -645,42 +691,47 @@ function renderList(filtered) {
   }
 
   elements.spotList.innerHTML = filtered
-    .map((spot) => {
-      const bikeIconSrc = bikeIcons[spot.primaryBike];
-      const bikeBadge = bikeIconSrc
-        ? `<span
-              class="spot-card-bike"
-              style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
-              aria-label="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
-              title="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
-            ><span class="spot-card-bike-inner"><img class="spot-card-bike-icon" src="${bikeIconSrc}" alt=""></span></span>`
-        : "";
-      const distanceLabel = state.userLocation
-        ? `${distanceKm(state.userLocation, spot).toFixed(0)} km`
-        : "";
-      const regionParts = [formatAddress(spot.address), distanceLabel].filter(Boolean);
-
-      return `
+    .map(
+      (spot) => `
         <li class="spot-list-item" data-spot-id="${spot.id}">
-          <details class="spot-card">
-            <summary class="spot-card-summary">
-              ${bikeBadge}
-              <div class="spot-card-main">
-                <div class="spot-card-head">
-                  <h3 class="spot-card-title">${spot.name}</h3>
-                  ${regionParts.length ? `<span class="spot-card-region">${regionParts.join(" · ")}</span>` : ""}
-                </div>
-                ${renderLinkIcons(spot)}
-              </div>
-            </summary>
-            <div class="spot-card-body">
-              ${renderPopupContent(spot)}
-            </div>
-          </details>
+          ${renderSpotCardInner(spot)}
         </li>
-      `;
-    })
+      `,
+    )
     .join("");
+}
+
+function renderSpotCardInner(spot, { open = false } = {}) {
+  const bikeIconSrc = bikeIcons[spot.primaryBike];
+  const bikeBadge = bikeIconSrc
+    ? `<span
+          class="spot-card-bike"
+          style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
+          aria-label="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
+          title="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
+        ><span class="spot-card-bike-inner"><img class="spot-card-bike-icon" src="${bikeIconSrc}" alt=""></span></span>`
+    : "";
+  const distanceLabel = state.userLocation
+    ? `${distanceKm(state.userLocation, spot).toFixed(0)} km`
+    : "";
+  const regionParts = [formatAddress(spot.address), distanceLabel].filter(Boolean);
+  return `
+    <details class="spot-card"${open ? " open" : ""}>
+      <summary class="spot-card-summary">
+        ${bikeBadge}
+        <div class="spot-card-main">
+          <div class="spot-card-head">
+            <h3 class="spot-card-title">${spot.name}</h3>
+            ${regionParts.length ? `<span class="spot-card-region">${regionParts.join(" · ")}</span>` : ""}
+          </div>
+          ${renderLinkIcons(spot)}
+        </div>
+      </summary>
+      <div class="spot-card-body">
+        ${renderPopupContent(spot)}
+      </div>
+    </details>
+  `;
 }
 
 function renderMarkers(filtered) {
@@ -697,13 +748,9 @@ function renderMarkers(filtered) {
       popupAnchor: [0, -(markerSize / 2 + 1)],
     });
 
-    const marker = L.marker([spot.lat, spot.lng], { icon })
-      .addTo(markerLayer)
-      .bindPopup(renderPopupContent(spot), {
-        maxWidth: 320,
-      });
+    const marker = L.marker([spot.lat, spot.lng], { icon }).addTo(markerLayer);
 
-    marker.on("click", () => selectSpot(spot.id, false));
+    marker.on("click", () => selectSpot(spot.id, { moveMap: true, focus: true }));
     markers.set(spot.id, marker);
   });
 }
@@ -778,6 +825,14 @@ function renderPopupContent(spot) {
       ${renderLinkIcons(spot)}
       <dl class="popup-facts">
         <div>
+          <dt>Type</dt>
+          <dd>${spot.primaryType || "—"}</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>${[spot.location, spot.postcode].filter(Boolean).join(", ") || "—"}</dd>
+        </div>
+        <div>
           <dt>Features</dt>
           <dd>${featureTags ? `<div class="meta-line">${featureTags}</div>` : "—"}</dd>
         </div>
@@ -832,16 +887,14 @@ function renderPopupContent(spot) {
   `;
 }
 
-function selectSpot(id, moveMap) {
+function selectSpot(id, options = {}) {
+  const { moveMap = false, focus = false } = options;
   state.selectedId = id;
   const spot = spots.find((candidate) => candidate.id === id);
   if (!spot) return;
 
-  render();
-
-  const marker = markers.get(id);
   if (moveMap) {
-    const targetZoom = Math.max(map.getZoom(), 11);
+    const targetZoom = Math.max(map.getZoom(), selectedSpotZoom);
     const markerPoint = map.project([spot.lat, spot.lng], targetZoom);
     const offsetTarget = map.unproject(
       L.point(markerPoint.x, markerPoint.y - 140),
@@ -849,7 +902,89 @@ function selectSpot(id, moveMap) {
     );
     map.flyTo(offsetTarget, targetZoom, { duration: 0.7 });
   }
-  marker?.openPopup();
+
+  if (focus) focusSpot(spot);
+}
+
+function focusSpot(spot) {
+  if (desktopQuery.matches) {
+    const li = elements.spotList.querySelector(`[data-spot-id="${spot.id}"]`);
+    if (!li) return;
+    const details = li.querySelector(".spot-card");
+    if (details && !details.open) details.open = true;
+    requestAnimationFrame(() => checkNotesOverflow(details));
+    scrollListItemIntoView(li);
+  } else {
+    showBottomSheet(spot);
+  }
+}
+
+function scrollListItemIntoView(item) {
+  const scroller = elements.listView;
+  const scrollerRect = scroller.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+  const padding = 14;
+  let targetTop = scroller.scrollTop;
+
+  if (itemRect.top < scrollerRect.top + padding) {
+    targetTop += itemRect.top - scrollerRect.top - padding;
+  } else if (itemRect.bottom > scrollerRect.bottom - padding) {
+    targetTop += itemRect.bottom - scrollerRect.bottom + padding;
+  } else {
+    return;
+  }
+
+  animateListScroll(targetTop);
+}
+
+function animateListScroll(targetTop) {
+  const scroller = elements.listView;
+  const startTop = scroller.scrollTop;
+  const delta = targetTop - startTop;
+  const startTime = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - startTime) / selectedSpotScrollDuration, 1);
+    const eased = 1 - (1 - progress) ** 3;
+    scroller.scrollTop = startTop + delta * eased;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+}
+
+function showBottomSheet(spot) {
+  elements.bottomSheetContent.innerHTML = renderSpotCardInner(spot, { open: true });
+  elements.bottomSheet.hidden = false;
+  elements.bottomSheet.classList.remove("is-expanded");
+  document.body.classList.add("spot-selected");
+  requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
+}
+
+function hideBottomSheet() {
+  elements.bottomSheet.hidden = true;
+  elements.bottomSheet.classList.remove("is-expanded");
+  elements.bottomSheetContent.innerHTML = "";
+  document.body.classList.remove("spot-selected");
+  state.selectedId = null;
+  bottomSheetTouchStartY = null;
+}
+
+function handleBottomSheetTouchStart(event) {
+  bottomSheetTouchStartY = event.touches[0]?.clientY ?? null;
+}
+
+function handleBottomSheetTouchMove(event) {
+  if (bottomSheetTouchStartY === null || elements.bottomSheet.classList.contains("is-expanded")) {
+    return;
+  }
+  const currentY = event.touches[0]?.clientY;
+  if (currentY === undefined) return;
+  if (bottomSheetTouchStartY - currentY > bottomSheetExpandSwipeDistance) {
+    elements.bottomSheet.classList.add("is-expanded");
+    bottomSheetTouchStartY = null;
+    requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
+  }
 }
 
 init();

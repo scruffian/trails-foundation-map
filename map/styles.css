@@ -440,7 +440,7 @@ input:focus {
   box-sizing: content-box;
   position: absolute;
   right: 10px;
-  bottom: 94px;
+  top: 94px;
   display: grid;
   place-items: center;
   width: 30px;
@@ -660,7 +660,7 @@ body.view-list .map-wrap {
 
 .view-toggle {
   position: fixed;
-  bottom: 12px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
@@ -700,7 +700,7 @@ body.view-list .map-wrap {
 .filter-toggle {
   position: fixed;
   left: 12px;
-  bottom: 12px;
+  top: 12px;
   display: grid;
   place-items: center;
   width: 44px;
@@ -731,6 +731,85 @@ body.view-list .map-wrap {
 .filters-open .filter-toggle {
   opacity: 0;
   pointer-events: none;
+}
+
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 680;
+  background: var(--panel, var(--surface-strong));
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+  max-height: 80vh;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.bottom-sheet[hidden] {
+  display: none;
+}
+
+.bottom-sheet.is-expanded {
+  overflow: auto;
+}
+
+.bottom-sheet::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 4px;
+  margin: 8px auto 0;
+  background: var(--line);
+}
+
+.bottom-sheet-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: 700 24px/1 "Helvetica Neue", Arial, sans-serif;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.bottom-sheet-content .spot-card {
+  background: transparent;
+}
+
+.bottom-sheet-content .spot-card-summary {
+  padding-right: 48px;
+}
+
+.bottom-sheet:not(.is-expanded) .spot-card-summary .spot-card-links,
+.bottom-sheet:not(.is-expanded) .spot-card-body .popup-facts > div:nth-child(n + 5),
+.bottom-sheet:not(.is-expanded) .spot-card-body .popup-section {
+  display: none;
+}
+
+body.spot-selected .filter-toggle,
+body.spot-selected .view-toggle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .bottom-sheet {
+    display: none !important;
+  }
+
+  body.spot-selected .filter-toggle,
+  body.spot-selected .view-toggle {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .panel-tabs {
