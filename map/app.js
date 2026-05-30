@@ -976,10 +976,6 @@ function renderPopupContent(spot) {
           <dd>${spot.primaryType || "—"}</dd>
         </div>
         <div>
-          <dt>Location</dt>
-          <dd>${[spot.location, spot.postcode].filter(Boolean).join(", ") || "—"}</dd>
-        </div>
-        <div>
           <dt>Features</dt>
           <dd>${featureTags ? `<div class="meta-line">${featureTags}</div>` : "—"}</dd>
         </div>
