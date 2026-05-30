@@ -127,6 +127,7 @@ const state = {
     ownership: new Set(),
     status: new Set(),
   },
+  sortMode: "az",
   selectedId: null,
   userLocation: null,
 };
@@ -184,6 +185,7 @@ const elements = {
   activeFilters: document.querySelector("#activeFilters"),
   spotCounts: [...document.querySelectorAll("[data-spot-count]")],
   searchInput: document.querySelector("#searchInput"),
+  sortSelect: document.querySelector("#sortSelect"),
   featureFilter: document.querySelector("#featureFilter"),
   trailGradeFilter: document.querySelector("#trailGradeFilter"),
   bikeTypeFilter: document.querySelector("#bikeTypeFilter"),
@@ -195,8 +197,7 @@ const elements = {
   viewToggleBtns: [...document.querySelectorAll(".view-toggle-btn")],
   listView: document.querySelector("#listView"),
   spotList: document.querySelector("#spotList"),
-  locateBtn: document.querySelector("#locateBtn"),
-  recenterBtn: document.querySelector("#recenterBtn"),
+  locationControls: [...document.querySelectorAll(".location-control")],
   panelTabBtns: [...document.querySelectorAll(".panel-tab")],
   filtersTab: document.querySelector("#filtersTab"),
   aboutTab: document.querySelector("#aboutTab"),
@@ -235,6 +236,8 @@ function readStateFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const q = params.get("q");
   if (q) state.query = q.toLowerCase();
+  const sort = params.get("sort");
+  if (sort === "distance") state.sortMode = "distance";
   FILTER_KEYS.forEach((key) => {
     const raw = params.get(key);
     if (!raw) return;
@@ -249,6 +252,7 @@ function readStateFromUrl() {
 function writeStateToUrl() {
   const params = new URLSearchParams();
   if (state.query) params.set("q", state.query);
+  if (state.sortMode === "distance") params.set("sort", state.sortMode);
   FILTER_KEYS.forEach((key) => {
     const values = [...state.filters[key]];
     if (values.length > 0) params.set(key, values.join(","));
@@ -262,6 +266,7 @@ function writeStateToUrl() {
 
 function syncFiltersUi() {
   if (state.query) elements.searchInput.value = state.query;
+  elements.sortSelect.value = state.sortMode;
   elements.filterPanel.querySelectorAll(".option-chip").forEach((chip) => {
     const set = state.filters[chip.dataset.filter];
     const active = !!set && set.has(chip.dataset.value);
@@ -358,20 +363,16 @@ function bindEvents() {
     updateMapViewport();
   });
 
+  elements.sortSelect.addEventListener("change", (event) => {
+    setSortMode(event.target.value);
+  });
+
   elements.viewToggleBtns.forEach((button) => {
     button.addEventListener("click", () => setView(button.dataset.view));
   });
 
-  elements.locateBtn.addEventListener("click", requestUserLocation);
-
-  elements.recenterBtn.addEventListener("click", () => {
-    hideBottomSheet();
-    if (!state.userLocation) {
-      requestUserLocation();
-      return;
-    }
-    const { lat, lng } = state.userLocation;
-    map.flyTo([lat, lng], Math.max(map.getZoom(), 9), { duration: 0.7 });
+  elements.locationControls.forEach((button) => {
+    button.addEventListener("click", activateLocationControl);
   });
 
   elements.spotList.addEventListener("click", (event) => {
@@ -543,6 +544,28 @@ function requestUserLocation() {
   attemptLocationFix(2);
 }
 
+function activateLocationControl() {
+  hideBottomSheet();
+  setSortMode("distance", { requestLocation: false });
+  if (!state.userLocation) {
+    requestUserLocation();
+    return;
+  }
+  const { lat, lng } = state.userLocation;
+  map.flyTo([lat, lng], Math.max(map.getZoom(), 9), { duration: 0.7 });
+  render();
+}
+
+function setSortMode(sortMode, { requestLocation = true } = {}) {
+  state.sortMode = sortMode === "distance" ? "distance" : "az";
+  elements.sortSelect.value = state.sortMode;
+  writeStateToUrl();
+  render();
+  if (state.sortMode === "distance" && requestLocation && !state.userLocation) {
+    requestUserLocation();
+  }
+}
+
 function attemptLocationFix(retriesLeft) {
   navigator.geolocation.getCurrentPosition(
     (position) => {
@@ -559,7 +582,7 @@ function attemptLocationFix(retriesLeft) {
           ? "Permission denied — try again"
           : "Couldn't get location — try again";
       setLocateStatus(message);
-      elements.locateBtn.disabled = false;
+      setLocateButtonsDisabled(false);
     },
     { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 },
   );
@@ -579,9 +602,7 @@ function startLocationWatch() {
 function handleLocationFix(position, { fly }) {
   const { latitude, longitude } = position.coords;
   state.userLocation = { lat: latitude, lng: longitude };
-  setLocateStatus("Sorting by distance");
-  elements.locateBtn.disabled = false;
-  elements.recenterBtn.setAttribute("aria-label", "Recenter map on my location");
+  setLocateStatus("Recenter on my location and sort by distance");
   updateUserLocationMarker();
   if (fly) {
     map.flyTo([latitude, longitude], Math.max(map.getZoom(), 9), {
@@ -592,9 +613,17 @@ function handleLocationFix(position, { fly }) {
 }
 
 function setLocateStatus(text, busy = false) {
-  const label = elements.locateBtn.querySelector("span");
-  if (label) label.textContent = text;
-  elements.locateBtn.disabled = busy;
+  elements.locationControls.forEach((button) => {
+    button.setAttribute("aria-label", text);
+    button.title = text;
+  });
+  setLocateButtonsDisabled(busy);
+}
+
+function setLocateButtonsDisabled(disabled) {
+  elements.locationControls.forEach((button) => {
+    button.disabled = disabled;
+  });
 }
 
 function updateUserLocationMarker() {
@@ -748,11 +777,13 @@ function matchesSingle(selectedValues, spotValue) {
 
 function render() {
   const filtered = getFilteredSpots();
-  if (state.userLocation) {
+  if (state.sortMode === "distance" && state.userLocation) {
     filtered.sort(
       (a, b) =>
         distanceKm(state.userLocation, a) - distanceKm(state.userLocation, b),
     );
+  } else {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
   }
   if (state.selectedId && !filtered.some((spot) => spot.id === state.selectedId)) {
     state.selectedId = null;

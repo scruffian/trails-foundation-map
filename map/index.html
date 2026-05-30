@@ -124,25 +124,27 @@
 
       <div id="filterBackdrop" class="panel-backdrop"></div>
 
-      <div class="view-toggle" role="tablist" aria-label="View">
-        <button
-          id="viewMapBtn"
-          class="view-toggle-btn is-active"
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="map"
-          data-view="map"
-        >Map</button>
-        <button
-          id="viewListBtn"
-          class="view-toggle-btn"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="listView"
-          data-view="list"
-        >List</button>
+      <div class="top-bar">
+        <div class="view-toggle" role="tablist" aria-label="View">
+          <button
+            id="viewMapBtn"
+            class="view-toggle-btn is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="map"
+            data-view="map"
+          >Map</button>
+          <button
+            id="viewListBtn"
+            class="view-toggle-btn"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="listView"
+            data-view="list"
+          >List</button>
+        </div>
       </div>
 
       <div class="content-stack">
@@ -155,32 +157,35 @@
               placeholder="Search"
               aria-label="Search spots"
             >
-            <button id="locateBtn" class="locate-btn" type="button">
-              <span>Sort by distance</span>
-            </button>
+            <select id="sortSelect" class="sort-select" aria-label="Sort spots">
+              <option value="az">A-Z</option>
+              <option value="distance">Distance</option>
+            </select>
           </div>
           <ul id="spotList" class="spot-list"></ul>
         </section>
 
         <section class="map-wrap" aria-label="Map">
           <div id="map"></div>
-          <button
-            id="recenterBtn"
-            class="recenter-btn"
-            type="button"
-            aria-label="Find my location"
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="8"></circle>
-              <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
-              <line x1="12" y1="1" x2="12" y2="4"></line>
-              <line x1="12" y1="20" x2="12" y2="23"></line>
-              <line x1="1" y1="12" x2="4" y2="12"></line>
-              <line x1="20" y1="12" x2="23" y2="12"></line>
-            </svg>
-          </button>
         </section>
       </div>
+
+      <button
+        id="locateBtn"
+        class="location-control map-location-btn"
+        type="button"
+        aria-label="Find my location and sort by distance"
+        title="Find my location and sort by distance"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="8"></circle>
+          <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+          <line x1="12" y1="1" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="23"></line>
+          <line x1="1" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="23" y2="12"></line>
+        </svg>
+      </button>
 
       <aside
         id="bottomSheet"

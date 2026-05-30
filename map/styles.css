@@ -229,7 +229,8 @@ input:focus {
 
 .option-chip:focus-visible,
 .icon-button:focus-visible,
-.filter-toggle:focus-visible {
+.filter-toggle:focus-visible,
+.location-control:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 1px;
 }
@@ -249,29 +250,45 @@ input:focus {
   min-height: 38px;
 }
 
-.locate-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex: none;
-  min-height: 38px;
-  padding: 0 14px;
+.sort-select {
+  flex: 0 0 auto;
+  width: 112px;
+  min-height: 44px;
   border: 0;
   border-radius: 0;
   background: var(--tag-bg);
   color: var(--ink);
-  font-size: 0.85rem;
-  font-weight: 500;
   cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 28px 0 10px;
 }
 
-.locate-btn:hover {
-  background: var(--ink);
-  color: var(--on-accent);
+.sort-select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
 }
 
-.locate-btn:disabled {
+.location-control {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-strong);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0;
+}
+
+.location-control:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.location-control:disabled {
   opacity: 0.6;
   cursor: progress;
 }
@@ -460,6 +477,7 @@ input:focus {
 .leaflet-control-zoom.leaflet-bar {
   display: grid;
   gap: 2px;
+  margin-top: 64px;
   border: 0;
   border-radius: 0;
   background: var(--surface-strong);
@@ -484,32 +502,6 @@ input:focus {
 .leaflet-control-zoom.leaflet-bar a:hover {
   background: var(--surface);
   color: var(--ink);
-}
-
-.recenter-btn {
-  position: absolute;
-  right: 12px;
-  top: 118px;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 0;
-  background: var(--surface-strong);
-  box-shadow: var(--shadow);
-  color: var(--ink);
-  cursor: pointer;
-  padding: 0;
-  z-index: 600;
-}
-
-.recenter-btn:hover {
-  background: var(--surface);
-}
-
-.recenter-btn[hidden] {
-  display: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -745,19 +737,37 @@ body.view-list::before {
   display: none;
 }
 
-.view-toggle {
+.top-bar {
   position: fixed;
   top: 12px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  pointer-events: none;
+  z-index: 650;
+}
+
+.view-toggle {
   display: inline-flex;
+  flex: 0 0 auto;
   gap: 2px;
   border: 0;
   border-radius: 0;
   background: var(--surface-strong);
   box-shadow: var(--shadow);
   padding: 2px;
-  z-index: 650;
+  pointer-events: auto;
+}
+
+.map-location-btn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  box-shadow: var(--shadow);
+  z-index: 900;
 }
 
 .view-toggle-btn {
@@ -1325,12 +1335,40 @@ body.view-list .active-filters {
     display: block;
   }
 
-  .view-toggle {
+  .top-bar {
     display: none;
+  }
+
+  .map-location-btn {
+    right: 392px;
   }
 
   body.view-list::before {
     display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .top-bar {
+    gap: 4px;
+  }
+
+  .view-toggle-btn {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .sort-select {
+    width: 98px;
+  }
+}
+
+@media (max-width: 899px) {
+  .leaflet-control-zoom.leaflet-bar {
+    position: fixed;
+    top: 64px;
+    right: 12px;
+    margin: 0;
   }
 }
 
