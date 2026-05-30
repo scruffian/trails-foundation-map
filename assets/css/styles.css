@@ -118,15 +118,11 @@ p {
 
 .brand-mark {
   background: var(--ink);
-  background-image:
-    repeating-linear-gradient(45deg, transparent 0 2px, var(--paper) 2px 3px);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  box-shadow: var(--shadow-sm);
   display: inline-block;
   height: 32px;
-  transform: rotate(-4deg);
   width: 32px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202C12%202%205%208.5%205%2013.5C5%2016%207%2017.5%209%2017.5C9.8%2017.5%2010.5%2017.2%2011%2016.7C10.8%2018.5%2010%2020%209%2021H15C14%2020%2013.2%2018.5%2013%2016.7C13.5%2017.2%2014.2%2017.5%2015%2017.5C17%2017.5%2019%2016%2019%2013.5C19%208.5%2012%202%2012%202Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202C12%202%205%208.5%205%2013.5C5%2016%207%2017.5%209%2017.5C9.8%2017.5%2010.5%2017.2%2011%2016.7C10.8%2018.5%2010%2020%209%2021H15C14%2020%2013.2%2018.5%2013%2016.7C13.5%2017.2%2014.2%2017.5%2015%2017.5C17%2017.5%2019%2016%2019%2013.5C19%208.5%2012%202%2012%202Z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .nav {

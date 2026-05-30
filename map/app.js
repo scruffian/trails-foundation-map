@@ -142,7 +142,7 @@ const state = {
     ownership: new Set(),
     status: new Set(),
   },
-  selectedId: spots[0].id,
+  selectedId: null,
   userLocation: null,
 };
 
@@ -175,7 +175,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 const markers = new Map();
 const markerLayer = L.layerGroup().addTo(map);
-const selectedSpotZoom = 10;
+const selectedSpotZoom = 9;
 const selectedSpotScrollDuration = 180;
 const bottomSheetExpandSwipeDistance = 34;
 let bottomSheetTouchStartY = null;
@@ -217,21 +217,26 @@ const elements = {
 };
 
 const desktopQuery = window.matchMedia("(min-width: 900px)");
+// Wider desktops pin the filters open as a left column; below this they slide in.
+const filtersPinnedQuery = window.matchMedia("(min-width: 1300px)");
 
 function init() {
   readStateFromUrl();
   populateFilters();
   syncFiltersUi();
   bindEvents();
+  setFiltersOpen(false);
   render();
   requestAnimationFrame(() => {
-    map.invalidateSize();
-    fitMapToSpots(getFilteredSpots());
+    updateMapViewport();
   });
   requestUserLocation();
   window.addEventListener("resize", () => {
-    map.invalidateSize();
-    fitMapToSpots(getFilteredSpots());
+    updateMapViewport();
+  });
+  filtersPinnedQuery.addEventListener("change", () => {
+    setFiltersOpen(document.body.classList.contains("filters-open"));
+    updateMapViewport();
   });
 }
 
@@ -341,7 +346,7 @@ function bindEvents() {
     state.query = event.target.value.trim().toLowerCase();
     writeStateToUrl();
     render();
-    fitMapToSpots(getFilteredSpots());
+    updateMapViewport();
   });
 
   elements.viewToggleBtns.forEach((button) => {
@@ -366,26 +371,28 @@ function bindEvents() {
       event.preventDefault();
       event.stopPropagation();
       window.open(linkIcon.href, "_blank", "noopener,noreferrer");
-      return;
     }
-    const summary = event.target.closest(".spot-card-summary");
-    if (!summary) return;
-    const item = summary.closest(".spot-list-item");
-    if (!item?.dataset.spotId) return;
-    if (!isMapVisible()) return;
-    selectSpot(item.dataset.spotId, { moveMap: true });
   });
 
-  elements.spotList.addEventListener("toggle", (event) => {
-    if (event.target.matches(".spot-card") && event.target.open) {
-      checkNotesOverflow(event.target);
-      elements.spotList
-        .querySelectorAll(".spot-card[open]")
-        .forEach((card) => {
+  elements.spotList.addEventListener(
+    "toggle",
+    (event) => {
+      if (event.target.matches(".spot-card") && event.target.open) {
+        const item = event.target.closest(".spot-list-item");
+        if (item?.dataset.spotId && item.dataset.spotId !== state.selectedId) {
+          selectSpot(item.dataset.spotId, { moveMap: isMapVisible() });
+        }
+        checkNotesOverflow(event.target);
+        elements.spotList.querySelectorAll(".spot-card[open]").forEach((card) => {
           if (card !== event.target) card.open = false;
         });
-    }
-  }, true);
+      } else if (event.target.matches(".spot-card")) {
+        const item = event.target.closest(".spot-list-item");
+        if (item?.dataset.spotId === state.selectedId) clearSelectedSpot();
+      }
+    },
+    true,
+  );
 
   elements.bottomSheetClose.addEventListener("click", hideBottomSheet);
   elements.bottomSheet.addEventListener("touchstart", handleBottomSheetTouchStart, {
@@ -424,7 +431,7 @@ function bindEvents() {
     );
     writeStateToUrl();
     render();
-    fitMapToSpots(getFilteredSpots());
+    updateMapViewport();
   });
 }
 
@@ -444,8 +451,11 @@ function setView(view) {
   elements.listView.setAttribute("aria-hidden", String(!isList));
 
   if (isList) {
-    hideBottomSheet();
+    hideBottomSheet({ preserveSelection: true });
     setFiltersOpen(false);
+  } else {
+    const selectedSpot = getSelectedSpot();
+    if (selectedSpot && !desktopQuery.matches) showBottomSheet(selectedSpot);
   }
 
   elements.viewToggleBtns.forEach((button) => {
@@ -455,8 +465,8 @@ function setView(view) {
   });
 
   requestAnimationFrame(() => {
-    map.invalidateSize();
-    fitMapToSpots(getFilteredSpots());
+    updateMapViewport();
+    if (isList) syncSelectedSpotUi({ revealListItem: true });
   });
 }
 
@@ -568,8 +578,17 @@ function isMapVisible() {
 
 function setFiltersOpen(isOpen) {
   document.body.classList.toggle("filters-open", isOpen);
-  elements.filterPanel.setAttribute("aria-hidden", String(!isOpen));
   elements.filterToggle.setAttribute("aria-expanded", String(isOpen));
+
+  // On wide desktops the panel is pinned open as a left column, so it must stay
+  // interactive regardless of the open state used for the slide-in.
+  if (filtersPinnedQuery.matches) {
+    elements.filterPanel.setAttribute("aria-hidden", "false");
+    elements.filterPanel.removeAttribute("inert");
+    return;
+  }
+
+  elements.filterPanel.setAttribute("aria-hidden", String(!isOpen));
   elements.filterPanel.toggleAttribute("inert", !isOpen);
 }
 
@@ -585,7 +604,7 @@ function clearAllFilters() {
     });
   writeStateToUrl();
   render();
-  fitMapToSpots(getFilteredSpots());
+  updateMapViewport();
 }
 
 function setPanelTab(tab) {
@@ -671,13 +690,14 @@ function render() {
         distanceKm(state.userLocation, a) - distanceKm(state.userLocation, b),
     );
   }
-  if (!filtered.some((spot) => spot.id === state.selectedId)) {
-    state.selectedId = filtered[0]?.id ?? null;
-    if (!elements.bottomSheet.hidden) hideBottomSheet();
+  if (state.selectedId && !filtered.some((spot) => spot.id === state.selectedId)) {
+    state.selectedId = null;
+    if (!elements.bottomSheet.hidden) hideBottomSheet({ preserveSelection: true });
   }
 
   renderMarkers(filtered);
   renderList(filtered);
+  syncSelectedSpotUi();
   const countLabel = `${filtered.length} selected`;
   elements.spotCounts.forEach((spotCount) => {
     spotCount.textContent = countLabel;
@@ -693,8 +713,8 @@ function renderList(filtered) {
   elements.spotList.innerHTML = filtered
     .map(
       (spot) => `
-        <li class="spot-list-item" data-spot-id="${spot.id}">
-          ${renderSpotCardInner(spot)}
+        <li class="spot-list-item${spot.id === state.selectedId ? " is-selected" : ""}" data-spot-id="${spot.id}">
+          ${renderSpotCardInner(spot, { open: spot.id === state.selectedId })}
         </li>
       `,
     )
@@ -763,7 +783,7 @@ function renderMarkerIcon(spot) {
     : `<span class="marker-feature-code">?</span>`;
   return `
     <div
-      class="jump-marker"
+      class="jump-marker${spot.id === state.selectedId ? " is-selected" : ""}"
       style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
       aria-hidden="true"
     >
@@ -799,6 +819,18 @@ function fitMapToSpots(filtered) {
   } else if (filtered.length === 1) {
     map.setView([filtered[0].lat, filtered[0].lng], 11);
   }
+}
+
+function getSelectedSpot() {
+  if (!state.selectedId) return null;
+  return spots.find((candidate) => candidate.id === state.selectedId) ?? null;
+}
+
+function updateMapViewport() {
+  if (!isMapVisible()) return;
+  map.invalidateSize();
+  if (focusMapOnSelectedSpot({ animate: false })) return;
+  fitMapToSpots(getFilteredSpots());
 }
 
 function renderPopupContent(spot) {
@@ -889,21 +921,67 @@ function renderPopupContent(spot) {
 
 function selectSpot(id, options = {}) {
   const { moveMap = false, focus = false } = options;
-  state.selectedId = id;
   const spot = spots.find((candidate) => candidate.id === id);
   if (!spot) return;
+  state.selectedId = id;
+  syncSelectedSpotUi();
 
   if (moveMap) {
-    const targetZoom = Math.max(map.getZoom(), selectedSpotZoom);
-    const markerPoint = map.project([spot.lat, spot.lng], targetZoom);
-    const offsetTarget = map.unproject(
-      L.point(markerPoint.x, markerPoint.y - 140),
-      targetZoom,
-    );
-    map.flyTo(offsetTarget, targetZoom, { duration: 0.7 });
+    focusMapOnSpot(spot, { animate: true });
   }
 
   if (focus) focusSpot(spot);
+}
+
+function clearSelectedSpot() {
+  state.selectedId = null;
+  syncSelectedSpotUi();
+}
+
+function syncSelectedSpotUi({ revealListItem = false } = {}) {
+  elements.spotList.querySelectorAll(".spot-list-item").forEach((item) => {
+    const isSelected = item.dataset.spotId === state.selectedId;
+    item.classList.toggle("is-selected", isSelected);
+    const details = item.querySelector(".spot-card");
+    if (details && details.open !== isSelected) details.open = isSelected;
+  });
+
+  markers.forEach((marker, id) => {
+    marker
+      .getElement()
+      ?.querySelector(".jump-marker")
+      ?.classList.toggle("is-selected", id === state.selectedId);
+  });
+
+  if (!revealListItem || !state.selectedId) return;
+  const item = elements.spotList.querySelector(`[data-spot-id="${state.selectedId}"]`);
+  if (item) scrollListItemIntoView(item);
+}
+
+function focusMapOnSelectedSpot(options = {}) {
+  const spot = getSelectedSpot();
+  if (!spot) return false;
+  focusMapOnSpot(spot, options);
+  return true;
+}
+
+function focusMapOnSpot(spot, { animate = true } = {}) {
+  const targetZoom = Math.max(map.getZoom(), selectedSpotZoom);
+  const markerPoint = map.project([spot.lat, spot.lng], targetZoom);
+  // On mobile the bottom sheet covers the lower part of the map, so shift the
+  // map centre below the marker to lift the marker up into the visible area.
+  // On desktop the list sits beside the map, so keep the original offset.
+  const verticalOffset = desktopQuery.matches ? -140 : 160;
+  const offsetTarget = map.unproject(
+    L.point(markerPoint.x, markerPoint.y + verticalOffset),
+    targetZoom,
+  );
+
+  if (animate) {
+    map.flyTo(offsetTarget, targetZoom, { duration: 0.7 });
+  } else {
+    map.setView(offsetTarget, targetZoom);
+  }
 }
 
 function focusSpot(spot) {
@@ -961,12 +1039,14 @@ function showBottomSheet(spot) {
   requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
 }
 
-function hideBottomSheet() {
+function hideBottomSheet({ preserveSelection = false } = {}) {
   elements.bottomSheet.hidden = true;
   elements.bottomSheet.classList.remove("is-expanded");
   elements.bottomSheetContent.innerHTML = "";
   document.body.classList.remove("spot-selected");
-  state.selectedId = null;
+  if (!preserveSelection) {
+    clearSelectedSpot();
+  }
   bottomSheetTouchStartY = null;
 }
 

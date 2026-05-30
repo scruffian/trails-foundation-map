@@ -48,11 +48,6 @@
 
         <div id="filtersTab" class="panel-tab-content is-active" role="tabpanel" aria-labelledby="filtersTabBtn">
           <div class="filters" aria-label="Filters">
-            <label class="field">
-              <span>Search</span>
-              <input id="searchInput" type="search" placeholder="Spot, county, feature">
-            </label>
-
             <div class="filters-actions">
               <span class="spot-count" data-spot-count aria-label="Matching spots">0</span>
               <button id="clearFiltersBtn" class="text-button" type="button">Clear all</button>
@@ -162,6 +157,13 @@
       <div class="content-stack">
         <section id="listView" class="list-view" aria-label="Spot list" aria-hidden="true">
           <div class="list-toolbar">
+            <input
+              id="searchInput"
+              class="list-search"
+              type="search"
+              placeholder="Search"
+              aria-label="Search spots"
+            >
             <button id="locateBtn" class="locate-btn" type="button">
               <span>Sort by distance</span>
             </button>
