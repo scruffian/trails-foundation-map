@@ -121,6 +121,23 @@ select {
   transform: translateX(0);
 }
 
+/* Scrim over the canvas while the filters panel is open. Tapping it closes
+   the panel. */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 690;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.filters-open .panel-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -1261,7 +1278,8 @@ body.view-list::before {
   }
 
   .filter-toggle,
-  #filterClose {
+  #filterClose,
+  .panel-backdrop {
     display: none;
   }
 
