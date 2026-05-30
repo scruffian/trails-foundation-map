@@ -671,6 +671,36 @@ function formatAddress(address) {
   return address.replace(/,\s*UK\s*$/i, "");
 }
 
+function getAddressParts(spot) {
+  const addressParts = formatAddress(spot.address)
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const addressLine = addressParts.join(", ");
+  const siteName = spot.siteName?.trim();
+  if (!siteName) return addressLine ? [addressLine] : [];
+
+  const siteKey = normalizeAddressPart(siteName);
+  const remainingAddressLine = addressParts
+    .filter((part) => normalizeAddressPart(part) !== siteKey)
+    .join(", ");
+  return [siteName, remainingAddressLine].filter(Boolean);
+}
+
+function normalizeAddressPart(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function getAddressLabel(spot) {
+  return getAddressParts(spot).join(" · ");
+}
+
+function renderAddressLines(spot) {
+  return getAddressParts(spot)
+    .map((part) => `<span>${part}</span>`)
+    .join("");
+}
+
 function isMapVisible() {
   const mapEl = document.querySelector("#map");
   return !!mapEl && mapEl.offsetParent !== null;
@@ -724,6 +754,8 @@ function getFilteredSpots() {
   return spots.filter((spot) => {
     const searchable = [
       spot.name,
+      spot.siteName,
+      spot.operatorName,
       spot.address,
       spot.primaryBike,
       ...spot.features,
@@ -838,7 +870,7 @@ function renderSpotCardInner(spot, { open = false } = {}) {
   const distanceLabel = state.userLocation
     ? `${distanceKm(state.userLocation, spot).toFixed(0)} km`
     : "";
-  const regionParts = [formatAddress(spot.address), distanceLabel].filter(Boolean);
+  const regionParts = [getAddressLabel(spot), distanceLabel].filter(Boolean);
   return `
     <details class="spot-card"${open ? " open" : ""}>
       <summary class="spot-card-summary">
@@ -967,7 +999,7 @@ function renderPopupContent(spot) {
             ? `<a href="${spot.sourceUrl}" target="_blank" rel="noreferrer">${spot.name}</a>`
             : spot.name
         }</h3>
-        ${spot.address ? `<span class="spot-card-region">${formatAddress(spot.address)}</span>` : ""}
+        ${getAddressParts(spot).length ? `<span class="spot-card-region spot-card-region--lines">${renderAddressLines(spot)}</span>` : ""}
       </div>
       ${renderLinkIcons(spot)}
       <dl class="popup-facts">
@@ -995,6 +1027,14 @@ function renderPopupContent(spot) {
           <dt>Cost</dt>
           <dd>${spot.cost}</dd>
         </div>
+        ${
+          spot.operatorName
+            ? `<div>
+          <dt>Operator</dt>
+          <dd>${spot.operatorName}</dd>
+        </div>`
+            : ""
+        }
       </dl>
       <details class="popup-more">
         <summary><span class="popup-more-label"></span></summary>
