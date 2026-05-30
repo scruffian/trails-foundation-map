@@ -119,6 +119,23 @@ select {
   transform: translateX(0);
 }
 
+/* Scrim over the canvas while the filters panel is open. Tapping it closes
+   the panel. */
+.panel-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 690;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.filters-open .panel-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -229,6 +246,7 @@ input:focus {
 .list-search {
   flex: 1 1 auto;
   min-width: 0;
+  min-height: 38px;
 }
 
 .locate-btn {
@@ -517,6 +535,41 @@ body.view-list .list-view {
 
 body.view-list .map-wrap {
   display: none;
+}
+
+/* In list view the list scrolls beneath the fixed menu button and view
+   toggle, so back them with a bar to keep the controls legible. */
+body.view-list::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  z-index: 550;
+  pointer-events: none;
+}
+
+/* On mobile, keep the search/sort toolbar pinned just below the header bar
+   so it stays in view while the list scrolls, with even spacing around it. */
+@media (max-width: 899px) {
+  .list-view {
+    padding-top: 68px;
+  }
+
+  .list-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    width: auto;
+    max-width: none;
+    margin: 0 -12px;
+    padding: 12px;
+    background: var(--panel);
+    box-shadow: 0 8px 8px -6px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .spot-list {
@@ -1275,6 +1328,10 @@ body.view-list .active-filters {
   .view-toggle {
     display: none;
   }
+
+  body.view-list::before {
+    display: none;
+  }
 }
 
 @media (min-width: 1300px) {
@@ -1300,7 +1357,8 @@ body.view-list .active-filters {
 
   .filter-toggle,
   .active-filters,
-  #filterClose {
+  #filterClose,
+  .panel-backdrop {
     display: none;
   }
 

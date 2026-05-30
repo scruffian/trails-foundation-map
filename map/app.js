@@ -164,6 +164,9 @@ const selectedSpotZoom = 9;
 const selectedSpotScrollDuration = 180;
 const bottomSheetExpandSwipeDistance = 34;
 let bottomSheetTouchStartY = null;
+const filterPanelCloseSwipeDistance = 50;
+let filterPanelTouchStartX = null;
+let filterPanelTouchStartY = null;
 
 function checkNotesOverflow(root) {
   const text = root?.querySelector(".popup-notes-text");
@@ -177,6 +180,7 @@ const elements = {
   filterClose: document.querySelector("#filterClose"),
   filterPanel: document.querySelector("#filterPanel"),
   filterToggle: document.querySelector("#filterToggle"),
+  filterBackdrop: document.querySelector("#filterBackdrop"),
   activeFilters: document.querySelector("#activeFilters"),
   spotCounts: [...document.querySelectorAll("[data-spot-count]")],
   searchInput: document.querySelector("#searchInput"),
@@ -315,6 +319,18 @@ function bindEvents() {
   elements.filterClose.addEventListener("click", () => {
     setFiltersOpen(false);
     elements.filterToggle.focus({ preventScroll: true });
+  });
+
+  elements.filterBackdrop.addEventListener("click", () => {
+    setFiltersOpen(false);
+    elements.filterToggle.focus({ preventScroll: true });
+  });
+
+  elements.filterPanel.addEventListener("touchstart", handleFilterPanelTouchStart, {
+    passive: true,
+  });
+  elements.filterPanel.addEventListener("touchmove", handleFilterPanelTouchMove, {
+    passive: true,
   });
 
   elements.panelTabBtns.forEach((button) => {
@@ -1101,6 +1117,27 @@ function setBottomSheetExpanded(expanded) {
   elements.bottomSheet.classList.toggle("is-expanded", expanded);
   elements.bottomSheetHandle.setAttribute("aria-expanded", String(expanded));
   requestAnimationFrame(() => checkNotesOverflow(elements.bottomSheetContent));
+}
+
+function handleFilterPanelTouchStart(event) {
+  const touch = event.touches[0];
+  filterPanelTouchStartX = touch?.clientX ?? null;
+  filterPanelTouchStartY = touch?.clientY ?? null;
+}
+
+function handleFilterPanelTouchMove(event) {
+  if (filterPanelTouchStartX === null) return;
+  const touch = event.touches[0];
+  if (!touch) return;
+  const deltaX = filterPanelTouchStartX - touch.clientX;
+  const deltaY = Math.abs(filterPanelTouchStartY - touch.clientY);
+  // Only a clearly horizontal left swipe closes the panel, so it doesn't
+  // fight with vertical scrolling of the filter list.
+  if (deltaX > filterPanelCloseSwipeDistance && deltaX > deltaY) {
+    setFiltersOpen(false);
+    filterPanelTouchStartX = null;
+    filterPanelTouchStartY = null;
+  }
 }
 
 function handleBottomSheetTouchStart(event) {
