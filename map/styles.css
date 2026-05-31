@@ -230,7 +230,8 @@ input:focus {
 .option-chip:focus-visible,
 .icon-button:focus-visible,
 .filter-toggle:focus-visible,
-.location-control:focus-visible {
+.location-control:focus-visible,
+.install-app-button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 1px;
 }
@@ -562,6 +563,7 @@ input:focus {
   display: grid;
   gap: 2px;
   margin-top: 64px;
+  margin-right: 12px;
   border: 0;
   border-radius: 0;
   background: var(--surface-strong);
@@ -952,6 +954,36 @@ body.view-list::before {
   right: 12px;
   box-shadow: var(--shadow);
   z-index: 900;
+}
+
+.install-app-button {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 650;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  cursor: pointer;
+  padding: 0 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.install-app-button:hover {
+  background: var(--surface);
+}
+
+.install-app-button[hidden],
+.filters-open .install-app-button,
+body.view-list .install-app-button {
+  display: none;
 }
 
 .view-toggle-btn {
@@ -1544,6 +1576,10 @@ body.view-list .active-filters {
     right: 392px;
   }
 
+  .install-app-button {
+    left: 12px;
+  }
+
   body.view-list::before {
     display: none;
   }
@@ -1607,6 +1643,10 @@ body.view-list .active-filters {
     min-width: 0;
     width: auto;
     flex-direction: row;
+  }
+
+  .install-app-button {
+    left: 372px;
   }
 }
 

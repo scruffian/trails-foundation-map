@@ -45,6 +45,7 @@ const upliftOptions = ["Yes", "No"];
 const costOptions = ["Free", "Paid", "Membership"];
 const ownershipOptions = ["Community", "Commercial", "Government"];
 const statusOptions = ["Open", "Partial", "Under construction"];
+const DEFAULT_SORT_MODE = "distance";
 
 const gradeColors = {
   Green: "#2f8f57",
@@ -191,7 +192,7 @@ const state = {
     ownership: new Set(),
     status: new Set(),
   },
-  sortMode: "az",
+  sortMode: DEFAULT_SORT_MODE,
   selectedId: null,
   userLocation: null,
 };
@@ -234,6 +235,7 @@ const filterPanelCloseSwipeDistance = 50;
 let filterPanelTouchStartX = null;
 let filterPanelTouchStartY = null;
 let listScrollAnimationFrame = null;
+let deferredInstallPrompt = null;
 
 function checkNotesOverflow(root) {
   const text = root?.querySelector(".popup-notes-text");
@@ -266,6 +268,7 @@ const elements = {
   listView: document.querySelector("#listView"),
   spotList: document.querySelector("#spotList"),
   locationControls: [...document.querySelectorAll(".location-control")],
+  installAppBtn: document.querySelector("#installAppBtn"),
   panelTabBtns: [...document.querySelectorAll(".panel-tab")],
   filtersTab: document.querySelector("#filtersTab"),
   aboutTab: document.querySelector("#aboutTab"),
@@ -286,6 +289,8 @@ function init() {
   populateFilters();
   syncFiltersUi();
   bindEvents();
+  setupInstallPrompt();
+  registerServiceWorker();
   setFiltersOpen(false);
   render();
   requestAnimationFrame(() => {
@@ -306,7 +311,7 @@ function readStateFromUrl() {
   const q = params.get("q");
   if (q) state.query = q.toLowerCase();
   const sort = params.get("sort");
-  if (sort === "distance") state.sortMode = "distance";
+  if (sort === "az" || sort === "distance") state.sortMode = sort;
   FILTER_KEYS.forEach((key) => {
     const raw = params.get(key);
     if (!raw) return;
@@ -321,7 +326,7 @@ function readStateFromUrl() {
 function writeStateToUrl() {
   const params = new URLSearchParams();
   if (state.query) params.set("q", state.query);
-  if (state.sortMode === "distance") params.set("sort", state.sortMode);
+  if (state.sortMode !== DEFAULT_SORT_MODE) params.set("sort", state.sortMode);
   FILTER_KEYS.forEach((key) => {
     const values = [...state.filters[key]];
     if (values.length > 0) params.set(key, values.join(","));
@@ -446,6 +451,8 @@ function bindEvents() {
     button.addEventListener("click", activateLocationControl);
   });
 
+  elements.installAppBtn?.addEventListener("click", handleInstallApp);
+
   elements.spotList.addEventListener("click", (event) => {
     const copyButton = event.target.closest(".address-copy-button");
     if (copyButton) {
@@ -531,6 +538,59 @@ function bindEvents() {
     render();
     updateMapViewport();
   });
+}
+
+function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  });
+}
+
+function setupInstallPrompt() {
+  if (!elements.installAppBtn || isStandaloneApp()) return;
+
+  if (isIosDevice()) {
+    elements.installAppBtn.hidden = false;
+  }
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    elements.installAppBtn.hidden = false;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    elements.installAppBtn.hidden = true;
+  });
+}
+
+async function handleInstallApp() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    const choice = await deferredInstallPrompt.userChoice;
+    if (choice.outcome === "accepted") {
+      elements.installAppBtn.hidden = true;
+    }
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  if (isIosDevice()) {
+    window.alert("To install this map, tap Share, then Add to Home Screen.");
+  }
+}
+
+function isStandaloneApp() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function isIosDevice() {
+  return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
 }
 
 function toggleFilterOption(filterName, value) {
@@ -623,7 +683,6 @@ function requestUserLocation() {
     setLocateStatus("Location not supported");
     return;
   }
-  useDistanceSort();
   setLocateStatus("Locating…", true);
   attemptLocationFix(2);
 }
@@ -1183,10 +1242,6 @@ function renderPopupContent(spot) {
       ${renderLinkIcons(spot)}
       <dl class="popup-facts">
         <div>
-          <dt>Type</dt>
-          <dd>${spot.primaryType || "—"}</dd>
-        </div>
-        <div>
           <dt>Features</dt>
           <dd>${featureTags ? `<div class="meta-line">${featureTags}</div>` : "—"}</dd>
         </div>
@@ -1218,23 +1273,27 @@ function renderPopupContent(spot) {
       <details class="popup-more">
         <summary class="icon-button disclosure-icon-button" aria-label="Toggle details" title="Toggle details">${disclosureArrowSvgs}</summary>
         <dl class="popup-facts">
-        <div>
-          <dt>Bikes</dt>
-          <dd>${spot.bikeTypes
-            .map(
-              (type) =>
-                `<span title="${bikeTypeLabels[type]?.title ?? type}">${bikeTypeLabels[type]?.code ?? type}</span>`,
-            )
-            .join(", ")}</dd>
-        </div>
-        <div>
-          <dt>Seasons</dt>
-          <dd>${spot.seasonality.join(", ")}</dd>
-        </div>
-        <div>
-          <dt>Ownership</dt>
-          <dd>${spot.ownership}</dd>
-        </div>
+          <div>
+            <dt>Type</dt>
+            <dd>${spot.primaryType || "—"}</dd>
+          </div>
+          <div>
+            <dt>Bikes</dt>
+            <dd>${spot.bikeTypes
+              .map(
+                (type) =>
+                  `<span title="${bikeTypeLabels[type]?.title ?? type}">${bikeTypeLabels[type]?.code ?? type}</span>`,
+              )
+              .join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Seasons</dt>
+            <dd>${spot.seasonality.join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Ownership</dt>
+            <dd>${spot.ownership}</dd>
+          </div>
         </dl>
         ${linkSection}
         ${spot.notes ? `<section class="popup-section popup-section--inline popup-notes"><h4>Notes</h4><p class="popup-notes-text">${spot.notes}</p></section>` : ""}
