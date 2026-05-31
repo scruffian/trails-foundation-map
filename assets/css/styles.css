@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=Inter:wght@400;600;800&display=swap");
 
+@font-face {
+  font-family: "Blackout Midnight";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Blackout-Midnight.ttf") format("truetype");
+}
+
 :root {
   --paper: #f1ece1;
   --paper-deep: #e6dfce;
@@ -107,8 +114,8 @@ p {
 .brand {
   align-items: center;
   display: inline-flex;
-  font-family: "Alfa Slab One", serif;
-  font-size: 1.1rem;
+  font-family: "Blackout Midnight", "Alfa Slab One", serif;
+  font-size: 1.25rem;
   font-weight: 400;
   gap: 0.75rem;
   letter-spacing: 0.01em;
@@ -116,13 +123,11 @@ p {
   text-transform: uppercase;
 }
 
-.brand-mark {
-  background: var(--ink);
+.brand-spade {
   display: inline-block;
-  height: 32px;
-  width: 32px;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202C12%202%205%208.5%205%2013.5C5%2016%207%2017.5%209%2017.5C9.8%2017.5%2010.5%2017.2%2011%2016.7C10.8%2018.5%2010%2020%209%2021H15C14%2020%2013.2%2018.5%2013%2016.7C13.5%2017.2%2014.2%2017.5%2015%2017.5C17%2017.5%2019%2016%2019%2013.5C19%208.5%2012%202%2012%202Z'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202C12%202%205%208.5%205%2013.5C5%2016%207%2017.5%209%2017.5C9.8%2017.5%2010.5%2017.2%2011%2016.7C10.8%2018.5%2010%2020%209%2021H15C14%2020%2013.2%2018.5%2013%2016.7C13.5%2017.2%2014.2%2017.5%2015%2017.5C17%2017.5%2019%2016%2019%2013.5C19%208.5%2012%202%2012%202Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  font-family: "Symbol", sans-serif;
+  font-size: 1.1em;
+  line-height: 1;
 }
 
 .nav {
@@ -131,9 +136,14 @@ p {
   gap: 0.25rem;
 }
 
-.nav a {
+.brand,
+.nav a,
+.site-header__map-link {
+  align-items: center;
   color: var(--ink);
-  font-size: 0.95rem;
+  display: inline-flex;
+  font-family: "Blackout Midnight", "Alfa Slab One", serif;
+  font-size: 1.25rem;
   font-weight: 600;
   min-height: 44px;
   padding: 0.6rem 0.85rem;
@@ -142,24 +152,52 @@ p {
   letter-spacing: 0.06em;
 }
 
-.nav a[aria-current="page"],
+.site-header__map-link {
+  --map-button-background:
+    linear-gradient(rgba(241, 236, 225, 0.72), rgba(241, 236, 225, 0.72)),
+    url("../images/uk-bike-parks-map-button.png");
+  background-color: var(--paper);
+  background-image: var(--map-button-background);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 0 2px var(--ink);
+  color: var(--ink);
+  margin-left: auto;
+}
+
+.brand:hover,
 .nav a:hover {
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--ink);
+  color: var(--ink);
+}
+
+.brand[aria-current="page"],
+.nav a[aria-current="page"] {
   background: var(--ink);
+  box-shadow: none;
   color: var(--paper);
+}
+
+.site-header__map-link:hover {
+  background-color: var(--paper);
+  background-image: var(--map-button-background);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 0 3px var(--ink);
+  color: var(--ink);
 }
 
 .eyebrow {
   color: var(--ink);
   font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   margin: 0 0 1rem;
   text-transform: uppercase;
-}
-
-.eyebrow::before {
-  content: "✱ ";
 }
 
 h1,
@@ -248,10 +286,11 @@ h3 {
   padding-top: 2rem;
 }
 
-.site-footer strong {
-  font-family: "Alfa Slab One", serif;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+.footer__brand {
+  font-family: "Blackout Midnight", "Alfa Slab One", serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin: 0;
   text-transform: uppercase;
 }
 
@@ -280,6 +319,10 @@ h3 {
     overflow-x: auto;
     padding-bottom: 0.15rem;
     width: 100%;
+  }
+
+  .site-header__map-link {
+    margin-left: 0;
   }
 
   .section--split {

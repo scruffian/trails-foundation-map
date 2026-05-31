@@ -148,7 +148,7 @@ select {
 .eyebrow {
   margin: 0 0 6px;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1696,7 +1696,7 @@ body.view-list .active-filters {
   }
 
   .eyebrow {
-    font-size: 0.68rem;
+    font-size: 0.78rem;
   }
 
   h1 {
