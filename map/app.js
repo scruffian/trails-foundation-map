@@ -74,6 +74,7 @@ const linkIconSvgs = {
   komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
 };
 const disclosureArrowSvgs = `<span class="disclosure-label disclosure-label--closed">MORE</span><span class="disclosure-label disclosure-label--open">LESS</span><svg class="disclosure-arrow disclosure-arrow--closed" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg><svg class="disclosure-arrow disclosure-arrow--open" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>`;
+const copyIconSvg = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.5"/><path d="M5 15V6.5A1.5 1.5 0 0 1 6.5 5H15"/></svg>`;
 
 const linkLabels = {
   website: "Website",
@@ -384,6 +385,12 @@ function bindEvents() {
   });
 
   elements.spotList.addEventListener("click", (event) => {
+    const copyButton = event.target.closest(".address-copy-button");
+    if (copyButton) {
+      handleAddressCopy(event, copyButton);
+      return;
+    }
+
     const linkIcon = event.target.closest(".spot-link-icon");
     if (linkIcon) {
       event.preventDefault();
@@ -425,6 +432,12 @@ function bindEvents() {
     passive: true,
   });
   elements.bottomSheetContent.addEventListener("click", (event) => {
+    const copyButton = event.target.closest(".address-copy-button");
+    if (copyButton) {
+      handleAddressCopy(event, copyButton);
+      return;
+    }
+
     const linkIcon = event.target.closest(".spot-link-icon");
     if (linkIcon) {
       event.preventDefault();
@@ -548,13 +561,14 @@ function requestUserLocation() {
     setLocateStatus("Location not supported");
     return;
   }
+  useDistanceSort();
   setLocateStatus("Locating…", true);
   attemptLocationFix(2);
 }
 
 function activateLocationControl() {
   hideBottomSheet();
-  setSortMode("distance", { requestLocation: false });
+  useDistanceSort();
   if (!state.userLocation) {
     requestUserLocation();
     return;
@@ -572,6 +586,13 @@ function setSortMode(sortMode, { requestLocation = true } = {}) {
   if (state.sortMode === "distance" && requestLocation && !state.userLocation) {
     requestUserLocation();
   }
+}
+
+function useDistanceSort() {
+  state.sortMode = "distance";
+  elements.sortSelect.value = state.sortMode;
+  writeStateToUrl();
+  render();
 }
 
 function attemptLocationFix(retriesLeft) {
@@ -612,11 +633,11 @@ function handleLocationFix(position, { fly }) {
   state.userLocation = { lat: latitude, lng: longitude };
   setLocateStatus("Recenter on my location and sort by distance");
   updateUserLocationMarker();
+  render();
   if (fly) {
     map.flyTo([latitude, longitude], Math.max(map.getZoom(), 9), {
       duration: 0.7,
     });
-    render();
   }
 }
 
@@ -693,13 +714,89 @@ function normalizeAddressPart(value) {
 }
 
 function getAddressLabel(spot) {
-  return getAddressParts(spot).join(" · ");
+  return getAddressParts(spot).join(", ");
 }
 
 function renderAddressLines(spot) {
-  return getAddressParts(spot)
-    .map((part) => `<span>${part}</span>`)
+  const addressParts = getAddressParts(spot);
+  return addressParts
+    .map((part, index) => {
+      const isLastLine = index === addressParts.length - 1;
+      return `<span>${part}${isLastLine ? renderAddressCopyButton(spot) : ""}</span>`;
+    })
     .join("");
+}
+
+function renderAddressBlock(spot) {
+  const addressParts = getAddressParts(spot);
+  if (addressParts.length === 0) return "";
+  return `
+    <div class="spot-card-address">
+      <span class="spot-card-region spot-card-region--lines">${renderAddressLines(spot)}</span>
+    </div>
+  `;
+}
+
+function renderSpotCardLocation(spot, distanceLabel) {
+  const addressLabel = getAddressLabel(spot);
+  if (!addressLabel && !distanceLabel) return "";
+  const copyValue = formatAddress(spot.address) || addressLabel;
+  const addressContent = addressLabel
+    ? `<span class="spot-card-address-inline">
+      <span>${addressLabel}${renderAddressCopyButton(spot, copyValue)}</span>
+    </span>`
+    : "";
+  const distanceContent = distanceLabel
+    ? `<span class="spot-card-distance">${distanceLabel}</span>`
+    : "";
+
+  return `
+    <span class="spot-card-region spot-card-location">
+      ${addressContent}
+      ${addressLabel && distanceLabel ? `<span aria-hidden="true">·</span>` : ""}
+      ${distanceContent}
+    </span>
+  `;
+}
+
+function renderAddressCopyButton(spot, address = null) {
+  const copyValue = (address ?? formatAddress(spot.address)) || getAddressLabel(spot);
+  return `<button
+    class="address-copy-button"
+    type="button"
+    data-address="${escapeAttribute(copyValue)}"
+    aria-label="Copy address"
+    title="Copy address"
+  >${copyIconSvg}</button>`;
+}
+
+function escapeAttribute(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+async function handleAddressCopy(event, button) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const address = button.dataset.address;
+  if (!address) return;
+
+  try {
+    await navigator.clipboard.writeText(address);
+    button.setAttribute("aria-label", "Copied");
+    button.title = "Copied";
+  } catch {
+    button.setAttribute("aria-label", "Copy failed");
+    button.title = "Copy failed";
+  }
+  window.setTimeout(() => {
+    button.setAttribute("aria-label", "Copy address");
+    button.title = "Copy address";
+  }, 1200);
 }
 
 function isMapVisible() {
@@ -871,14 +968,13 @@ function renderSpotCardInner(spot, { open = false } = {}) {
   const distanceLabel = state.userLocation
     ? `${distanceKm(state.userLocation, spot).toFixed(0)} km`
     : "";
-  const regionParts = [getAddressLabel(spot), distanceLabel].filter(Boolean);
   return `
     <details class="spot-card"${open ? " open" : ""}>
       <summary class="spot-card-summary">
         <div class="spot-card-main">
           <div class="spot-card-head">
             <h3 class="spot-card-title">${spot.name}</h3>
-            ${regionParts.length ? `<span class="spot-card-region">${regionParts.join(" · ")}</span>` : ""}
+            ${renderSpotCardLocation(spot, distanceLabel)}
           </div>
           ${renderLinkIcons(spot)}
         </div>
@@ -1000,7 +1096,7 @@ function renderPopupContent(spot) {
             ? `<a href="${spot.sourceUrl}" target="_blank" rel="noreferrer">${spot.name}</a>`
             : spot.name
         }</h3>
-        ${getAddressParts(spot).length ? `<span class="spot-card-region spot-card-region--lines">${renderAddressLines(spot)}</span>` : ""}
+        ${renderAddressBlock(spot)}
       </div>
       ${renderLinkIcons(spot)}
       <dl class="popup-facts">
