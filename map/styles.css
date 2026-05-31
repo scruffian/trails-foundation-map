@@ -659,6 +659,12 @@ body.view-list::before {
   list-style: none;
 }
 
+.spot-list::after {
+  content: "";
+  display: block;
+  height: var(--spot-list-end-spacer, 0px);
+}
+
 .spot-list.is-empty {
   flex: 1 1 auto;
   place-content: center;
