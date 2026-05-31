@@ -1,4 +1,4 @@
-// Generated from .context/attachments/hHsqWl/uk-bike-parks-dirt-jumps-feature-update-2026-05-31.zip.
+// Generated from .context/attachments/wyQ2dL/uk-bike-parks-lee-quarry-link-social-update-2026-05-31.zip.
 // Do not edit by hand; regenerate after updating the audit data.
 
 const SPOTS = [
@@ -176,7 +176,7 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Government",
     "status": "Under construction",
-    "notes": "Known locally as Tullecombe. Primarily downhill with jump features. Attracts riders nationally. Closure from April 2026 is for essential forest management work (first in 15 years), expected to reopen mid-2027. Status audit 2026-05-25: Forestry England says the bike park closed from 13 April 2026 for forest management; existing trails will be removed during works and future operation/management is subject to a later phase. Removed unsupported specific reopening date. Access update 2026-05-25: B1KE uses an account/PAYG membership system; do not label this as annual-members-only. URL audit 2026-05-30: B1KE Rogate URL moved from /rogate to /rogate-downhill/. Access warning: Temporarily closed; check official sources before travelling. Access details: Cost: Paid day pass / B1KE PAYG membership-account system when open; Ownership: Council / Forestry (Forestry England, run by Triple S Bikes); Uplift: No; Status: Temporarily closed (from 13 April 2026 for forestry work and redevelopment / future management review).",
+    "notes": "Known locally as Tullecombe. Primarily downhill with jump features. Attracts riders nationally. Closure from April 2026 is for essential forest management work (first in 15 years), expected to reopen mid-2027. Status audit 2026-05-25: Forestry England says the bike park closed from 13 April 2026 for forest management; existing trails will be removed during works and future operation/management is subject to a later phase. Removed unsupported specific reopening date. Access update 2026-05-25: B1KE uses an account/PAYG membership system; do not label this as annual-members-only. URL audit 2026-05-30: B1KE Rogate URL moved from /rogate to /rogate-downhill/. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Paid day pass / B1KE PAYG membership-account system when open; Ownership: Council / Forestry (Forestry England, run by Triple S Bikes); Uplift: No; Status: Under construction / temporarily closed.",
     "urls": [
       "https://www.b1ke.com/b1keparks/rogate-downhill/",
       "https://www.google.com/maps/search/?api=1&query=Rogate+Downhill+B1KEpark&query_place_id=51.0277307,-0.8671327",
@@ -234,7 +234,6 @@ const SPOTS = [
     "urls": [
       "https://chicksandsbikepark.co.uk/",
       "https://www.google.com/maps/search/?api=1&query=Chicksands+Bike+Park&query_place_id=52.061508,-0.373964",
-      "https://www.google.com/maps/search/?api=1&query=Chicksands+Bike+Park&query_place_id=52.061508, -0.373964",
       "https://www.instagram.com/chicksandsbikepark",
       "https://www.facebook.com/chicksandsbikepark",
       "https://www.facebook.com/Chicksands-Bike-Park-418674378543897/"
@@ -275,11 +274,10 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Commercial",
     "status": "Under construction",
-    "notes": "Being rebuilt as of late 2025 with purpose-built dirt jumps. Sandy soil drains well year-round. Grade audit 2026-05-25: Official estate update confirms the bike park remains in rebuild/planning. Do not treat the previous Blue/Red/Black/Orange list as final verified grades until the operator publishes a trail map. **World-renowned UK dirt jump destination** — home spot of Matt Jones, regularly visited by Brendan Fairclough, Andreu Lacondeguy. \"Somewhat legendary in UK dirt jump circles\" per MBUK. The sandy soil at Woburn Sands is famous and the area's home-grown talent includes Matt Jones. **Currently in major rebuild** led by Matt Jones with Woburn Estate support — formal public bike park layout with purpose-built flow trails, dirt jumps, progression zones. Will use a lane system with blue, black, green, blue, black, double black and black lines. Documented through Matt Jones' YouTube build series. Note: distinct from Woburn Bike Trails (XC red/blue trails by same area, managed separately, currently open). Status update 2026-05-25: treated as temporarily closed while rebuild/reopening work is in progress. Status audit 2026-05-25: official Woburn update gives a working June 2026 target but no definitive reopening date, and final public trail grades are not yet published. URL audit 2026-05-30: Old B1KE Woburn page is no longer active; Woburn Estate page is the current landowner/source page. Woburn relationship update 2026-05-30: kept separate from Woburn Bike Trails (Aspley Woods XC). This entry represents the closed/rebuilding freeride/gravity bike-park facility within the wider Aspley Woods / Woburn Estate area; the XC/trail facility remains a separate public-active record. Access warning: Woburn Bike Park is a separate freeride/gravity bike-park facility and is currently closed / under rebuild. Do not confuse it with Woburn Bike Trails / Aspley Woods XC, which is a separate public-active trail facility. Access details: Cost: Paid (permit); Ownership: Commercial (Bedford Estates); Uplift: No; Status: Temporarily closed / under rebuild.",
+    "notes": "Being rebuilt as of late 2025 with purpose-built dirt jumps. Sandy soil drains well year-round. Grade audit 2026-05-25: Official estate update confirms the bike park remains in rebuild/planning. Do not treat the previous Blue/Red/Black/Orange list as final verified grades until the operator publishes a trail map. **World-renowned UK dirt jump destination** — home spot of Matt Jones, regularly visited by Brendan Fairclough, Andreu Lacondeguy. \"Somewhat legendary in UK dirt jump circles\" per MBUK. The sandy soil at Woburn Sands is famous and the area's home-grown talent includes Matt Jones. **Currently in major rebuild** led by Matt Jones with Woburn Estate support — formal public bike park layout with purpose-built flow trails, dirt jumps, progression zones. Will use a lane system with blue, black, green, blue, black, double black and black lines. Documented through Matt Jones' YouTube build series. Note: distinct from Woburn Bike Trails (XC red/blue trails by same area, managed separately, currently open). Status update 2026-05-25: treated as temporarily closed while rebuild/reopening work is in progress. Status audit 2026-05-25: official Woburn update gives a working June 2026 target but no definitive reopening date, and final public trail grades are not yet published. URL audit 2026-05-30: Old B1KE Woburn page is no longer active; Woburn Estate page is the current landowner/source page. Woburn relationship update 2026-05-30: kept separate from Woburn Bike Trails (Aspley Woods XC). This entry represents the closed/rebuilding freeride/gravity bike-park facility within the wider Aspley Woods / Woburn Estate area; the XC/trail facility remains a separate public-active record. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Paid (permit); Ownership: Commercial (Bedford Estates); Uplift: No; Status: Under construction / temporarily closed.",
     "urls": [
       "https://www.woburn.co.uk/the-estate/woburn-bike-park-and-trails/",
-      "https://www.google.com/maps/search/?api=1&query=Woburn%20Bike%20Park%20Aspley%20Woods",
-      "https://www.google.com/maps/search/?api=1&query=Woburn+Bike+Trails&query_place_id=51.999787,-0.6547768"
+      "https://www.google.com/maps/search/?api=1&query=Woburn%20Bike%20Park%20Aspley%20Woods"
     ],
     "sourceUrl": "https://www.woburn.co.uk/the-estate/woburn-bike-park-and-trails/"
   },
@@ -320,16 +318,13 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Commercial",
     "status": "Under construction",
-    "notes": "Mix of downhill and dirt jump trails. Year-round — chalk/flint base, drains well; Chilterns DH venue rideable in all seasons. Temporarily closed; rebuild/reopening is in progress under Bike Park Chilterns CIC with rebuilt trails planned. Status audit 2026-05-25: Forestry England/Bike Park Chilterns reopening work is in progress; treat as temporarily closed until open access is confirmed. Location audit 2026-05-26: added postcode and coordinate-style map link. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Downhill/4X venue; current data did not separately verify dirt jumps. Access warning: Temporarily closed; check official sources before travelling. Access details: Cost: Paid; Ownership: Forestry England land; 10-year lease awarded to Bike Park Chilterns CIC (2025); Uplift: No; Status: Temporarily closed (rebuild/reopening in progress).",
+    "notes": "Mix of downhill and dirt jump trails. Year-round — chalk/flint base, drains well; Chilterns DH venue rideable in all seasons. Temporarily closed; rebuild/reopening is in progress under Bike Park Chilterns CIC with rebuilt trails planned. Status audit 2026-05-25: Forestry England/Bike Park Chilterns reopening work is in progress; treat as temporarily closed until open access is confirmed. Location audit 2026-05-26: added postcode and coordinate-style map link. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Downhill/4X venue; current data did not separately verify dirt jumps. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Paid; Ownership: Forestry England land; 10-year lease awarded to Bike Park Chilterns CIC (2025); Uplift: No; Status: Under construction / temporarily closed.",
     "urls": [
       "https://www.astonhill.co.uk/",
-      "https://www.forestryengland.uk/aston-hill-bike-park",
       "https://www.google.com/maps/search/?api=1&query=Aston+Hill+Bike+Park",
+      "https://www.forestryengland.uk/aston-hill-bike-park",
       "https://www.instagram.com/astonhillbikepark",
-      "https://www.facebook.com/AstonHillBikePark",
-      "https://www.google.com/maps/search/?api=1&query=51.782763,-0.709176",
-      "https://www.youtube.com/@AstonHillBikePark",
-      "https://www.tiktok.com/@aston.hill.bike.p"
+      "https://www.facebook.com/AstonHillBikePark"
     ],
     "sourceUrl": "https://www.astonhill.co.uk/"
   },
@@ -373,10 +368,9 @@ const SPOTS = [
     "urls": [
       "https://surreyhills.org/mountainbiking/",
       "https://www.google.com/maps/search/?api=1&query=Holmbury+Hill&query_place_id=51.1749052,-0.4221304",
-      "https://www.instagram.com/surreyhillsnl",
-      "https://www.facebook.com/surreyhillsmtber",
       "https://www.b1ke.com/b1keparks/surrey-hills/",
-      "https://twitter.com/SurreyHillsNL"
+      "https://www.instagram.com/surreyhillsnl",
+      "https://www.facebook.com/surreyhillsmtber"
     ],
     "sourceUrl": "https://surreyhills.org/mountainbiking/"
   },
@@ -384,7 +378,7 @@ const SPOTS = [
     "id": "hodgemoor-woods",
     "name": "Hodgemoor Woods",
     "siteName": "Hodgemoor Woods",
-    "operatorName": "",
+    "operatorName": "Chiltern Society",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Chalfont St Giles, Buckinghamshire",
@@ -420,8 +414,8 @@ const SPOTS = [
     "urls": [
       "https://hodgemoor.org.uk/cycling/",
       "https://www.google.com/maps/search/?api=1&query=Hodgemoor+Woods&query_place_id=51.632973,-0.6026793",
-      "https://www.google.com/maps/search/?api=1&query=Hodgemoor+Woods&query_place_id=51.632973, -0.6026793",
-      "https://www.facebook.com/hodgemoorwoods"
+      "https://www.facebook.com/hodgemoorwoods",
+      "https://www.google.com/maps/search/?api=1&query=Hodgemoor+Woods&query_place_id=51.632973, -0.6026793"
     ],
     "sourceUrl": "https://hodgemoor.org.uk/cycling/"
   },
@@ -433,7 +427,7 @@ const SPOTS = [
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Buckinghamshire",
-    "address": "Wendover Woods, Tring, Buckinghamshire, HP23 6LD",
+    "address": "Tring, Buckinghamshire, HP23 6LD",
     "postcode": "HP23 6LD",
     "lat": 51.771636,
     "lng": -0.7114368,
@@ -517,7 +511,7 @@ const SPOTS = [
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Surrey/Hampshire border",
-    "address": "Alice Holt Forest, Binsted, Hampshire, GU10 4LS",
+    "address": "Binsted, Hampshire, GU10 4LS",
     "postcode": "GU10 4LS",
     "lat": 51.1686132,
     "lng": -0.8385747,
@@ -556,7 +550,7 @@ const SPOTS = [
     "id": "swinley-forest",
     "name": "Swinley Forest",
     "siteName": "Swinley Forest",
-    "operatorName": "",
+    "operatorName": "Crown Estate / Swinley Bike Hub",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Bracknell, Berkshire",
@@ -593,8 +587,7 @@ const SPOTS = [
       "https://swinleybikehub.com",
       "https://www.google.com/maps/search/?api=1&query=Swinley+Bike+Hub&query_place_id=51.3873361,-0.7412492",
       "https://instagram.com/swinleybikehub",
-      "https://www.facebook.com/swinleybikehub",
-      "https://twitter.com/SwinleyBikeHub"
+      "https://www.facebook.com/swinleybikehub"
     ],
     "sourceUrl": "https://swinleybikehub.com"
   },
@@ -635,8 +628,7 @@ const SPOTS = [
       "https://www.extremesportsmap.com/uk/spot_details.php?spot_id=2279",
       "https://www.google.com/maps/search/?api=1&query=Abbey%20Dirt%20Jump%20Trails%20Coldhams%20Common%20Cambridge",
       "https://www.instagram.com/abbey_trails_collective/",
-      "https://www.facebook.com/AbbeyDirtJumps/",
-      "https://www.google.com/maps/search/?api=1&query=52.209288,0.154594"
+      "https://www.facebook.com/AbbeyDirtJumps/"
     ],
     "sourceUrl": "https://www.extremesportsmap.com/uk/spot_details.php?spot_id=2279"
   },
@@ -684,10 +676,10 @@ const SPOTS = [
     "urls": [
       "https://www.explore-essex.com/places-to-go/get-active/cycling-at-hadleigh",
       "https://www.google.com/maps/search/?api=1&query=Hadleigh+Olympic+Cycle+Trails&query_place_id=51.5500838,0.5963449",
-      "https://www.instagram.com/hadleighparkcyclescic/",
-      "https://www.facebook.com/HadParkMTB",
       "https://www.explore-essex.com/places-to-go/find-whats-near-me/hadleigh-country-park",
-      "https://hadleighparkcycles.co.uk/"
+      "https://hadleighparkcycles.co.uk/",
+      "https://www.instagram.com/hadleighparkcyclescic/",
+      "https://www.facebook.com/HadParkMTB"
     ],
     "sourceUrl": "https://www.explore-essex.com/places-to-go/get-active/cycling-at-hadleigh"
   },
@@ -733,8 +725,8 @@ const SPOTS = [
     "urls": [
       "https://www.forestryengland.uk/bedgebury/cycling-and-mountain-biking",
       "https://www.google.com/maps/search/?api=1&query=Bedgebury+National+Pinetum+and+Forest&query_place_id=51.0750866,0.4548537",
-      "https://www.facebook.com/bedgeburypinetum",
-      "https://www.forestryengland.uk/bedgebury"
+      "https://www.forestryengland.uk/bedgebury",
+      "https://www.facebook.com/bedgeburypinetum"
     ],
     "sourceUrl": "https://www.forestryengland.uk/bedgebury/cycling-and-mountain-biking"
   },
@@ -844,7 +836,7 @@ const SPOTS = [
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Near Exeter, Devon",
-    "address": "Haldon Forest Park, Bullers Hill, Kennford, Exeter, Devon, EX6 7XR",
+    "address": "Bullers Hill, Kennford, Exeter, Devon, EX6 7XR",
     "postcode": "EX6 7XR",
     "lat": 50.6517678,
     "lng": -3.5798215,
@@ -921,8 +913,7 @@ const SPOTS = [
       "https://gawtongravityhub.uk/",
       "https://www.google.com/maps/search/?api=1&query=Gawton+Gravity+Hub&query_place_id=50.5064255,-4.1751528",
       "https://www.instagram.com/gawtongravity",
-      "https://www.facebook.com/gawtongravityhub",
-      "https://twitter.com/gawtondh"
+      "https://www.facebook.com/gawtongravityhub"
     ],
     "sourceUrl": "https://gawtongravityhub.uk/"
   },
@@ -965,16 +956,16 @@ const SPOTS = [
     "urls": [
       "https://www.trailforks.com/directory/9310/",
       "https://www.google.com/maps/search/?api=1&query=Triscombe+Stone+Car+Park&query_place_id=51.1165581,-3.1960968",
-      "https://www.facebook.com/groups/286624584779086",
+      "https://www.facebook.com/groups/286624584779086/",
       "https://www.trailforks.com/region/quantock-hills-5874/",
-      "https://www.facebook.com/groups/286624584779086/"
+      "https://www.facebook.com/groups/286624584779086"
     ],
     "sourceUrl": "https://www.trailforks.com/directory/9310/"
   },
   {
     "id": "forest-of-dean-cycle-centre-cannop",
     "name": "Forest of Dean Cycle Centre",
-    "siteName": "Forest of Dean Cycle Centre (Cannop)",
+    "siteName": "Forest of Dean Cycle Centre, Cannop",
     "operatorName": "Pedalabikeaway",
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Trail",
@@ -1016,11 +1007,11 @@ const SPOTS = [
     "notes": "Family trail, green, blue and red XC trails, **14 downhill trails**, skills areas and pump track. Trails maintained by The Dean Trail volunteers (FoDCA). Alongside the Cannop trails, FOD has the Verderers Trail (blue), Freeminers Trail (red), and Ski Run downhill. URL audit 2026-05-30: Use non-www Pedalabikeaway URL confirmed in search results. FlyUp Downhill relationship update 2026-05-31: flyupdownhill.co.uk belongs with Forest of Dean Cycle Centre, not FlyUp 417 Bike Park. Access details: Cost: Free / Paid uplift; Ownership: Council / Forestry (Forestry England); Uplift: Yes (via Flyup 417); Status: Open.",
     "urls": [
       "https://www.forestryengland.uk/forest-dean-cycle-centre",
-      "https://pedalabikeaway.co.uk/",
       "https://www.google.com/maps/search/?api=1&query=Forest+of+Dean+Cycle+Centre&query_place_id=51.8093343,-2.5696045",
-      "https://www.facebook.com/pedalabikeaway",
+      "https://pedalabikeaway.co.uk/",
       "https://www.forestryengland.uk/forest-dean-cycle-centre/bike-hire",
-      "https://flyupdownhill.co.uk/"
+      "https://flyupdownhill.co.uk/",
+      "https://www.facebook.com/pedalabikeaway"
     ],
     "sourceUrl": "https://www.forestryengland.uk/forest-dean-cycle-centre"
   },
@@ -1105,8 +1096,8 @@ const SPOTS = [
     "urls": [
       "https://www.forestryengland.uk/leigh-woods/cycling-leigh-woods",
       "https://www.google.com/maps/search/?api=1&query=Leigh+Woods+Mtb+Jumps&query_place_id=51.4634427,-2.6458389",
-      "https://www.facebook.com/RideBristol",
-      "https://www.nationaltrust.org.uk/visit/bath-bristol/leigh-woods/outdoor-activities-at-leigh-woods"
+      "https://www.nationaltrust.org.uk/visit/bath-bristol/leigh-woods/outdoor-activities-at-leigh-woods",
+      "https://www.facebook.com/RideBristol"
     ],
     "sourceUrl": "https://www.forestryengland.uk/leigh-woods/cycling-leigh-woods"
   },
@@ -1158,7 +1149,7 @@ const SPOTS = [
     "id": "hillfields-pump-track",
     "name": "Hillfields Pump Track",
     "siteName": "Hillfields Pump Track",
-    "operatorName": "",
+    "operatorName": "Bristol City Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Dirt jump",
     "location": "Hillfields Park, Fishponds, Bristol (BS16 4EG)",
@@ -1203,7 +1194,7 @@ const SPOTS = [
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Cardinham, near Bodmin, Cornwall PL30 4AL",
-    "address": "Cardinham Woods, 2 Margate Ln, Bodmin, Cornwall, PL30 4AL",
+    "address": "2 Margate Ln, Bodmin, Cornwall, PL30 4AL",
     "postcode": "PL30 4AL",
     "lat": 50.4698847,
     "lng": -4.6783426,
@@ -1283,7 +1274,7 @@ const SPOTS = [
     "id": "moors-valley-country-park",
     "name": "Moors Valley Country Park",
     "siteName": "Moors Valley Country Park",
-    "operatorName": "",
+    "operatorName": "Forestry England / Moors Valley Country Park",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Near Ringwood, Dorset",
@@ -1321,8 +1312,7 @@ const SPOTS = [
       "https://www.moors-valley.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Moors+Valley+Country+Park+%26+Forest&query_place_id=50.8494803,-1.8498434",
       "https://www.instagram.com/moorsvalley",
-      "https://www.facebook.com/MoorsValley",
-      "https://www.twitter.com/moorsvalley"
+      "https://www.facebook.com/MoorsValley"
     ],
     "sourceUrl": "https://www.moors-valley.co.uk"
   },
@@ -1367,8 +1357,7 @@ const SPOTS = [
       "https://www.okefordhillbikepark.com",
       "https://www.google.com/maps/search/?api=1&query=Okeford+Hill+Bike+Park&query_place_id=50.8840788,-2.2685598",
       "https://www.instagram.com/okeford_hill_bike_park",
-      "https://www.facebook.com/Okefordbikepark",
-      "https://www.youtube.com/c/OkefordHillBikePark"
+      "https://www.facebook.com/Okefordbikepark"
     ],
     "sourceUrl": "https://www.okefordhillbikepark.com"
   },
@@ -1505,8 +1494,7 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=Burlish+Bike+Park",
       "https://www.instagram.com/burlishbikepark",
       "https://www.facebook.com/opentrailuk",
-      "https://opentrail.co.uk/",
-      "https://www.google.com/maps/search/?api=1&query=52.357172,-2.287435"
+      "https://opentrail.co.uk/"
     ],
     "sourceUrl": "https://burlishbikepark.com/"
   },
@@ -1555,9 +1543,9 @@ const SPOTS = [
     "urls": [
       "https://www.forestryengland.uk/sherwood-pines",
       "https://www.google.com/maps/search/?api=1&query=Sherwood+Pines+Bike+Park&query_place_id=53.1498784,-1.1063398",
+      "https://www.forestryengland.uk/sherwood-pines/advanced-dirt-jump-and-downhill-area-sherwood-pines",
       "https://www.instagram.com/forestryenglandsherwoodpines",
-      "https://www.facebook.com/sherwoodpinesforestpark",
-      "https://www.forestryengland.uk/sherwood-pines/advanced-dirt-jump-and-downhill-area-sherwood-pines"
+      "https://www.facebook.com/sherwoodpinesforestpark"
     ],
     "sourceUrl": "https://www.forestryengland.uk/sherwood-pines"
   },
@@ -1729,8 +1717,7 @@ const SPOTS = [
     "urls": [
       "https://www.pearcecycles.co.uk",
       "https://www.google.com/maps/search/?api=1&query=The+Bringewood&query_place_id=52.352373,-2.805018",
-      "https://www.facebook.com/PearceCyclesLudlow",
-      "https://twitter.com/PearceCycles"
+      "https://www.facebook.com/PearceCyclesLudlow"
     ],
     "sourceUrl": "https://www.pearcecycles.co.uk"
   },
@@ -1738,7 +1725,7 @@ const SPOTS = [
     "id": "bestwood-country-park",
     "name": "Bestwood Country Park",
     "siteName": "Bestwood Country Park",
-    "operatorName": "",
+    "operatorName": "Nottinghamshire County Council",
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Enduro",
     "location": "North Nottingham",
@@ -1819,7 +1806,6 @@ const SPOTS = [
     "urls": [
       "https://ibikeride.com/england/leamington-spa-4x",
       "https://www.google.com/maps/search/?api=1&query=Campion+Hill+Cycle+Track&query_place_id=52.2941497,-1.521358",
-      "https://www.google.com/maps/search/?api=1&query=Campion+Hill+Cycle+Track&query_place_id=52.2941497, -1.521358",
       "https://www.facebook.com/groups/2151970041714043/",
       "https://www.british4x.com/"
     ],
@@ -1873,7 +1859,7 @@ const SPOTS = [
     "id": "glapwell-trail",
     "name": "Glapwell Trail",
     "siteName": "Glapwell",
-    "operatorName": "",
+    "operatorName": "Glapwell Parish Council",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Glapwell, Chesterfield",
@@ -1916,7 +1902,7 @@ const SPOTS = [
     "primaryType": "Dirt jump park",
     "primaryBike": "Dirt jump",
     "location": "Ring Road Beeston Park, Middleton, Leeds, LS10 3TN",
-    "address": "Leeds Urban Bike Park, Ring Rd Middleton, Middleton, Leeds, LS10 3TN",
+    "address": "Ring Rd Middleton, Middleton, Leeds, LS10 3TN",
     "postcode": "LS10 3TN",
     "lat": 53.751998,
     "lng": -1.558476,
@@ -1952,9 +1938,7 @@ const SPOTS = [
       "https://www.leedsurbanbikepark.com/",
       "https://www.google.com/maps/search/?api=1&query=Leeds+Urban+Bike+Park",
       "https://www.instagram.com/leedsurbanbike",
-      "https://www.facebook.com/leedsurbanbikepark",
-      "https://www.google.com/maps/search/?api=1&query=Leeds%20Urban%20Bike%20Park%20Ring%20Road%20Beeston%20Park%20Middleton%20Leeds%20LS10%203TN",
-      "https://www.google.com/maps/search/?api=1&query=53.751998,-1.558476"
+      "https://www.facebook.com/leedsurbanbikepark"
     ],
     "sourceUrl": "https://www.leedsurbanbikepark.com/"
   },
@@ -2001,11 +1985,10 @@ const SPOTS = [
     "urls": [
       "https://fjmtb.com/",
       "https://www.google.com/maps/search/?api=1&query=Farmer+Johns+MTB+Park&query_place_id=53.4109488,-2.0451492",
+      "https://fjmtb.com/park-map/",
       "https://www.facebook.com/FARMERJOHNSMTB",
       "https://farmerjohnsmtb.co.uk",
-      "https://dirtfactory.co.uk/dirt-factory-bike-shop/",
-      "https://fjmtb.com/park-map/",
-      "https://www.tiktok.com/@farmerjohns"
+      "https://dirtfactory.co.uk/dirt-factory-bike-shop/"
     ],
     "sourceUrl": "https://fjmtb.com/"
   },
@@ -2111,7 +2094,7 @@ const SPOTS = [
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Trail",
     "location": "North Yorkshire",
-    "address": "Dalby Forest, The Courtyard, Pickering, North Yorkshire, YO18 7LT",
+    "address": "The Courtyard, Pickering, North Yorkshire, YO18 7LT",
     "postcode": "YO18 7LT",
     "lat": 54.2753859,
     "lng": -0.6867836,
@@ -2273,8 +2256,7 @@ const SPOTS = [
       "https://www.forestryengland.uk/ennerdale",
       "https://www.google.com/maps/search/?api=1&query=Ennerdale&query_place_id=54.525066,-3.37718",
       "https://www.instagram.com/wildennerdale",
-      "https://www.facebook.com/wildennerdale",
-      "https://twitter.com/wildennerdale"
+      "https://www.facebook.com/wildennerdale"
     ],
     "sourceUrl": "https://www.forestryengland.uk/ennerdale"
   },
@@ -2323,7 +2305,6 @@ const SPOTS = [
     "urls": [
       "http://pimbobikepark.co.uk/",
       "https://www.google.com/maps/search/?api=1&query=Pimbo+Bike+Park&query_place_id=53.5367303,-2.7763214",
-      "https://www.google.com/maps/search/?api=1&query=Pimbo+Bike+Park&query_place_id=53.5367303, -2.7763214",
       "https://www.facebook.com/pimbobikepark",
       "https://linktr.ee/pimbobikepark"
     ],
@@ -2366,10 +2347,12 @@ const SPOTS = [
     "status": "Open",
     "notes": "Quarry-based trail centre with technical features and jumps. Access details: Cost: Free; Ownership: Council / Forestry; Uplift: No; Status: Open.",
     "urls": [
+      "https://leequarry.co.uk/",
+      "https://www.google.com/maps/search/?api=1&query=Lee+Quarry+Mountain+Bike+Trail&query_place_id=53.6854455,-2.2072841",
       "https://www.singletrackworld.com",
-      "https://www.google.com/maps/search/?api=1&query=Lee+Quarry+Mountain+Bike+Trail&query_place_id=53.6854455,-2.2072841"
+      "https://www.instagram.com/leequarry/"
     ],
-    "sourceUrl": "https://www.singletrackworld.com"
+    "sourceUrl": "https://leequarry.co.uk/"
   },
   {
     "id": "wharncliffe-woods",
@@ -2409,8 +2392,7 @@ const SPOTS = [
     "notes": "Forestry England-managed woodland near Sheffield with a steep, rocky character. Famous as Steve Peat's training ground. Natural trails are tolerated and officially welcomed for mountain biking (no permit required from May 2025), but Forestry England has demolished unauthorised dirt jumps/DH features in the past (2018) and asks that no new features be built. Gritstone-based terrain rideable year-round. Permission/status update 2026-05-26: separate from Greno; Forestry England notes no official waymarked maintained trails and no unauthorised trail building. Access warning: Access-sensitive natural riding area; use only legal/official routes and do not build trails. Access details: Cost: Free; Ownership: Forestry England; Uplift: No; Status: Open for cycling on forest roads and bridleways; no official waymarked maintained MTB trails.",
     "urls": [
       "https://www.forestryengland.uk/wharncliffe-woods/cycling-and-mountain-biking-wharncliffe-woods",
-      "https://www.google.com/maps/search/?api=1&query=Wharncliffe+Wood&query_place_id=53.4492154,-1.5350373",
-      "https://www.google.com/maps/search/?api=1&query=Wharncliffe+Wood&query_place_id=53.4492154, -1.5350373"
+      "https://www.google.com/maps/search/?api=1&query=Wharncliffe+Wood&query_place_id=53.4492154,-1.5350373"
     ],
     "sourceUrl": "https://www.forestryengland.uk/wharncliffe-woods/cycling-and-mountain-biking-wharncliffe-woods"
   },
@@ -2457,8 +2439,7 @@ const SPOTS = [
       "https://ridesheffield.org.uk/project/parkwood-springs/",
       "https://www.google.com/maps/search/?api=1&query=Parkwood+Springs+Mountain+Bike+Trail&query_place_id=53.4009306,-1.4741676",
       "https://www.instagram.com/ridesheffield",
-      "https://www.facebook.com/groups/Ride.Sheffield1",
-      "https://twitter.com/ridesheffield"
+      "https://www.facebook.com/groups/Ride.Sheffield1"
     ],
     "sourceUrl": "https://ridesheffield.org.uk/project/parkwood-springs/"
   },
@@ -2499,8 +2480,7 @@ const SPOTS = [
       "https://ridesheffield.org.uk/project/lady-cannings-plantation/",
       "https://www.google.com/maps/search/?api=1&query=Lady+Canning%27s+Plantation+Mtb+Trail&query_place_id=53.3473916,-1.5658507",
       "https://www.instagram.com/ridesheffield",
-      "https://www.facebook.com/groups/Ride.Sheffield1",
-      "https://twitter.com/ridesheffield"
+      "https://www.facebook.com/groups/Ride.Sheffield1"
     ],
     "sourceUrl": "https://ridesheffield.org.uk/project/lady-cannings-plantation/"
   },
@@ -2545,7 +2525,6 @@ const SPOTS = [
     "urls": [
       "https://bolehills.com/",
       "https://www.google.com/maps/search/?api=1&query=Bolehills+BMX+Track&query_place_id=53.391339,-1.5087624",
-      "https://www.google.com/maps/search/?api=1&query=Bolehills+BMX+Track&query_place_id=53.391339, -1.5087624",
       "https://www.instagram.com/bolehills",
       "https://www.facebook.com/bolehillsbmx",
       "https://ridesheffield.org.uk/project/bolehills/",
@@ -2595,9 +2574,7 @@ const SPOTS = [
       "https://www.instagram.com/charnockbiketrack/",
       "https://www.facebook.com/groups/893480070745033/",
       "https://ibikeride.com/england/charnock-bike-track",
-      "https://www.facebook.com/pages/Charnock%20Pumptrack/1122630974449967/",
-      "https://www.google.com/maps/search/?api=1&query=Charnock%20Bike%20Track%20Bowman%20Drive%20Sheffield%20S12%203LF",
-      "https://www.google.com/maps/search/?api=1&query=53.340484,-1.43112"
+      "https://www.facebook.com/pages/Charnock%20Pumptrack/1122630974449967/"
     ],
     "sourceUrl": "https://www.charnock-pump-track-and-dirt-jumps.business.site/"
   },
@@ -2642,14 +2619,13 @@ const SPOTS = [
     "notes": "**Steve Peat's \"Steel City Downhill\"** annual race venue. Three professionally crafted downhill tracks (red, black, double-black) plus jump trails. One of Sheffield's most loved riding venues — gritstone bedrock drains well year-round. Run by Ride Sheffield in partnership with Sheffield and Rotherham Wildlife Trust. Dedupe update 2026-05-26: Steel City DH Track is treated as a trail/race line within Greno Woods / Grenoside Woods, not a separate venue. Access warning: Location is approximate; check official directions before travelling. Access details: Cost: Free; Ownership: Forestry / woodland managed with Ride Sheffield project involvement; Uplift: No; Status: Open.",
     "urls": [
       "https://ridesheffield.org.uk/project/greno/",
-      "https://www.wildsheffield.com/reserves/greno-woods-reserve/",
       "https://www.google.com/maps/search/?api=1&query=53.457918,-1.51847",
-      "https://www.google.com/maps/search/?api=1&query=Greno+Woods&query_place_id=53.4497817,-1.5102889",
+      "https://www.wildsheffield.com/reserves/greno-woods-reserve/",
       "https://www.instagram.com/ridesheffield",
       "https://www.facebook.com/groups/Ride.Sheffield1",
+      "https://www.google.com/maps/search/?api=1&query=Greno+Woods&query_place_id=53.4497817,-1.5102889",
       "https://www.steelcitydh.com/race-information/",
-      "https://www.trailforks.com/trails/steel-city-dh-track/",
-      "https://twitter.com/ridesheffield"
+      "https://www.trailforks.com/trails/steel-city-dh-track/"
     ],
     "sourceUrl": "https://ridesheffield.org.uk/project/greno/"
   },
@@ -2700,7 +2676,7 @@ const SPOTS = [
     "id": "partington-pump-track",
     "name": "Partington Pump Track",
     "siteName": "Partington",
-    "operatorName": "",
+    "operatorName": "Trafford Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Dirt jump",
     "location": "Partington, Trafford, Greater Manchester",
@@ -2830,7 +2806,6 @@ const SPOTS = [
     "urls": [
       "https://www.forestryengland.uk/dalby-forest",
       "https://www.google.com/maps/search/?api=1&query=Dixons+Hollow+Bike+Park&query_place_id=54.29533,-0.6440676",
-      "https://www.google.com/maps/search/?api=1&query=Dixons+Hollow+Bike+Park&query_place_id=54.29533, -0.6440676",
       "https://www.trailforks.com/skillpark/dixon-s-hollow/",
       "https://www.trailforks.com/region/dalby-forest/",
       "https://scarborough360.co.uk/day-trips/dalby-forest-dixons-hollow"
@@ -2932,7 +2907,7 @@ const SPOTS = [
     "id": "clayton-vale-mountain-bike-trails",
     "name": "Clayton Vale Mountain Bike Trails",
     "siteName": "Manchester",
-    "operatorName": "",
+    "operatorName": "Manchester City Council / National Cycling Centre",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Manchester",
@@ -3104,8 +3079,7 @@ const SPOTS = [
     "notes": "The Viking Trail is a flowy singletrack loop through Tunstall Forest with pump-track-style features, small drops, and bomb-holes. Good progression spot, suitable for hardtails and full-suss alike. Access details: Cost: Free / paid parking; Ownership: Council / Forestry (Forestry England); Uplift: No; Status: Open.",
     "urls": [
       "https://www.forestryengland.uk/tunstall-forest/viking-trail-tunstall-forest",
-      "https://www.google.com/maps/search/?api=1&query=The+Viking+MTB+Trail&query_place_id=52.1507678,1.4783806",
-      "https://www.google.com/maps/search/?api=1&query=The+Viking+MTB+Trail&query_place_id=52.1507678, 1.4783806"
+      "https://www.google.com/maps/search/?api=1&query=The+Viking+MTB+Trail&query_place_id=52.1507678,1.4783806"
     ],
     "sourceUrl": "https://www.forestryengland.uk/tunstall-forest/viking-trail-tunstall-forest"
   },
@@ -3155,8 +3129,7 @@ const SPOTS = [
       "https://www.bikeparkwales.com",
       "https://www.google.com/maps/search/?api=1&query=BikePark+Wales&query_place_id=51.7216354,-3.3769024",
       "https://www.instagram.com/bikepark_wales",
-      "https://www.facebook.com/BikeParkWales",
-      "https://www.youtube.com/@BikeParkWalesOfficial"
+      "https://www.facebook.com/BikeParkWales"
     ],
     "sourceUrl": "https://www.bikeparkwales.com"
   },
@@ -3205,10 +3178,7 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=Antur+Stiniog+Bike+Park",
       "https://www.instagram.com/anturstiniog/",
       "https://www.facebook.com/anturstiniog.cyf",
-      "https://linktr.ee/anturstiniogmtb",
-      "https://www.google.com/maps/search/?api=1&query=Antur%20Stiniog%20Llechwedd%20Slate%20Caverns%20Blaenau%20Ffestiniog%20LL41%203NB",
-      "https://www.google.com/maps/search/?api=1&query=53.006158,-3.941506",
-      "https://twitter.com/AnturStiniogCyf"
+      "https://linktr.ee/anturstiniogmtb"
     ],
     "sourceUrl": "https://www.anturstiniog.com/"
   },
@@ -3299,9 +3269,7 @@ const SPOTS = [
       "https://www.revolutionbikepark.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Revolution+Bike+Park&query_place_id=52.8201446,-3.4083743",
       "https://www.instagram.com/revolutionbp/",
-      "https://www.facebook.com/RevolutionBikePark",
-      "https://www.youtube.com/@revolutionbp",
-      "https://twitter.com/revolutionBP"
+      "https://www.facebook.com/RevolutionBikePark"
     ],
     "sourceUrl": "https://www.revolutionbikepark.co.uk"
   },
@@ -3348,8 +3316,7 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=Caersws+Bike+Park&query_place_id=52.5358317,-3.4541003",
       "https://www.instagram.com/caersws_bike_park",
       "https://www.facebook.com/Caerswsbikepark",
-      "https://linktr.ee/caerswsbikepark",
-      "https://www.youtube.com/@CaerswsBikePark-yc9tt"
+      "https://linktr.ee/caerswsbikepark"
     ],
     "sourceUrl": "https://www.caerswsbikepark.co.uk"
   },
@@ -3357,7 +3324,7 @@ const SPOTS = [
     "id": "dare-valley-gravity-park",
     "name": "Dare Valley Gravity Park",
     "siteName": "Dare Valley Gravity Park",
-    "operatorName": "",
+    "operatorName": "Dare Valley Country Park",
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Enduro",
     "location": "Aberdare, Rhondda Cynon Taff",
@@ -3390,9 +3357,9 @@ const SPOTS = [
     "urls": [
       "https://www.rctcbc.gov.uk/EN/Tourism/DareValleyCountryPark/Bike/GravityFamilyBikePark.aspx",
       "https://www.google.com/maps/search/?api=1&query=Dare+Valley+Gravity+Family+Bike+Park&query_place_id=51.7123755,-3.4700841",
-      "https://www.facebook.com/Darevalleygravitybikepark",
       "https://darevalleygravity.co.uk/",
-      "https://www.darevalleycountrypark.com/bikepark/"
+      "https://www.darevalleycountrypark.com/bikepark/",
+      "https://www.facebook.com/Darevalleygravitybikepark"
     ],
     "sourceUrl": "https://www.rctcbc.gov.uk/EN/Tourism/DareValleyCountryPark/Bike/GravityFamilyBikePark.aspx"
   },
@@ -3493,7 +3460,7 @@ const SPOTS = [
     "id": "coed-llandegla",
     "name": "Coed Llandegla",
     "siteName": "Near Wrexham",
-    "operatorName": "",
+    "operatorName": "Oneplanet Adventure",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Near Wrexham, North Wales",
@@ -3537,8 +3504,7 @@ const SPOTS = [
     "urls": [
       "https://oneplanetadventure.com/centres/llandegla",
       "https://www.google.com/maps/search/?api=1&query=OnePlanet+Adventure&query_place_id=53.0626628,-3.1357835",
-      "https://www.facebook.com/pages/Oneplanet-Adventure/94413705817/",
-      "https://twitter.com/OPALlandegla"
+      "https://www.facebook.com/pages/Oneplanet-Adventure/94413705817/"
     ],
     "sourceUrl": "https://oneplanetadventure.com/centres/llandegla"
   },
@@ -3680,9 +3646,9 @@ const SPOTS = [
     "urls": [
       "https://7stanesmountainbiking.com/innerleithen",
       "https://www.google.com/maps/search/?api=1&query=7stanes%3A+Innerleithen&query_place_id=55.6109526,-3.0571792",
-      "https://www.facebook.com/7stanesMountainBiking",
       "https://www.upliftscotland.com/home/innerleithen/",
-      "https://www.adrenalinuplift.co.uk/"
+      "https://www.adrenalinuplift.co.uk/",
+      "https://www.facebook.com/7stanesMountainBiking"
     ],
     "sourceUrl": "https://7stanesmountainbiking.com/innerleithen"
   },
@@ -3732,8 +3698,8 @@ const SPOTS = [
     "urls": [
       "https://7stanesmountainbiking.com/glentress",
       "https://www.google.com/maps/search/?api=1&query=Glentress+Forest&query_place_id=55.6598071,-3.1247782",
-      "https://www.facebook.com/7stanesMountainBiking",
-      "https://www.adrenalinuplift.co.uk/"
+      "https://www.adrenalinuplift.co.uk/",
+      "https://www.facebook.com/7stanesMountainBiking"
     ],
     "sourceUrl": "https://7stanesmountainbiking.com/glentress"
   },
@@ -3782,9 +3748,9 @@ const SPOTS = [
     "urls": [
       "https://forestryandland.gov.scot/visit/forest-of-ae",
       "https://www.google.com/maps/search/?api=1&query=Ae+Forest&query_place_id=55.1901247,-3.5964989",
-      "https://www.facebook.com/7stanesMountainBiking",
       "https://www.upliftscotland.com/home/ae-forest/",
-      "https://www.adrenalinuplift.co.uk/"
+      "https://www.adrenalinuplift.co.uk/",
+      "https://www.facebook.com/7stanesMountainBiking"
     ],
     "sourceUrl": "https://forestryandland.gov.scot/visit/forest-of-ae"
   },
@@ -3844,7 +3810,7 @@ const SPOTS = [
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Trail",
     "location": "South of Dumfries, Dumfries and Galloway",
-    "address": "Mabie Forest, Mabie, Dumfries, Dumfries and Galloway, DG2 8HB",
+    "address": "Mabie, Dumfries, Dumfries and Galloway, DG2 8HB",
     "postcode": "DG2 8HB",
     "lat": 55.0215554,
     "lng": -3.6433129,
@@ -3887,7 +3853,7 @@ const SPOTS = [
   {
     "id": "newcastleton",
     "name": "Newcastleton",
-    "siteName": "Newcastleton",
+    "siteName": "Newcastleton Forest",
     "operatorName": "7stanes",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
@@ -4017,13 +3983,10 @@ const SPOTS = [
     "urls": [
       "https://www.nevisrange.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Nevis+Range+Mountain+Resort&query_place_id=56.852154,-4.99906",
-      "https://www.instagram.com/nevisrange",
-      "https://www.facebook.com/NevisRange",
       "https://www.upliftscotland.com/home/fort-william/",
       "https://www.nevisrange.co.uk/activities/biking/",
-      "https://twitter.com/thenevisrange",
-      "https://www.youtube.com/user/nevisrangescotland",
-      "https://www.tiktok.com/@nevisrange"
+      "https://www.instagram.com/nevisrange",
+      "https://www.facebook.com/NevisRange"
     ],
     "sourceUrl": "https://www.nevisrange.co.uk"
   },
@@ -4065,10 +4028,9 @@ const SPOTS = [
     "urls": [
       "https://glencoemountain.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Glencoe+Mountain+Resort&query_place_id=56.6324409,-4.8278691",
-      "https://www.instagram.com/glencoemountain/",
-      "https://www.facebook.com/GlencoeMountain",
       "https://www.upliftscotland.com/home/glencoe/",
-      "https://www.twitter.com/glencoemountain"
+      "https://www.instagram.com/glencoemountain/",
+      "https://www.facebook.com/GlencoeMountain"
     ],
     "sourceUrl": "https://glencoemountain.co.uk"
   },
@@ -4098,7 +4060,9 @@ const SPOTS = [
     ],
     "bikeTypes": [
       "Trail",
-      "Enduro"
+      "Enduro",
+      "E-bike",
+      "Gravel"
     ],
     "seasonality": [
       "Spring",
@@ -4113,12 +4077,12 @@ const SPOTS = [
     "notes": "Community-developed trails with jump features. Craigvinean Forest natural trails — Scottish forestry trails rideable year-round, with winter mud. Dunkeld update 2026-05-26: revised around Progression Bikes Scotland rather than a generic Dunkeld Bikes entry. Progression Bikes lists route information from the Dunkeld shop, including beginner/family riverside loops, Dunkeld-to-Aberfeldy routes, Loch Ordie/estate routes and Birnam Hill red-grade trails with flow trails. Treat as a local trail network/guided riding base, not a formal bike park. Uplift Scotland update 2026-05-30: added Uplift Scotland Dunkeld page as secondary uplift/local-scene evidence while keeping Progression Bikes as the primary official/local trail-information source. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Progression Bikes route information does not support a dirt-jump feature tag. Access details: Cost: Free route access / paid bike hire, guiding and coaching via Progression Bikes; Ownership: Public/estate route network with Progression Bikes as local bike shop, hire, guiding and route-information base; Uplift: No regular dedicated venue uplift listed in main entry; Uplift Scotland lists Dunkeld as an uplift-assisted/local uplift scene source; Status: Open.",
     "urls": [
       "https://www.progressionbikesscotland.com/",
-      "https://www.progressionbikesscotland.com/trails",
       "https://www.google.com/maps/search/?api=1&query=56.5651,-3.5863",
+      "https://www.progressionbikesscotland.com/trails",
+      "https://www.upliftscotland.com/home/dunkeld/",
       "https://www.instagram.com/progressionbikes/",
       "https://www.facebook.com/progressionbikes",
-      "https://www.google.com/maps/search/?api=1&query=Craigvinean+Forest&query_place_id=56.5606013,-3.6169928",
-      "https://www.upliftscotland.com/home/dunkeld/"
+      "https://www.google.com/maps/search/?api=1&query=Craigvinean+Forest&query_place_id=56.5606013,-3.6169928"
     ],
     "sourceUrl": "https://www.progressionbikesscotland.com/"
   },
@@ -4126,7 +4090,7 @@ const SPOTS = [
     "id": "tarland-trails",
     "name": "Tarland Trails",
     "siteName": "Tarland Trails",
-    "operatorName": "",
+    "operatorName": "Tarland Development Group",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Tarland Trails, Smallburn Car Park, Tarland, Aberdeenshire, AB34 4TB",
@@ -4165,9 +4129,7 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=Tarland+Trails+Pittenderich",
       "https://www.instagram.com/tarlandtrails",
       "https://www.facebook.com/tarlandtrails",
-      "https://linktr.ee/tarlandtrails",
-      "https://www.google.com/maps/search/?api=1&query=57.137521,-2.849391",
-      "https://www.twitter.com/tarlandtrails"
+      "https://linktr.ee/tarlandtrails"
     ],
     "sourceUrl": "https://www.tarland-trails.com/"
   },
@@ -4175,7 +4137,7 @@ const SPOTS = [
     "id": "cathkin-braes",
     "name": "Cathkin Braes",
     "siteName": "Near Glasgow",
-    "operatorName": "",
+    "operatorName": "Glasgow City Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Near Glasgow",
@@ -4214,7 +4176,6 @@ const SPOTS = [
     "urls": [
       "https://www.glasgow.gov.uk/media/4190/Cathkin-Braes-Country-Park/pdf/Cathkin_Braes_Country_Park.pdf",
       "https://www.google.com/maps/search/?api=1&query=Cathkin+Braes+Mountain+Bike+Trails&query_place_id=55.8011161,-4.2221084",
-      "https://www.google.com/maps/search/?api=1&query=Cathkin+Braes+Mountain+Bike+Trails&query_place_id=55.8011161, -4.2221084",
       "https://www.facebook.com/CathkinBraesMountainBiking/",
       "https://www.moredirt.com/trail/United-Kingdom_South-Scotland/Cathkin-Braes-Mountain-Bike-Trails/1550",
       "https://ibikeride.com/scotland/cathkin-braes-mountain-bike-trails"
@@ -4268,7 +4229,7 @@ const SPOTS = [
     "id": "laggan-wolftrax",
     "name": "Laggan Wolftrax",
     "siteName": "Cairngorms",
-    "operatorName": "",
+    "operatorName": "Forestry and Land Scotland",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Cairngorms",
@@ -4352,10 +4313,10 @@ const SPOTS = [
     "urls": [
       "https://www.comriecroftbikes.co.uk/pages/trail-map",
       "https://www.google.com/maps/search/?api=1&query=Comrie+Croft&query_place_id=56.3845971,-3.9399585",
-      "https://www.facebook.com/comriecroftbikes",
       "https://www.comriecroftbikes.co.uk/pages/skills-park",
       "https://www.comriecroftbikes.co.uk/",
-      "https://www.comriecroft.com/adventures"
+      "https://www.comriecroft.com/adventures",
+      "https://www.facebook.com/comriecroftbikes"
     ],
     "sourceUrl": "https://www.comriecroftbikes.co.uk/pages/trail-map"
   },
@@ -4363,7 +4324,7 @@ const SPOTS = [
     "id": "drumlanrig-castle-trails",
     "name": "Drumlanrig Castle Trails",
     "siteName": "Carronbridge",
-    "operatorName": "",
+    "operatorName": "Drumlanrig Castle / Buccleuch",
     "primaryType": "Temporarily closed venue",
     "primaryBike": "Trail",
     "location": "Carronbridge, Dumfries and Galloway",
@@ -4395,7 +4356,7 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Commercial",
     "status": "Under construction",
-    "notes": "Trails on castle grounds since 2002. Family-focused now with old-school technical singletrack also available. Farthingbank pump track loop. Status audit 2026-05-25: official Drumlanrig page states all MTB trails are currently closed due to storm damage. Access warning: Temporarily closed; check official sources before travelling. Access details: Cost: Paid parking (~£2.50); Ownership: Commercial (Queensberry Estate); Uplift: No; Status: Temporarily closed (all MTB trails closed due to storm damage).",
+    "notes": "Trails on castle grounds since 2002. Family-focused now with old-school technical singletrack also available. Farthingbank pump track loop. Status audit 2026-05-25: official Drumlanrig page states all MTB trails are currently closed due to storm damage. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Paid parking (~£2.50); Ownership: Commercial (Queensberry Estate); Uplift: No; Status: Under construction / temporarily closed.",
     "urls": [
       "https://www.drumlanrigcastle.co.uk/outdoor-activities/mountain-biking/",
       "https://www.google.com/maps/search/?api=1&query=Drumlanrig+Castle+%26+Gardens&query_place_id=55.2736968,-3.8089056",
@@ -4446,9 +4407,9 @@ const SPOTS = [
     "urls": [
       "https://www.callendarestate.co.uk/activities/cycling",
       "https://www.google.com/maps/search/?api=1&query=Callendar+Estate+Activity+Centre&query_place_id=55.9865315,-3.8284973",
-      "https://www.facebook.com/callendarestateactivitycentre",
       "https://www.greenrigcycles.bike/",
-      "https://visitfalkirk.com/wp-content/uploads/2024/03/callendar-estate-cycling-leaflet.pdf"
+      "https://visitfalkirk.com/wp-content/uploads/2024/03/callendar-estate-cycling-leaflet.pdf",
+      "https://www.facebook.com/callendarestateactivitycentre"
     ],
     "sourceUrl": "https://www.callendarestate.co.uk/activities/cycling"
   },
@@ -4498,11 +4459,11 @@ const SPOTS = [
     "id": "barnett-demesne",
     "name": "Barnett Demesne",
     "siteName": "South Belfast",
-    "operatorName": "",
+    "operatorName": "Belfast City Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "South Belfast",
-    "address": "Barnett Demesne, Malone Rd, Belfast, BT9 5PB",
+    "address": "Malone Rd, Belfast, BT9 5PB",
     "postcode": "BT9 5PB",
     "lat": 54.5516907,
     "lng": -5.9595746,
@@ -4590,7 +4551,7 @@ const SPOTS = [
     "id": "davagh-forest",
     "name": "Davagh Forest",
     "siteName": "Davagh Forest",
-    "operatorName": "",
+    "operatorName": "Mid Ulster District Council",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "County Tyrone",
@@ -4716,10 +4677,7 @@ const SPOTS = [
       "https://chasetrails.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Cannock+Chase+MTB+Trails&query_place_id=52.7526443,-1.9747249",
       "https://instagram.com/chasetrails",
-      "https://www.facebook.com/chasetrails",
-      "https://twitter.com/chasetrails",
-      "https://www.youtube.com/c/ChaseTrailsCoUk",
-      "https://www.threads.net/@chasetrails"
+      "https://www.facebook.com/chasetrails"
     ],
     "sourceUrl": "https://chasetrails.co.uk"
   },
@@ -4918,7 +4876,7 @@ const SPOTS = [
     "id": "blessingbourne-estate",
     "name": "Blessingbourne Estate",
     "siteName": "Blessingbourne Estate",
-    "operatorName": "",
+    "operatorName": "Blessingbourne Estate",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Fivemiletown, County Tyrone",
@@ -4953,8 +4911,7 @@ const SPOTS = [
       "https://www.blessingbourne.com",
       "https://www.google.com/maps/search/?api=1&query=Blessingbourne+Country+Estate&query_place_id=54.3826966,-7.3143384",
       "https://www.instagram.com/blessingbourne",
-      "https://www.facebook.com/Blessingbourne",
-      "https://twitter.com/blessingbourne"
+      "https://www.facebook.com/Blessingbourne"
     ],
     "sourceUrl": "https://www.blessingbourne.com"
   },
@@ -4962,7 +4919,7 @@ const SPOTS = [
     "id": "castle-ward",
     "name": "Castle Ward",
     "siteName": "Strangford",
-    "operatorName": "",
+    "operatorName": "National Trust",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Strangford, County Down",
@@ -5041,9 +4998,7 @@ const SPOTS = [
       "https://bulltrackbikepark.co.uk/",
       "https://www.google.com/maps/search/?api=1&query=Bulltrack+Bike+Park+Crowborough",
       "https://www.instagram.com/bulltrack_bikepark/",
-      "https://www.facebook.com/groups/thebulltrack",
-      "https://www.google.com/maps/search/?api=1&query=BullTrack%20Bike%20Park%20Palesgate%20Lane%20Crowborough%20East%20Sussex%20TN26%203HF",
-      "https://www.google.com/maps/search/?api=1&query=51.060185,0.18401"
+      "https://www.facebook.com/groups/thebulltrack"
     ],
     "sourceUrl": "https://bulltrackbikepark.co.uk/"
   },
@@ -5137,8 +5092,7 @@ const SPOTS = [
     "urls": [
       "https://www.pearcecycles.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Bucknell+Wood%2C+Abthorpe&query_place_id=52.0995036,-1.0378801",
-      "https://www.facebook.com/PearceCyclesLudlow",
-      "https://twitter.com/PearceCycles"
+      "https://www.facebook.com/PearceCyclesLudlow"
     ],
     "sourceUrl": "https://www.pearcecycles.co.uk"
   },
@@ -5319,8 +5273,7 @@ const SPOTS = [
       "https://northamptonbikepark.org",
       "https://www.google.com/maps/search/?api=1&query=Northampton+Bike+Park&query_place_id=52.2168916,-0.8822815",
       "https://www.instagram.com/northamptonbikepark",
-      "https://www.facebook.com/northamptonbikepark",
-      "https://twitter.com/northamptonbike"
+      "https://www.facebook.com/northamptonbikepark"
     ],
     "sourceUrl": "https://northamptonbikepark.org"
   },
@@ -5328,7 +5281,7 @@ const SPOTS = [
     "id": "wythenshawe-cycle-hub",
     "name": "Wythenshawe Cycle Hub",
     "siteName": "Wythenshawe Park",
-    "operatorName": "",
+    "operatorName": "Wythenshawe Cycle Hub",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Wythenshawe Park, Manchester",
@@ -5503,7 +5456,7 @@ const SPOTS = [
     "cost": "Membership",
     "ownership": "Commercial",
     "status": "Under construction",
-    "notes": "Compact 3.5-acre park with four short progressive trails plus dual slalom. **Blue** with rollers, tabletops, optional trick jump. **Red** with tight berms, tabletops, step-downs, step-up finish. **\"Three's a Crowd\"** dual slalom with paired jumps. **\"Dopamine\"** black with gaps, tables and step-down to finish gap. Built by Forte Trailscapes in partnership with the owners (motocross background). Booking required online. E-MTBs and dirt scooters welcome. Private commercial park with progressive jump lines, open year-round. Grade audit 2026-05-25: iBikeRide lists blue/red/black trails but says the park is temporarily closed for rebuild. I have not counted it as current verified until the reopened layout is published. Status update 2026-05-25: treated as temporarily closed while reopening/rebuild work is in progress. Status audit 2026-05-25: reopening remains dependent on rebuild/drainage work, so pricing/access should not imply current riding. Access update 2026-05-25: Exeter should not be read as currently selling normal ride access while closed; use pass/membership wording for when open. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Better described as jump/flow/4X features; dirt jumps not separately verified. Access warning: Temporarily closed; check official sources before travelling. Access details: Cost: Paid pass/membership model when open; Ownership: Commercial (family farm); Uplift: No (push-up); Status: Temporarily closed.",
+    "notes": "Compact 3.5-acre park with four short progressive trails plus dual slalom. **Blue** with rollers, tabletops, optional trick jump. **Red** with tight berms, tabletops, step-downs, step-up finish. **\"Three's a Crowd\"** dual slalom with paired jumps. **\"Dopamine\"** black with gaps, tables and step-down to finish gap. Built by Forte Trailscapes in partnership with the owners (motocross background). Booking required online. E-MTBs and dirt scooters welcome. Private commercial park with progressive jump lines, open year-round. Grade audit 2026-05-25: iBikeRide lists blue/red/black trails but says the park is temporarily closed for rebuild. I have not counted it as current verified until the reopened layout is published. Status update 2026-05-25: treated as temporarily closed while reopening/rebuild work is in progress. Status audit 2026-05-25: reopening remains dependent on rebuild/drainage work, so pricing/access should not imply current riding. Access update 2026-05-25: Exeter should not be read as currently selling normal ride access while closed; use pass/membership wording for when open. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Better described as jump/flow/4X features; dirt jumps not separately verified. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Paid pass/membership model when open; Ownership: Commercial (family farm); Uplift: No (push-up); Status: Under construction / temporarily closed.",
     "urls": [
       "https://exeterbikepark.uk",
       "https://www.google.com/maps/search/?api=1&query=Exeter+Bike+Park&query_place_id=50.6753162,-3.5230321",
@@ -5515,7 +5468,7 @@ const SPOTS = [
     "id": "paignton-velopark-torbay-velopark",
     "name": "Paignton Velopark",
     "siteName": "Torbay Velopark",
-    "operatorName": "",
+    "operatorName": "Torbay Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Torbay Velopark, Paignton, Devon",
@@ -5596,11 +5549,10 @@ const SPOTS = [
     "urls": [
       "https://riverdart.co.uk/family-park-attractions/dartmoor-bike-park-2/",
       "https://www.google.com/maps/search/?api=1&query=Dartmoor+Bike+Park&query_place_id=50.5203007,-3.7910845",
+      "https://tickets.tygit.com/shop/select-group/pk/9969e227037cf97f3e20854fe834ad3c/groupId/4166",
       "https://www.instagram.com/riverdartcp",
       "https://www.facebook.com/RiverDartCountryPark",
-      "https://riverdart.co.uk",
-      "https://tickets.tygit.com/shop/select-group/pk/9969e227037cf97f3e20854fe834ad3c/groupId/4166",
-      "https://twitter.com/RiverDartCP"
+      "https://riverdart.co.uk"
     ],
     "sourceUrl": "https://riverdart.co.uk/family-park-attractions/dartmoor-bike-park-2/"
   },
@@ -5654,8 +5606,7 @@ const SPOTS = [
       "https://phoenixcycleworks.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Phoenix+Bike+Park&query_place_id=52.272224,0.515829",
       "https://www.instagram.com/phoenixbikepark",
-      "https://www.facebook.com/phoenixcycleworks.co.uk",
-      "https://www.youtube.com/@PhoenixBikePark"
+      "https://www.facebook.com/phoenixcycleworks.co.uk"
     ],
     "sourceUrl": "https://phoenixcycleworks.co.uk"
   },
@@ -5742,12 +5693,12 @@ const SPOTS = [
     "notes": "**Scotland's first island bike park.** Opened 2024 after a near-decade project by Arran High School MTB Club. £220k Scottish Government Islands Programme + £190k sportscotland Cycling Facilities Fund + £30k North Ayrshire grants. Trails built by CRC Trails. Blue flow trail, red descent with jumps, jump line between the two, floodlit asphalt pump track with first split-line section for a pump track in Scotland. Hub building with bike store, maintenance space, outdoor work stand, fresh water tap, solar panels and composting toilet. Inspired by club's 2015 trip to Nevis Range. All-weather design. Grade audit 2026-05-25: Sources support blue and red MTB trails plus jump/pump features. URL correction 2026-05-30: removed broken dyemillbikepark.co.uk and facebook.com/dyemillbikepark links. Replaced with working JustGiving owner/management page, Forestry and Land Scotland asset-transfer/permission evidence, Scottish Cycling/DMBinS/VisitArran supporting sources, and the Dyemill Facebook page URL listed by Scottish Skatepark Directory. Access details: Cost: Free; Ownership: Community (Arran High School Mountain Bike Club, on FLS land); Uplift: No (push-up); Status: Open (opened summer 2024).",
     "urls": [
       "https://www.justgiving.com/campaign/dyemillbikepark",
-      "https://forestryandland.gov.scot/what-we-do/communities/community-empowerment-cats/previous-asset-transfer-requests/dyemill-cats",
       "https://www.google.com/maps/search/?api=1&query=Dyemill+Bike+Park&query_place_id=55.5200418,-5.1485867",
-      "https://www.facebook.com/p/Dyemill-100092241546390/",
+      "https://forestryandland.gov.scot/what-we-do/communities/community-empowerment-cats/previous-asset-transfer-requests/dyemill-cats",
       "https://scottishcycling.org.uk/news/first-island-bike-park-in-the-world/",
       "https://dmbins.com/map/pump-track-arran/",
-      "https://www.visitarran.com/media/g40lgd5g/dyemill-trails.pdf"
+      "https://www.visitarran.com/media/g40lgd5g/dyemill-trails.pdf",
+      "https://www.facebook.com/p/Dyemill-100092241546390/"
     ],
     "sourceUrl": "https://www.justgiving.com/campaign/dyemillbikepark"
   },
@@ -5793,7 +5744,6 @@ const SPOTS = [
     "urls": [
       "https://www.gawtongravityhub.uk/",
       "https://www.google.com/maps/search/?api=1&query=tavi+trails&query_place_id=50.545681,-4.151856",
-      "https://www.google.com/maps/search/?api=1&query=tavi+trails&query_place_id=50.545681, -4.151856",
       "https://www.facebook.com/gawtongravityhub/",
       "https://www.trailforks.com/region/tavi-woodlands-12722/"
     ],
@@ -5852,7 +5802,7 @@ const SPOTS = [
     "id": "yorkshire-cycle-hub",
     "name": "Yorkshire Cycle Hub",
     "siteName": "Fryup Gill Farm",
-    "operatorName": "",
+    "operatorName": "Yorkshire Cycle Hub",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Fryup Gill Farm, Great Fryup Dale, Lealholm, Whitby, North Yorkshire, YO21 2AP",
@@ -5890,8 +5840,7 @@ const SPOTS = [
       "https://yorkshirecyclehub.uk",
       "https://www.google.com/maps/search/?api=1&query=Yorkshire+Cycle+Hub&query_place_id=54.4328129,-0.8905739",
       "https://www.instagram.com/yorkshirecyclehub/",
-      "https://www.facebook.com/yorkshirecyclehub",
-      "https://www.tiktok.com/@yorkshirecyclehub"
+      "https://www.facebook.com/yorkshirecyclehub"
     ],
     "sourceUrl": "https://yorkshirecyclehub.uk"
   },
@@ -6026,7 +5975,7 @@ const SPOTS = [
     "id": "garw-valley-darren-fawr",
     "name": "Garw Valley",
     "siteName": "Blaengarw",
-    "operatorName": "",
+    "operatorName": "Bridgend County Borough Council",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Blaengarw, Bridgend County",
@@ -6061,7 +6010,6 @@ const SPOTS = [
     "urls": [
       "https://www.garwvalleycc.co.uk/your-community/mountain-bike-trails/",
       "https://www.google.com/maps/search/?api=1&query=Parc+Calon+L%C3%A2n&query_place_id=51.6252575,-3.5908553",
-      "https://www.google.com/maps/search/?api=1&query=Parc+Calon+L%C3%A2n&query_place_id=51.6252575, -3.5908553",
       "https://www.facebook.com/GarwValleyMountainBikeTrails/",
       "https://www.visitbridgend.co.uk/activities/darren-fawr-mountain-biking-trails"
     ],
@@ -6113,7 +6061,7 @@ const SPOTS = [
     "id": "queen-elizabeth-country-park-qecp",
     "name": "Queen Elizabeth Country Park",
     "siteName": "Queen Elizabeth Country Park (QECP)",
-    "operatorName": "",
+    "operatorName": "Hampshire County Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Queen Elizabeth Country Park, between Petersfield and Waterlooville, Hampshire",
@@ -6159,7 +6107,7 @@ const SPOTS = [
     "id": "marsh-tracks-rhyl",
     "name": "Marsh Tracks",
     "siteName": "Glan Y Morfa Industrial Estate",
-    "operatorName": "",
+    "operatorName": "Denbighshire Leisure / Marsh Tracks",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Dirt jump",
     "location": "Glan Y Morfa Industrial Estate, Rhyl, North Wales (built on the old Rhyl Tip)",
@@ -6238,7 +6186,6 @@ const SPOTS = [
     "urls": [
       "https://www.woburn.co.uk/the-estate/woburn-bike-park-and-trails/",
       "https://www.google.com/maps/search/?api=1&query=Woburn+Bike+Trails&query_place_id=51.999787,-0.6547768",
-      "https://www.google.com/maps/search/?api=1&query=Woburn+Bike+Trails&query_place_id=51.999787, -0.6547768",
       "https://www.facebook.com/woburnbiketrails"
     ],
     "sourceUrl": "https://www.woburn.co.uk/the-estate/woburn-bike-park-and-trails/"
@@ -6323,7 +6270,8 @@ const SPOTS = [
     "bikeTypes": [
       "Dirt jump",
       "BMX",
-      "Trail"
+      "MTB",
+      "Trials"
     ],
     "seasonality": [
       "Spring",
@@ -6354,7 +6302,7 @@ const SPOTS = [
     "primaryType": "Dirt jump park",
     "primaryBike": "Dirt jump",
     "location": "Bogey Trails, Rock Park / Ladies Mile, Barnstaple, Devon, EX32 9AQ",
-    "address": "Parke near, Bovey Tracey, Newton Abbot, Devon, EX32 9AQ",
+    "address": "Parke, Bovey Tracey, Newton Abbot, Devon, EX32 9AQ",
     "postcode": "EX32 9AQ",
     "lat": 51.074526,
     "lng": -4.052849,
@@ -6384,10 +6332,9 @@ const SPOTS = [
     "urls": [
       "https://ibikeride.com/england/barnstaple-bmx-freestyle-jump-track",
       "https://www.google.com/maps/search/?api=1&query=Bogey+Trails+Barnstaple",
-      "https://www.facebook.com/BogeyTrails/",
-      "https://www.google.com/maps/search/?api=1&query=51.074526,-4.052849",
       "https://www.roughrideguide.co.uk/route-details/303",
-      "https://www.localgymsandfitness.com/GB/Barnstaple/340364869342896/Bogey-Trails"
+      "https://www.localgymsandfitness.com/GB/Barnstaple/340364869342896/Bogey-Trails",
+      "https://www.facebook.com/BogeyTrails/"
     ],
     "sourceUrl": "https://ibikeride.com/england/barnstaple-bmx-freestyle-jump-track"
   },
@@ -6487,7 +6434,7 @@ const SPOTS = [
     "id": "the-devil-s-toenail-bike-park",
     "name": "The Devil's Toenail Bike Park",
     "siteName": "The Devil's Toenail Bike Park",
-    "operatorName": "",
+    "operatorName": "The Devil's Toenail Bike Park",
     "primaryType": "Dirt jump park",
     "primaryBike": "Dirt jump",
     "location": "Wetherby, West Yorkshire (off the Harland Way; parking at the old station car park)",
@@ -6521,9 +6468,9 @@ const SPOTS = [
     "urls": [
       "https://wetherbytowncouncil.gov.uk/your-visit/town-map/devils-toenail-bike-park/",
       "https://www.google.com/maps/search/?api=1&query=The+Devil%27s+Toe+Nail+Bike+Track&query_place_id=53.9324623,-1.3918841",
-      "https://www.facebook.com/WetherbyBikeTrails",
       "https://ibikeride.com/england/wetherby-bike-trails-including-the-red-kite-trail",
-      "https://www.roughrideguide.co.uk/route-details/353"
+      "https://www.roughrideguide.co.uk/route-details/353",
+      "https://www.facebook.com/WetherbyBikeTrails"
     ],
     "sourceUrl": "https://wetherbytowncouncil.gov.uk/your-visit/town-map/devils-toenail-bike-park/"
   },
@@ -6615,7 +6562,7 @@ const SPOTS = [
     "id": "penmachno-trail",
     "name": "Penmachno Trail",
     "siteName": "Penmachno village",
-    "operatorName": "",
+    "operatorName": "Menter Bro Machno",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Penmachno village, near Betws-y-coed, Gwydir Forest Park, Conwy LL24 0YP",
@@ -6657,7 +6604,7 @@ const SPOTS = [
     "id": "lanhydrock-cycle-hub",
     "name": "Lanhydrock Cycle Hub",
     "siteName": "Lanhydrock Estate",
-    "operatorName": "",
+    "operatorName": "National Trust",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Lanhydrock Estate, near Bodmin, Cornwall PL30 5AD",
@@ -6968,8 +6915,7 @@ const SPOTS = [
     "urls": [
       "https://www.cyclegrampian.co.uk/mtb/routes/balfour-chutney-relish.html",
       "https://www.google.com/maps/search/?api=1&query=Balfour%20Forest%20Aboyne%20mountain%20bike%20trails",
-      "https://www.facebook.com/CycleGrampian",
-      "https://www.google.com/maps/search/?api=1&query=57.0755,-2.78023"
+      "https://www.facebook.com/CycleGrampian"
     ],
     "sourceUrl": "https://www.cyclegrampian.co.uk/mtb/routes/balfour-chutney-relish.html"
   },
@@ -6977,7 +6923,7 @@ const SPOTS = [
     "id": "newbold-comyn-cycle-trails",
     "name": "Newbold Comyn Cycle Trails",
     "siteName": "Newbold Comyn Country Park",
-    "operatorName": "",
+    "operatorName": "Warwick District Council",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Newbold Comyn Country Park, Newbold Terrace East, Leamington Spa, Warwickshire CV32 4EW",
@@ -7065,7 +7011,7 @@ const SPOTS = [
     "sourceUrl": "https://www.pmba.org.uk/healey-nab/"
   },
   {
-    "id": "lochore-meadows-whitewood-bikepark-the-meedies-fife",
+    "id": "whitewood-bike-park",
     "name": "Whitewood Bike Park",
     "siteName": "Lochore Meadows Country Park",
     "operatorName": "Whitewood Bike Park",
@@ -7116,8 +7062,8 @@ const SPOTS = [
   {
     "id": "endura-lifecycle-trust-trails-drymen-loch-lomond",
     "name": "Endura LifeCycle Trust Trails",
-    "siteName": "Loch Lomond)",
-    "operatorName": "",
+    "siteName": "Loch Lomond area",
+    "operatorName": "Endura LifeCycle Trust",
     "primaryType": "Restricted-access venue",
     "primaryBike": "Trail",
     "location": "Just outside Drymen, Stirling (Loch Lomond & The Trossachs National Park)",
@@ -7204,8 +7150,8 @@ const SPOTS = [
   {
     "id": "foel-gasnach-downhill-clocaenog-forest-ruthin",
     "name": "Foel Gasnach Downhill",
-    "siteName": "Clocaenog Forest, Ruthin",
-    "operatorName": "",
+    "siteName": "Clocaenog Forest",
+    "operatorName": "Foel DH Riders / Natural Resources Wales",
     "primaryType": "Temporarily closed venue",
     "primaryBike": "DH",
     "location": "Foel Gasnach / Clocaenog Forest, near Cyffylliog, Ruthin, Denbighshire",
@@ -7232,20 +7178,19 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Government",
     "status": "Under construction",
-    "notes": "**\"Mini Revs\" reputation** — four steep, rooty, technical downhill tracks. Top-to-bottom ~90 seconds, allowing for many runs per uplift day. Forestry Commission recognised venue, run by the Foel DH Riders club (formed 2005). Replaced the infamous \"Scouse Track\" at Llangwyfan. The user's \"Clocaenog Forest\" entry refers to this venue. **Membership-only access** other than uplift days. Grade audit 2026-05-25: Sources confirm Foel as a four-track DH park, but current public listings mark it temporarily closed until further notice and I found no reliable current colour-grade table. Not counted as verified. Status update 2026-05-25: treated as temporarily closed; access/riding remains closed until the venue reopens. Status audit 2026-05-25: third-party trail status says Foel Gasnach is currently closed and riding is not allowed; current uplift/cost wording should not imply present ride access. Access update 2026-05-25: Foel should not be labelled annual-members-only; when operating, access has historically used membership/day-pass style access, but current riding is closed. URL audit 2026-05-26: added FDHR Facebook, Instagram and iBikeRide trail-status page. Location coordinate update 2026-05-26: added coordinate-style map link (53.0879616, -3.4423119); basis: Foel Gasnach hill/location coordinate; venue is in Clocaenog Forest near Cyffylliog/Ruthin; confidence: medium-high. Access warning: Temporarily closed; check official sources before travelling. Access details: Cost: Historically membership/day-pass model; no riding while temporarily closed; Ownership: Community (Foel DH Riders / FDHR club, on Forestry Commission/NRW land); Uplift: Temporarily unavailable while closed (historically booked FDHR uplift days); Status: Temporarily closed.",
+    "notes": "**\"Mini Revs\" reputation** — four steep, rooty, technical downhill tracks. Top-to-bottom ~90 seconds, allowing for many runs per uplift day. Forestry Commission recognised venue, run by the Foel DH Riders club (formed 2005). Replaced the infamous \"Scouse Track\" at Llangwyfan. The user's \"Clocaenog Forest\" entry refers to this venue. **Membership-only access** other than uplift days. Grade audit 2026-05-25: Sources confirm Foel as a four-track DH park, but current public listings mark it temporarily closed until further notice and I found no reliable current colour-grade table. Not counted as verified. Status update 2026-05-25: treated as temporarily closed; access/riding remains closed until the venue reopens. Status audit 2026-05-25: third-party trail status says Foel Gasnach is currently closed and riding is not allowed; current uplift/cost wording should not imply present ride access. Access update 2026-05-25: Foel should not be labelled annual-members-only; when operating, access has historically used membership/day-pass style access, but current riding is closed. URL audit 2026-05-26: added FDHR Facebook, Instagram and iBikeRide trail-status page. Location coordinate update 2026-05-26: added coordinate-style map link (53.0879616, -3.4423119); basis: Foel Gasnach hill/location coordinate; venue is in Clocaenog Forest near Cyffylliog/Ruthin; confidence: medium-high. Access warning: Under construction / temporarily closed; listed for awareness but not currently publicly rideable. Check official sources before travelling. Access details: Cost: Historically membership/day-pass model; no riding while temporarily closed; Ownership: Community (Foel DH Riders / FDHR club, on Forestry Commission/NRW land); Uplift: Temporarily unavailable while closed (historically booked FDHR uplift days); Status: Under construction / temporarily closed.",
     "urls": [
       "https://ibikeride.com/wales/foel-gasnach-downhill-mountain-bike-base",
       "https://www.google.com/maps/search/?api=1&query=Foel+Gasnach+Clocaenog",
       "https://www.instagram.com/foel_gasnach/",
-      "https://www.facebook.com/FDHRACING/",
-      "https://www.google.com/maps/search/?api=1&query=53.0879616,-3.4423119"
+      "https://www.facebook.com/FDHRACING/"
     ],
     "sourceUrl": "https://ibikeride.com/wales/foel-gasnach-downhill-mountain-bike-base"
   },
   {
     "id": "delamere-forest-manley-hill-bike-park-cheshire",
     "name": "Delamere Forest / Manley Hill Bike Park",
-    "siteName": "Delamere Forest",
+    "siteName": "Delamere Forest / Manley Hill Bike Park, Cheshire",
     "operatorName": "Forestry England",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
@@ -7283,7 +7228,7 @@ const SPOTS = [
     "cost": "Free",
     "ownership": "Government",
     "status": "Partial",
-    "notes": "Forest road grey route + new blue graded trail with **jumps and berms**. **Manley Hill Bike Park** (small skills area, accessed via Ashton Road fire road) has **purpose-built 4X track, dirt jumps (tabletops and doubles), short downhill tracks**. The \"No Brains\" line, more informal stuff exists too — but the official skills area still functions. Skills loop near visitor centre. Reviews are mixed (some features removed by forestry over the years) but it's a real, open, accessible bike park area. Grade audit 2026-05-25: Forestry England supports Grey and Blue trails; Manley Hill is described as a skills park with 4X/jumps/downhill but not colour graded. Status audit 2026-05-25: current sources still describe Manley Hill as a small skills area with 4X/dirt jumps/berms; keep open but avoid over-weighting older reports of feature degradation. Dirt jumps feature update 2026-05-31: Dirt jumps added to features at user confirmation. Access details: Cost: Free (parking £2); Ownership: Forestry (Forestry England); Uplift: No; Status: Open (minor issues possible at Manley Hill skills area).",
+    "notes": "Forest road grey route + new blue graded trail with **jumps and berms**. **Manley Hill Bike Park** (small skills area, accessed via Ashton Road fire road) has **purpose-built 4X track, dirt jumps (tabletops and doubles), short downhill tracks**. The \"No Brains\" line, more informal stuff exists too — but the official skills area still functions. Skills loop near visitor centre. Reviews are mixed (some features removed by forestry over the years) but it's a real, open, accessible bike park area. Grade audit 2026-05-25: Forestry England supports Grey and Blue trails; Manley Hill is described as a skills park with 4X/jumps/downhill but not colour graded. Status audit 2026-05-25: current sources still describe Manley Hill as a small skills area with 4X/dirt jumps/berms; keep open but avoid over-weighting older reports of feature degradation. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Jump/skills/4X features are sufficient; dirt jumps not separately verified. Access details: Cost: Free (parking £2); Ownership: Forestry (Forestry England); Uplift: No; Status: Open (minor issues possible at Manley Hill skills area).",
     "urls": [
       "https://www.forestryengland.uk/delamere-forest",
       "https://www.google.com/maps/search/?api=1&query=Manley+Hill+Bike+Skills+Area&query_place_id=53.2412802,-2.7097391",
@@ -7295,7 +7240,7 @@ const SPOTS = [
   {
     "id": "rheola-forest-downhill-neath-valley-south-wales",
     "name": "Rheola Forest Downhill",
-    "siteName": "Neath Valley, South Wales",
+    "siteName": "Rheola Forest",
     "operatorName": "Pearce Cycles",
     "primaryType": "Event-only venue",
     "primaryBike": "DH",
@@ -7330,12 +7275,11 @@ const SPOTS = [
     "urls": [
       "https://www.pearcecycles.co.uk/races/race/index/153/uplift-day-rheola-saturday-22nd-august",
       "https://www.google.com/maps/search/?api=1&query=Rheola+Forest&query_place_id=51.7183169,-3.6342295",
-      "https://www.google.com/maps/search/?api=1&query=Rheola+Forest&query_place_id=51.7183169, -3.6342295",
       "https://www.facebook.com/PearceCyclesLudlow",
+      "https://www.google.com/maps/search/?api=1&query=Rheola+Forest&query_place_id=51.7183169, -3.6342295",
       "https://www.trailforks.com/region/rheola-forest-69805/",
       "https://www.trailforks.com/trails/rheola-dh/",
-      "https://www.britishcycling.org.uk/britishcyclingdownhillseries",
-      "https://twitter.com/PearceCycles"
+      "https://www.britishcycling.org.uk/britishcyclingdownhillseries"
     ],
     "sourceUrl": "https://www.pearcecycles.co.uk/races/race/index/153/uplift-day-rheola-saturday-22nd-august"
   },
@@ -7378,7 +7322,7 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Government",
     "status": "Partial",
-    "notes": "Major Highland trail centre **with dedicated bike park and dirt jump area** adjacent to the car park (orange-graded). **Three levels of dirt jumps** — beginner to expert. 16km of waymarked trails (green, blue, black). Designed by Paul Masson (Laggan Wolftrax designer). FLS-managed. The black trail \"Tracy's Trees\" is considered one of Scotland's trickiest blacks. Black Isle Trails Association maintains and develops the trails. Car park recently expanded due to surging popularity. Status audit 2026-05-25: Forestry and Land Scotland still presents Learnie as a rideable graded trail centre, but 2025 felling impacts and trail losses mean the entry should not imply the full historical network is intact. Dirt jumps feature update 2026-05-31: Dirt jumps added to features at user confirmation. Access warning: Partial closures or diversions reported; check official sources before travelling. Access details: Cost: Paid (parking charge — small); Ownership: Forestry (Forestry and Land Scotland); Uplift: No; Status: Open with partial trail losses/closures.",
+    "notes": "Major Highland trail centre **with dedicated bike park and dirt jump area** adjacent to the car park (orange-graded). **Three levels of dirt jumps** — beginner to expert. 16km of waymarked trails (green, blue, black). Designed by Paul Masson (Laggan Wolftrax designer). FLS-managed. The black trail \"Tracy's Trees\" is considered one of Scotland's trickiest blacks. Black Isle Trails Association maintains and develops the trails. Car park recently expanded due to surging popularity. Status audit 2026-05-25: Forestry and Land Scotland still presents Learnie as a rideable graded trail centre, but 2025 felling impacts and trail losses mean the entry should not imply the full historical network is intact. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; FLS trail centre with jump/flow/skills riding; dirt jumps not separately verified. Access warning: Partial closures or diversions reported; check official sources before travelling. Access details: Cost: Paid (parking charge — small); Ownership: Forestry (Forestry and Land Scotland); Uplift: No; Status: Open with partial trail losses/closures.",
     "urls": [
       "https://forestryandland.gov.scot/visit/learnie-red-rocks",
       "https://www.google.com/maps/search/?api=1&query=Learnie+Red+Rock+Trails&query_place_id=57.6245918,-4.1176853",
@@ -7391,7 +7335,7 @@ const SPOTS = [
     "id": "mountain-ash-dragon-downhill-rhondda-cynon-taf",
     "name": "Mountain Ash / Dragon Downhill",
     "siteName": "Dragon Downhill (Rhondda Cynon Taf)",
-    "operatorName": "",
+    "operatorName": "Dragon Downhill",
     "primaryType": "Event-only venue",
     "primaryBike": "DH",
     "location": "Bwlch-y-Clawdd / A4061, Cwm-parc, Treorchy, Rhondda Cynon Taf (event/practice access only)",
@@ -7425,8 +7369,7 @@ const SPOTS = [
     "urls": [
       "https://www.dragondownhill.co.uk",
       "https://www.google.com/maps/search/?api=1&query=Dragon%20Downhill%20Mountain%20Ash%20A4059",
-      "https://www.facebook.com/DragonDownhill",
-      "https://www.google.com/maps/search/?api=1&query=51.653768,-3.510539"
+      "https://www.facebook.com/DragonDownhill"
     ],
     "sourceUrl": "https://www.dragondownhill.co.uk"
   },
@@ -7438,7 +7381,7 @@ const SPOTS = [
     "primaryType": "Downhill / uplift venue",
     "primaryBike": "Trail",
     "location": "B993 between Monymusk and Tillyfourie, Aberdeenshire AB51 7SS",
-    "address": "Pitfichie Forest, Inverurie, Aberdeenshire, AB51 7SS",
+    "address": "Inverurie, Aberdeenshire, AB51 7SS",
     "postcode": "AB51 7SS",
     "lat": 57.2208951,
     "lng": -2.5854431,
@@ -7521,7 +7464,7 @@ const SPOTS = [
     "id": "tollymore-forest-county-down-ni",
     "name": "Tollymore Forest",
     "siteName": "County Down, NI",
-    "operatorName": "",
+    "operatorName": "Forest Service Northern Ireland",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Bryansford, near Newcastle, County Down BT33 0PR (Tollymore National Outdoor Centre)",
@@ -7563,7 +7506,7 @@ const SPOTS = [
     "id": "newnham-park-plymouth-devon",
     "name": "Newnham Park",
     "siteName": "Plymouth, Devon",
-    "operatorName": "",
+    "operatorName": "Newnham Park",
     "primaryType": "Event-only venue",
     "primaryBike": "Trail",
     "location": "Newnham Park, Plympton, Devon PL7 5BN",
@@ -7641,8 +7584,7 @@ const SPOTS = [
       "https://www.trailforks.com/region/pooley-country-park-29704/",
       "https://www.google.com/maps/search/?api=1&query=Pooley%20Country%20Park%20Polesworth%20Warwickshire",
       "https://www.facebook.com/pooleyparkbmx/",
-      "https://ibikeride.com/england/pooley-park-mountain-bike-club",
-      "https://www.google.com/maps/search/?api=1&query=52.621,-1.646"
+      "https://ibikeride.com/england/pooley-park-mountain-bike-club"
     ],
     "sourceUrl": "https://www.trailforks.com/region/pooley-country-park-29704/"
   },
@@ -7650,7 +7592,7 @@ const SPOTS = [
     "id": "sutton-bank",
     "name": "Sutton Bank",
     "siteName": "Sutton Bank National Park Centre",
-    "operatorName": "",
+    "operatorName": "North York Moors National Park Authority",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Sutton Bank National Park Centre, Sutton Bank, near Thirsk, North Yorkshire, YO7 2EH",
@@ -7688,8 +7630,7 @@ const SPOTS = [
     "urls": [
       "https://www.northyorkmoors.org.uk/things-to-do/attractions/sutton-bank-national-park-centre/sutton-bank-bikes-and-cycle-trails",
       "https://www.google.com/maps/search/?api=1&query=Sutton+Bank+National+Park+Centre",
-      "https://www.facebook.com/suttonbankbikesltd",
-      "https://www.google.com/maps/search/?api=1&query=54.240666,-1.209684"
+      "https://www.facebook.com/suttonbankbikesltd"
     ],
     "sourceUrl": "https://www.northyorkmoors.org.uk/things-to-do/attractions/sutton-bank-national-park-centre/sutton-bank-bikes-and-cycle-trails"
   },
@@ -7697,7 +7638,7 @@ const SPOTS = [
     "id": "jedforest-trails",
     "name": "Jedforest Trails",
     "siteName": "Jedforest Trails",
-    "operatorName": "",
+    "operatorName": "Jedforest Trails Association",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Jedforest / Jedburgh area, Scottish Borders",
@@ -7730,8 +7671,7 @@ const SPOTS = [
     "urls": [
       "https://www.southofscotlandcountrysidetrails.co.uk/index.php?page=jedburgh-area",
       "https://www.google.com/maps/search/?api=1&query=Jedforest+Mountain+Bike+Trails+Jedburgh",
-      "https://ibikeride.com/scotland/jedforest-mountain-bike-trails-in-jedburgh",
-      "https://www.google.com/maps/search/?api=1&query=55.479,-2.552"
+      "https://ibikeride.com/scotland/jedforest-mountain-bike-trails-in-jedburgh"
     ],
     "sourceUrl": "https://www.southofscotlandcountrysidetrails.co.uk/index.php?page=jedburgh-area"
   },
@@ -7776,8 +7716,7 @@ const SPOTS = [
     "urls": [
       "https://www.cairngormmountain.co.uk/mountain-biking/",
       "https://www.google.com/maps/search/?api=1&query=Cairngorm+Mountain+Bike+Park",
-      "https://www.facebook.com/cairngormmountainscotlandltd",
-      "https://www.google.com/maps/search/?api=1&query=57.133271,-3.670162"
+      "https://www.facebook.com/cairngormmountainscotlandltd"
     ],
     "sourceUrl": "https://www.cairngormmountain.co.uk/mountain-biking/"
   },
@@ -7823,8 +7762,7 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=Sender+Bike+Park+Rothiemurchus",
       "https://www.instagram.com/sendermtbofficial",
       "https://www.facebook.com/SenderBikePark",
-      "https://performancemountainsports.com/contact-senderbikepark-rothiemurchuse-aviemore-highlands-scotland/",
-      "https://www.google.com/maps/search/?api=1&query=57.17609,-3.816343"
+      "https://performancemountainsports.com/contact-senderbikepark-rothiemurchuse-aviemore-highlands-scotland/"
     ],
     "sourceUrl": "https://senderbikeparkaviemore.com"
   },
@@ -7832,7 +7770,7 @@ const SPOTS = [
     "id": "cyclopark",
     "name": "Cyclopark",
     "siteName": "Cyclopark",
-    "operatorName": "",
+    "operatorName": "Cyclopark",
     "primaryType": "Trail centre",
     "primaryBike": "Trail",
     "location": "Cyclopark, The Tollgate, Watling Street, Gravesend, Kent, DA11 7NP",
@@ -7871,10 +7809,7 @@ const SPOTS = [
       "https://cyclopark.com/",
       "https://www.google.com/maps/search/?api=1&query=Cyclopark+Gravesend",
       "https://www.instagram.com/cycloparkcharity",
-      "https://www.facebook.com/CycloparkKent",
-      "https://www.google.com/maps/search/?api=1&query=Cyclopark%20The%20Tollgate%20Watling%20Street%20Gravesend%20DA11%207NP",
-      "https://www.google.com/maps/search/?api=1&query=51.417254,0.361257",
-      "https://www.youtube.com/user/Cyclopark"
+      "https://www.facebook.com/CycloparkKent"
     ],
     "sourceUrl": "https://cyclopark.com/"
   },
@@ -7882,7 +7817,7 @@ const SPOTS = [
     "id": "bike-ranch-snowdonia",
     "name": "Bike Ranch Snowdonia",
     "siteName": "Cae Gwyn Farm / Bike Ranch Snowdonia",
-    "operatorName": "",
+    "operatorName": "Bike Ranch Snowdonia",
     "primaryType": "Restricted-access venue",
     "primaryBike": "Enduro",
     "location": "Cae Gwyn Farm / Bike Ranch Snowdonia, near Bronaber, between Trawsfynydd and Dolgellau, Gwynedd, LL41 4YD",
@@ -7918,16 +7853,15 @@ const SPOTS = [
       "https://bikeranchsnowdonia.com/",
       "https://www.google.com/maps/search/?api=1&query=Bike%20Ranch%20Snowdonia%20Cae%20Gwyn%20Farm%20LL41%204YD",
       "https://www.instagram.com/bikeranchsnowdonia/",
-      "https://www.facebook.com/bikeranchsnowdonia",
-      "https://www.google.com/maps/search/?api=1&query=52.845325,-3.909833"
+      "https://www.facebook.com/bikeranchsnowdonia"
     ],
     "sourceUrl": "https://bikeranchsnowdonia.com/"
   },
   {
-    "id": "rushmere-country-park",
+    "id": "rushmere-ridge-riders",
     "name": "Rushmere Ridge Riders",
     "siteName": "Rushmere Country Park",
-    "operatorName": "",
+    "operatorName": "Rushmere Ridge Riders",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
     "location": "Rushmere Country Park, Linslade Road, Heath and Reach, Leighton Buzzard, LU7 0EB",
