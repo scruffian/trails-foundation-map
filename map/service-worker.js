@@ -1,4 +1,4 @@
-const CACHE_NAME = "bike-parks-map-v2";
+const CACHE_NAME = "bike-parks-map-v3";
 const CORE_ASSETS = [
   "./",
   "index.html",
@@ -35,8 +35,14 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   event.respondWith(
-    caches
-      .match(event.request)
-      .then((cachedResponse) => cachedResponse || fetch(event.request)),
+    fetch(event.request)
+      .then((response) => {
+        if (response.ok && new URL(event.request.url).origin === location.origin) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request)),
   );
 });
