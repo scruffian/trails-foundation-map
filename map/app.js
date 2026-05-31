@@ -597,14 +597,11 @@ function registerServiceWorker() {
 function setupInstallPrompt() {
   if (!elements.installAppBtn || isStandaloneApp()) return;
 
-  if (isIosDevice()) {
-    elements.installAppBtn.hidden = false;
-  }
+  elements.installAppBtn.hidden = false;
 
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
     deferredInstallPrompt = event;
-    elements.installAppBtn.hidden = false;
   });
 
   window.addEventListener("appinstalled", () => {
@@ -624,9 +621,7 @@ async function handleInstallApp() {
     return;
   }
 
-  if (isIosDevice()) {
-    window.alert("To install this map, tap Share, then Add to Home Screen.");
-  }
+  window.alert(getInstallInstructions());
 }
 
 function isStandaloneApp() {
@@ -638,6 +633,22 @@ function isStandaloneApp() {
 
 function isIosDevice() {
   return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+}
+
+function isSafariBrowser() {
+  return /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
+}
+
+function getInstallInstructions() {
+  if (isIosDevice()) {
+    return "To install this map, tap Share, then Add to Home Screen.";
+  }
+
+  if (isSafariBrowser()) {
+    return "To install this map, choose File, then Add to Dock.";
+  }
+
+  return "To install this map, use your browser menu and choose Install app or Save and share, then Install page as app.";
 }
 
 function toggleFilterOption(filterName, value) {
