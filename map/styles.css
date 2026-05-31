@@ -243,9 +243,9 @@ input:focus {
   top: 0;
   z-index: 5;
   width: 100%;
-  max-width: 720px;
-  margin: 0 auto 12px;
-  padding: 12px 0;
+  max-width: none;
+  margin: 0 0 12px;
+  padding: 0 0 12px;
   background: var(--panel);
   box-shadow: 0 8px 8px -6px rgba(0, 0, 0, 0.12);
 }
@@ -644,9 +644,8 @@ body.view-list::before {
 
   .list-toolbar {
     width: auto;
-    max-width: none;
     margin: 0 -12px;
-    padding: 12px;
+    padding: 0 12px 12px;
   }
 }
 
