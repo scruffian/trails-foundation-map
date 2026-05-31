@@ -806,7 +806,7 @@ function renderSpotCardLocation(spot, distanceLabel) {
   const copyValue = formatAddress(spot.address) || addressLabel;
   const addressContent = addressLabel
     ? `<span class="spot-card-address-inline">
-      <span>${addressLabel}${renderAddressCopyButton(spot, copyValue)}</span>
+      <span>${addressLabel}${renderAddressCopyButton(spot, copyValue)}${distanceLabel ? ` <span aria-hidden="true">·</span> <span class="spot-card-distance">${distanceLabel}</span>` : ""}</span>
     </span>`
     : "";
   const distanceContent = distanceLabel
@@ -816,8 +816,7 @@ function renderSpotCardLocation(spot, distanceLabel) {
   return `
     <span class="spot-card-region spot-card-location">
       ${addressContent}
-      ${addressLabel && distanceLabel ? `<span aria-hidden="true">·</span>` : ""}
-      ${distanceContent}
+      ${addressLabel ? "" : distanceContent}
     </span>
   `;
 }
