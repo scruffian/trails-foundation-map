@@ -1183,10 +1183,6 @@ function renderPopupContent(spot) {
       ${renderLinkIcons(spot)}
       <dl class="popup-facts">
         <div>
-          <dt>Type</dt>
-          <dd>${spot.primaryType || "—"}</dd>
-        </div>
-        <div>
           <dt>Features</dt>
           <dd>${featureTags ? `<div class="meta-line">${featureTags}</div>` : "—"}</dd>
         </div>
@@ -1218,23 +1214,27 @@ function renderPopupContent(spot) {
       <details class="popup-more">
         <summary class="icon-button disclosure-icon-button" aria-label="Toggle details" title="Toggle details">${disclosureArrowSvgs}</summary>
         <dl class="popup-facts">
-        <div>
-          <dt>Bikes</dt>
-          <dd>${spot.bikeTypes
-            .map(
-              (type) =>
-                `<span title="${bikeTypeLabels[type]?.title ?? type}">${bikeTypeLabels[type]?.code ?? type}</span>`,
-            )
-            .join(", ")}</dd>
-        </div>
-        <div>
-          <dt>Seasons</dt>
-          <dd>${spot.seasonality.join(", ")}</dd>
-        </div>
-        <div>
-          <dt>Ownership</dt>
-          <dd>${spot.ownership}</dd>
-        </div>
+          <div>
+            <dt>Type</dt>
+            <dd>${spot.primaryType || "—"}</dd>
+          </div>
+          <div>
+            <dt>Bikes</dt>
+            <dd>${spot.bikeTypes
+              .map(
+                (type) =>
+                  `<span title="${bikeTypeLabels[type]?.title ?? type}">${bikeTypeLabels[type]?.code ?? type}</span>`,
+              )
+              .join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Seasons</dt>
+            <dd>${spot.seasonality.join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Ownership</dt>
+            <dd>${spot.ownership}</dd>
+          </div>
         </dl>
         ${linkSection}
         ${spot.notes ? `<section class="popup-section popup-section--inline popup-notes"><h4>Notes</h4><p class="popup-notes-text">${spot.notes}</p></section>` : ""}
