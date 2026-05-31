@@ -387,6 +387,26 @@ function populateOptionGroup(group, filterName, options) {
       button.setAttribute("aria-label", bikeTypeLabels[value].title);
     }
 
+    if (filterName === "bikeType" && bikeIcons[value]) {
+      const icon = document.createElement("img");
+      icon.className = "option-chip-icon option-chip-icon--bike";
+      icon.src = bikeIcons[value];
+      icon.alt = "";
+      icon.setAttribute("aria-hidden", "true");
+      button.classList.add("option-chip--with-icon", "option-chip--bike-type");
+      button.append(icon);
+    }
+
+    if (filterName === "uplift" && value === "Yes") {
+      const icon = document.createElement("img");
+      icon.className = "option-chip-icon option-chip-icon--uplift";
+      icon.src = upliftIcon;
+      icon.alt = "";
+      icon.setAttribute("aria-hidden", "true");
+      button.classList.add("option-chip--with-icon");
+      button.append(icon);
+    }
+
     button.append(document.createTextNode(labelText));
     group.append(button);
   });
@@ -1274,10 +1294,6 @@ function renderPopupContent(spot) {
         <summary class="icon-button disclosure-icon-button" aria-label="Toggle details" title="Toggle details">${disclosureArrowSvgs}</summary>
         <dl class="popup-facts">
           <div>
-            <dt>Type</dt>
-            <dd>${spot.primaryType || "—"}</dd>
-          </div>
-          <div>
             <dt>Bikes</dt>
             <dd>${spot.bikeTypes
               .map(
@@ -1285,6 +1301,10 @@ function renderPopupContent(spot) {
                   `<span title="${bikeTypeLabels[type]?.title ?? type}">${bikeTypeLabels[type]?.code ?? type}</span>`,
               )
               .join(", ")}</dd>
+          </div>
+          <div>
+            <dt>Type</dt>
+            <dd>${spot.primaryType || "—"}</dd>
           </div>
           <div>
             <dt>Seasons</dt>
