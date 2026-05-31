@@ -1,5 +1,9 @@
 const spots = SPOTS;
 
+const typeOptions = [
+  ...new Set(spots.map((spot) => spot.primaryType).filter(Boolean)),
+].sort((a, b) => a.localeCompare(b));
+
 const featureOptions = [
   "Dirt jumps",
   "Jump trail",
@@ -68,12 +72,12 @@ const constructionIcon = "icons/construction.svg";
 const upliftIcon = "icons/uplift.svg";
 
 const linkIconSvgs = {
-  website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
-  maps: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
-  directions: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 22l8-4 8 4-8-20z"/><path d="M12 2v16"/></svg>`,
-  instagram: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>`,
-  facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
-  komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
+  website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
+  maps: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  directions: `<svg viewBox="0 -960 960 960" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M320-360h80v-120h140v100l140-140-140-140v100H360q-17 0-28.5 11.5T320-520v160ZM480-80q-15 0-29.5-6T424-104L104-424q-12-12-18-26.5T80-480q0-15 6-29.5t18-26.5l320-320q12-12 26.5-18t29.5-6q15 0 29.5 6t26.5 18l320 320q12 12 18 26.5t6 29.5q0 15-6 29.5T856-424L536-104q-12 12-26.5 18T480-80ZM320-320l160 160 320-320-320-320-320 320 160 160Zm160-160Z"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>`,
+  facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
+  komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
 };
 const disclosureArrowSvgs = `<span class="disclosure-label disclosure-label--closed">MORE</span><span class="disclosure-label disclosure-label--open">LESS</span><svg class="disclosure-arrow disclosure-arrow--closed" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg><svg class="disclosure-arrow disclosure-arrow--open" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>`;
 const copyIconSvg = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.5"/><path d="M5 15V6.5A1.5 1.5 0 0 1 6.5 5H15"/></svg>`;
@@ -85,6 +89,15 @@ const linkLabels = {
   instagram: "Instagram",
   facebook: "Facebook",
   komoot: "Komoot",
+};
+
+const linkTypeOrder = {
+  website: 0,
+  maps: 1,
+  directions: 2,
+  instagram: 3,
+  facebook: 4,
+  komoot: 5,
 };
 
 function classifyUrl(url) {
@@ -110,15 +123,17 @@ function getSpotLinks(spot) {
 
   const directionsUrl = getDirectionsUrl(spot);
   if (directionsUrl && !seen.has(directionsUrl)) {
-    const firstMapIndex = links.findIndex((link) => link.type === "maps");
-    const insertIndex = firstMapIndex === -1 ? Math.min(1, links.length) : firstMapIndex + 1;
-    links.splice(insertIndex, 0, {
+    links.push({
       url: directionsUrl,
       type: "directions",
     });
   }
 
-  return links;
+  return links.sort(
+    (a, b) =>
+      (linkTypeOrder[a.type] ?? Number.MAX_SAFE_INTEGER) -
+      (linkTypeOrder[b.type] ?? Number.MAX_SAFE_INTEGER),
+  );
 }
 
 function getDirectionsUrl(spot) {
@@ -141,6 +156,7 @@ function renderLinkIcons(spot) {
 const state = {
   query: "",
   filters: {
+    type: new Set(),
     feature: new Set(),
     trailGrade: new Set(),
     bikeType: new Set(),
@@ -156,6 +172,7 @@ const state = {
 };
 
 const FILTER_KEYS = [
+  "type",
   "feature",
   "trailGrade",
   "bikeType",
@@ -209,6 +226,7 @@ const elements = {
   spotCounts: [...document.querySelectorAll("[data-spot-count]")],
   searchInput: document.querySelector("#searchInput"),
   sortSelect: document.querySelector("#sortSelect"),
+  typeFilter: document.querySelector("#typeFilter"),
   featureFilter: document.querySelector("#featureFilter"),
   trailGradeFilter: document.querySelector("#trailGradeFilter"),
   bikeTypeFilter: document.querySelector("#bikeTypeFilter"),
@@ -298,13 +316,14 @@ function syncFiltersUi() {
     chip.setAttribute("aria-pressed", String(active));
   });
   if (elements.advancedFilters) {
-    elements.advancedFilters.open = ["bikeType", "seasonality", "ownership"].some(
+    elements.advancedFilters.open = ["type", "bikeType", "seasonality", "ownership"].some(
       (filterName) => state.filters[filterName].size > 0,
     );
   }
 }
 
 function populateFilters() {
+  populateOptionGroup(elements.typeFilter, "type", typeOptions);
   populateOptionGroup(elements.featureFilter, "feature", featureOptions);
   populateOptionGroup(elements.trailGradeFilter, "trailGrade", trailGradeOptions);
   populateOptionGroup(elements.bikeTypeFilter, "bikeType", bikeTypeOptions);
@@ -875,6 +894,7 @@ function getFilteredSpots() {
       spot.siteName,
       spot.operatorName,
       spot.address,
+      spot.primaryType,
       spot.primaryBike,
       ...spot.features,
       ...spot.trailGrades,
@@ -890,6 +910,7 @@ function getFilteredSpots() {
       .join(" ")
       .toLowerCase();
     const matchesQuery = !state.query || searchable.includes(state.query);
+    const matchesType = matchesSingle(state.filters.type, spot.primaryType);
     const matchesFeature = matchesAny(state.filters.feature, spot.features);
     const matchesTrailGrade = matchesAny(
       state.filters.trailGrade,
@@ -909,6 +930,7 @@ function getFilteredSpots() {
     const matchesStatus = matchesSingle(state.filters.status, spot.status);
     return (
       matchesQuery &&
+      matchesType &&
       matchesFeature &&
       matchesTrailGrade &&
       matchesBikeType &&
@@ -1006,9 +1028,9 @@ function renderSpotCardInner(spot, { open = false } = {}) {
             <h3 class="spot-card-title">${spot.name}</h3>
             ${renderSpotCardLocation(spot, distanceLabel)}
           </div>
-          ${renderLinkIcons(spot)}
         </div>
         ${bikeBadge}
+        ${renderLinkIcons(spot)}
       </summary>
       <div class="spot-card-body">
         ${renderPopupContent(spot)}
