@@ -17,7 +17,6 @@ const featureOptions = [
   "Pump track",
   "BMX track",
   "Skills area",
-  "Cyclo-cross course",
 ];
 
 const trailGradeOptions = [
@@ -56,6 +55,11 @@ const gradeColors = {
   Orange: "#f08a24",
   Unmarked: "#6c7378",
 };
+
+function getTrailGrades(grades) {
+  const listedGrades = Array.isArray(grades) ? grades.filter(Boolean) : [];
+  return listedGrades.length > 0 ? listedGrades : ["Unmarked"];
+}
 
 const bikeIcons = {
   DH: "icons/dh.svg",
@@ -372,11 +376,7 @@ function populateOptionGroup(group, filterName, options) {
     }
 
     let labelText = value;
-    if (filterName === "feature" && value === "Cyclo-cross course") {
-      labelText = "CX";
-      button.title = value;
-      button.setAttribute("aria-label", value);
-    } else if (filterName === "bikeType" && bikeTypeLabels[value]) {
+    if (filterName === "bikeType" && bikeTypeLabels[value]) {
       labelText = bikeTypeLabels[value].code;
       button.title = bikeTypeLabels[value].title;
       button.setAttribute("aria-label", bikeTypeLabels[value].title);
@@ -779,6 +779,10 @@ function getAddressLabel(spot) {
   return getAddressParts(spot).join(", ");
 }
 
+function getAddressCopyLabel(spot) {
+  return getAddressLabel(spot) || formatAddress(spot.address);
+}
+
 function renderAddressLines(spot) {
   const addressParts = getAddressParts(spot);
   return addressParts
@@ -802,10 +806,9 @@ function renderAddressBlock(spot) {
 function renderSpotCardLocation(spot, distanceLabel) {
   const addressLabel = getAddressLabel(spot);
   if (!addressLabel && !distanceLabel) return "";
-  const copyValue = formatAddress(spot.address) || addressLabel;
   const addressContent = addressLabel
     ? `<span class="spot-card-address-inline">
-      <span>${addressLabel}${renderAddressCopyButton(spot, copyValue)}${distanceLabel ? ` <span aria-hidden="true">·</span> <span class="spot-card-distance">${distanceLabel}</span>` : ""}</span>
+      <span>${addressLabel}${renderAddressCopyButton(spot, addressLabel)}${distanceLabel ? ` <span aria-hidden="true">·</span> <span class="spot-card-distance">${distanceLabel}</span>` : ""}</span>
     </span>`
     : "";
   const distanceContent = distanceLabel
@@ -821,7 +824,7 @@ function renderSpotCardLocation(spot, distanceLabel) {
 }
 
 function renderAddressCopyButton(spot, address = null) {
-  const copyValue = (address ?? formatAddress(spot.address)) || getAddressLabel(spot);
+  const copyValue = address ?? getAddressCopyLabel(spot);
   return `<button
     class="address-copy-button"
     type="button"
@@ -919,7 +922,7 @@ function getFilteredSpots() {
       spot.primaryType,
       spot.primaryBike,
       ...spot.features,
-      ...spot.trailGrades,
+      ...getTrailGrades(spot.trailGrades),
       ...spot.bikeTypes,
       ...spot.seasonality,
       spot.uplift,
@@ -936,7 +939,7 @@ function getFilteredSpots() {
     const matchesFeature = matchesAny(state.filters.feature, spot.features);
     const matchesTrailGrade = matchesAny(
       state.filters.trailGrade,
-      spot.trailGrades,
+      getTrailGrades(spot.trailGrades),
     );
     const matchesBikeType = matchesAny(state.filters.bikeType, spot.bikeTypes);
     const matchesSeasonality = matchesAny(
@@ -1034,7 +1037,7 @@ function renderSpotCardInner(spot, { open = false } = {}) {
   const bikeBadge = badgeIconSrc
     ? `<span
           class="spot-card-bike"
-          style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
+          style="--grade-ring: ${getGradeGradient(getTrailGrades(spot.trailGrades))}"
           aria-label="${badgeLabel}"
           title="${badgeLabel}"
         ><span class="spot-card-bike-inner"><img class="${badgeIconClass}" src="${badgeIconSrc}" alt=""></span></span>`
@@ -1098,7 +1101,7 @@ function renderMarkerIcon(spot) {
   return `
     <div
       class="jump-marker${spot.id === state.selectedId ? " is-selected" : ""}"
-      style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
+      style="--grade-ring: ${getGradeGradient(getTrailGrades(spot.trailGrades))}"
       aria-hidden="true"
     >
       <div class="marker-feature-label">
@@ -1111,7 +1114,7 @@ function renderMarkerIcon(spot) {
 
 function getGradeGradient(grades) {
   const colors = grades.map((grade) => gradeColors[grade]).filter(Boolean);
-  if (colors.length === 0) return gradeColors.Green;
+  if (colors.length === 0) return gradeColors.Unmarked;
   if (colors.length === 1) return colors[0];
 
   const segmentSize = 100 / colors.length;
@@ -1148,7 +1151,7 @@ function renderPopupContent(spot) {
   const featureTags = spot.features
     .map((feature) => `<span class="tag">${feature}</span>`)
     .join("");
-  const gradeTags = spot.trailGrades
+  const gradeTags = getTrailGrades(spot.trailGrades)
     .map(
       (grade) =>
         `<span class="tag" style="background:${gradeColors[grade] ?? "var(--tag-bg)"};color:#fff">${grade}</span>`,

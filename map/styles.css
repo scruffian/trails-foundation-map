@@ -770,9 +770,10 @@ body.view-list::before {
 .address-copy-button {
   display: inline-grid;
   place-items: center;
+  position: relative;
   flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
+  width: 18px;
+  height: 1em;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -780,12 +781,18 @@ body.view-list::before {
   cursor: pointer;
   margin-left: 4px;
   padding: 0;
-  vertical-align: middle;
+  vertical-align: -0.12em;
+}
+
+.address-copy-button::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
 }
 
 .address-copy-button svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .address-copy-button:hover {
