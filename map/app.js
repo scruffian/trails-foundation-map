@@ -65,6 +65,7 @@ const bikeIcons = {
   BMX: "icons/bmx.svg",
 };
 const constructionIcon = "icons/construction.svg";
+const upliftIcon = "icons/uplift.svg";
 
 const linkIconSvgs = {
   website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
@@ -881,13 +882,21 @@ function renderList(filtered) {
 
 function renderSpotCardInner(spot, { open = false } = {}) {
   const bikeIconSrc = bikeIcons[spot.primaryBike];
-  const bikeBadge = bikeIconSrc
+  const isUnderConstruction = spot.status === "Under construction";
+  const badgeIconSrc = isUnderConstruction ? constructionIcon : bikeIconSrc;
+  const badgeLabel = isUnderConstruction
+    ? "Under construction"
+    : bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike;
+  const badgeIconClass = isUnderConstruction
+    ? "spot-card-construction-icon"
+    : "spot-card-bike-icon";
+  const bikeBadge = badgeIconSrc
     ? `<span
           class="spot-card-bike"
           style="--grade-ring: ${getGradeGradient(spot.trailGrades)}"
-          aria-label="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
-          title="${bikeTypeLabels[spot.primaryBike]?.title ?? spot.primaryBike}"
-        ><span class="spot-card-bike-inner"><img class="spot-card-bike-icon" src="${bikeIconSrc}" alt=""></span></span>`
+          aria-label="${badgeLabel}"
+          title="${badgeLabel}"
+        ><span class="spot-card-bike-inner"><img class="${badgeIconClass}" src="${badgeIconSrc}" alt=""></span></span>`
     : "";
   const distanceLabel = state.userLocation
     ? `${distanceKm(state.userLocation, spot).toFixed(0)} km`
@@ -937,6 +946,10 @@ function renderMarkerIcon(spot) {
   const iconSrc = bikeIcons[spot.primaryBike];
   const iconKey = iconSrc ? iconSrc.replace(/^icons\/|\.svg$/g, "") : "";
   const isUnderConstruction = spot.status === "Under construction";
+  const upliftOverlay =
+    spot.uplift === "Yes"
+      ? `<img class="marker-uplift-icon" src="${upliftIcon}" alt="">`
+      : "";
   const inner = isUnderConstruction
     ? `<img class="marker-construction-icon" src="${constructionIcon}" alt="">`
     : iconSrc
@@ -950,6 +963,7 @@ function renderMarkerIcon(spot) {
     >
       <div class="marker-feature-label">
         ${inner}
+        ${upliftOverlay}
       </div>
     </div>
   `;
