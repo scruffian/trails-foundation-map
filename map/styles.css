@@ -609,7 +609,7 @@ input:focus {
   min-height: 100dvh;
   overflow-y: auto;
   background: var(--panel);
-  padding: 70px 12px 96px;
+  padding: 0;
 }
 
 body.view-list .list-view {
@@ -638,10 +638,6 @@ body.view-list::before {
 /* On mobile, stretch the sticky search/sort toolbar beneath the header bar
    so it keeps even spacing around the controls. */
 @media (max-width: 899px) {
-  .list-view {
-    padding-top: 68px;
-  }
-
   .list-toolbar {
     width: 100%;
     margin: 0 0 12px;
@@ -654,8 +650,9 @@ body.view-list::before {
   gap: 0;
   width: 100%;
   max-width: 720px;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 12px 96px;
   list-style: none;
 }
 
