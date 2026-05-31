@@ -247,7 +247,7 @@ input:focus {
 .list-search {
   flex: 1 1 auto;
   min-width: 0;
-  min-height: 38px;
+  min-height: 44px;
 }
 
 .sort-select {
@@ -742,6 +742,52 @@ body.view-list::before {
   display: grid;
   gap: 1px;
   line-height: 1.3;
+}
+
+.spot-card-location,
+.spot-card-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.spot-card-location {
+  flex-wrap: wrap;
+}
+
+.spot-card-address-inline {
+  display: inline;
+}
+
+.address-copy-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  margin-left: 4px;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.address-copy-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.address-copy-button:hover {
+  color: var(--ink);
+}
+
+.address-copy-button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
 }
 
 .spot-card-links {
@@ -1320,6 +1366,7 @@ body.view-list .active-filters {
   display: grid;
   grid-template-columns: 66px 1fr;
   gap: 20px;
+  align-items: baseline;
 }
 
 .popup-facts dt,
