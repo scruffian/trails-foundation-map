@@ -3,6 +3,7 @@ const spots = SPOTS;
 const featureOptions = [
   "Dirt jumps",
   "Jump trail",
+  "Pro line",
   "Slopestyle",
   "Flow trail",
   "Downhill",
@@ -22,8 +23,6 @@ const trailGradeOptions = [
   "Black",
   "Double Black",
   "Orange",
-  "Grey",
-  "Pro line",
   "Unmarked",
 ];
 
@@ -51,9 +50,7 @@ const gradeColors = {
   Black: "#202124",
   "Double Black": "#000000",
   Orange: "#f08a24",
-  Grey: "#6c7378",
-  "Pro line": "#7b2cbf",
-  Unmarked: "#7a5c2e",
+  Unmarked: "#6c7378",
 };
 
 const bikeIcons = {
