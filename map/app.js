@@ -5,30 +5,20 @@ const typeOptions = [
 ].sort((a, b) => a.localeCompare(b));
 
 const featureOptions = [
-  "Dirt jumps",
-  "Jump trail",
-  "Pro line",
-  "Slopestyle",
-  "Air bag / resi",
   "Flow trail",
+  "Jump trail",
   "Downhill",
   "Freeride",
-  "Enduro",
-  "Technical singletrack",
-  "Natural trails",
   "XC",
-  "Family trail",
-  "Gravel/estate routes",
-  "Dual slalom",
-  "Dual / 4X",
-  "4X",
+  "Dirt jumps",
   "Pump track",
-  "BMX track",
   "Skills area",
-  "Trials",
-  "Uplift",
-  "Coaching / guided riding",
-  "Bike hire / trailhead services",
+  "Dual / 4X",
+  "BMX track",
+  "Slopestyle",
+  "Family trail",
+  "Air bag / resi",
+  "Pro line",
 ];
 
 const trailGradeOptions = [
