@@ -45,6 +45,7 @@ const upliftOptions = ["Yes", "No"];
 const costOptions = ["Free", "Paid", "Membership"];
 const ownershipOptions = ["Community", "Commercial", "Government"];
 const statusOptions = ["Open", "Partial", "Under construction"];
+const DEFAULT_SORT_MODE = "distance";
 
 const gradeColors = {
   Green: "#2f8f57",
@@ -191,7 +192,7 @@ const state = {
     ownership: new Set(),
     status: new Set(),
   },
-  sortMode: "az",
+  sortMode: DEFAULT_SORT_MODE,
   selectedId: null,
   userLocation: null,
 };
@@ -310,7 +311,7 @@ function readStateFromUrl() {
   const q = params.get("q");
   if (q) state.query = q.toLowerCase();
   const sort = params.get("sort");
-  if (sort === "distance") state.sortMode = "distance";
+  if (sort === "az" || sort === "distance") state.sortMode = sort;
   FILTER_KEYS.forEach((key) => {
     const raw = params.get(key);
     if (!raw) return;
@@ -325,7 +326,7 @@ function readStateFromUrl() {
 function writeStateToUrl() {
   const params = new URLSearchParams();
   if (state.query) params.set("q", state.query);
-  if (state.sortMode === "distance") params.set("sort", state.sortMode);
+  if (state.sortMode !== DEFAULT_SORT_MODE) params.set("sort", state.sortMode);
   FILTER_KEYS.forEach((key) => {
     const values = [...state.filters[key]];
     if (values.length > 0) params.set(key, values.join(","));
@@ -682,7 +683,6 @@ function requestUserLocation() {
     setLocateStatus("Location not supported");
     return;
   }
-  useDistanceSort();
   setLocateStatus("Locating…", true);
   attemptLocationFix(2);
 }
