@@ -229,6 +229,7 @@ let bottomSheetTouchStartY = null;
 const filterPanelCloseSwipeDistance = 50;
 let filterPanelTouchStartX = null;
 let filterPanelTouchStartY = null;
+let listScrollAnimationFrame = null;
 
 function checkNotesOverflow(root) {
   const text = root?.querySelector(".popup-notes-text");
@@ -247,6 +248,7 @@ const elements = {
   spotCounts: [...document.querySelectorAll("[data-spot-count]")],
   searchInput: document.querySelector("#searchInput"),
   sortSelect: document.querySelector("#sortSelect"),
+  listToolbar: document.querySelector(".list-toolbar"),
   typeFilter: document.querySelector("#typeFilter"),
   featureFilter: document.querySelector("#featureFilter"),
   trailGradeFilter: document.querySelector("#trailGradeFilter"),
@@ -1277,7 +1279,11 @@ function syncSelectedSpotUi({ revealListItem = false } = {}) {
       ?.classList.toggle("is-selected", id === state.selectedId);
   });
 
-  if (!revealListItem || !state.selectedId) return;
+  if (!state.selectedId) {
+    resetListEndSpacer();
+    return;
+  }
+  if (!revealListItem) return;
   const item = elements.spotList.querySelector(`[data-spot-id="${state.selectedId}"]`);
   if (item) scrollListItemIntoView(item);
 }
@@ -1323,36 +1329,83 @@ function focusSpot(spot) {
 
 function scrollListItemIntoView(item) {
   const scroller = elements.listView;
+  updateListEndSpacer(item);
   const scrollerRect = scroller.getBoundingClientRect();
   const itemRect = item.getBoundingClientRect();
-  const padding = 14;
-  let targetTop = scroller.scrollTop;
+  const topOffset = getListScrollTopOffset(scroller, scrollerRect);
+  const targetTop = clampListScrollTop(
+    scroller.scrollTop + itemRect.top - scrollerRect.top - topOffset,
+    scroller,
+  );
+  animateListScroll(targetTop);
+}
 
-  if (itemRect.top < scrollerRect.top + padding) {
-    targetTop += itemRect.top - scrollerRect.top - padding;
-  } else if (itemRect.bottom > scrollerRect.bottom - padding) {
-    targetTop += itemRect.bottom - scrollerRect.bottom + padding;
-  } else {
-    return;
+function updateListEndSpacer(item) {
+  const scroller = elements.listView;
+  resetListEndSpacer();
+
+  const scrollerRect = scroller.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+  const topOffset = getListScrollTopOffset(scroller, scrollerRect);
+  const itemTop = scroller.scrollTop + itemRect.top - scrollerRect.top;
+  const itemBottom = itemTop + itemRect.height;
+  const currentSpaceAfter = scroller.scrollHeight - itemBottom;
+  const requiredSpaceAfter = scroller.clientHeight - topOffset - itemRect.height;
+  const spacerHeight = Math.max(0, Math.ceil(requiredSpaceAfter - currentSpaceAfter));
+
+  elements.spotList.style.setProperty("--spot-list-end-spacer", `${spacerHeight}px`);
+}
+
+function resetListEndSpacer() {
+  elements.spotList.style.setProperty("--spot-list-end-spacer", "0px");
+}
+
+function getListScrollTopOffset(scroller, scrollerRect = scroller.getBoundingClientRect()) {
+  const scrollerStyle = window.getComputedStyle(scroller);
+  const paddingTop = Number.parseFloat(scrollerStyle.paddingTop) || 0;
+
+  if (!desktopQuery.matches && elements.listToolbar) {
+    const toolbarRect = elements.listToolbar.getBoundingClientRect();
+    if (toolbarRect.bottom > scrollerRect.top) {
+      return Math.max(paddingTop, toolbarRect.bottom - scrollerRect.top);
+    }
   }
 
-  animateListScroll(targetTop);
+  return paddingTop;
+}
+
+function clampListScrollTop(targetTop, scroller) {
+  const maxTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+  return Math.min(Math.max(0, targetTop), maxTop);
 }
 
 function animateListScroll(targetTop) {
   const scroller = elements.listView;
+  if (listScrollAnimationFrame) {
+    cancelAnimationFrame(listScrollAnimationFrame);
+    listScrollAnimationFrame = null;
+  }
+
   const startTop = scroller.scrollTop;
   const delta = targetTop - startTop;
+  if (Math.abs(delta) < 1) {
+    scroller.scrollTop = targetTop;
+    return;
+  }
   const startTime = performance.now();
 
   function tick(now) {
     const progress = Math.min((now - startTime) / selectedSpotScrollDuration, 1);
     const eased = 1 - (1 - progress) ** 3;
     scroller.scrollTop = startTop + delta * eased;
-    if (progress < 1) requestAnimationFrame(tick);
+    if (progress < 1) {
+      listScrollAnimationFrame = requestAnimationFrame(tick);
+    } else {
+      listScrollAnimationFrame = null;
+    }
   }
 
-  requestAnimationFrame(tick);
+  listScrollAnimationFrame = requestAnimationFrame(tick);
 }
 
 function showBottomSheet(spot) {
