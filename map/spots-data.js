@@ -1,4 +1,4 @@
-// Generated from .context/attachments/tgFKJL/uk-bike-parks-pro-line-grade-cleanup-2026-05-31.zip.
+// Generated from .context/attachments/hHsqWl/uk-bike-parks-dirt-jumps-feature-update-2026-05-31.zip.
 // Do not edit by hand; regenerate after updating the audit data.
 
 const SPOTS = [
@@ -94,7 +94,7 @@ const SPOTS = [
   },
   {
     "id": "tidworth-b1kepark-tidworth-freeride",
-    "name": "Tidworth B1KEPARK (Tidworth Freeride)",
+    "name": "Tidworth B1KEPARK",
     "siteName": "Tidworth B1KEPARK (Tidworth Freeride)",
     "operatorName": "B1KE",
     "primaryType": "Downhill / uplift venue",
@@ -335,7 +335,7 @@ const SPOTS = [
   },
   {
     "id": "surrey-hills-holmbury-pitch-hill-leith-hill-winterfold",
-    "name": "Surrey Hills (Holmbury, Pitch Hill, Leith Hill, Winterfold)",
+    "name": "Surrey Hills",
     "siteName": "Holmbury, Pitch Hill, Leith Hill, Winterfold",
     "operatorName": "B1KE",
     "primaryType": "Downhill / uplift venue",
@@ -470,7 +470,7 @@ const SPOTS = [
   },
   {
     "id": "friston-forest-jeremy-cole-mtb-trail",
-    "name": "Friston Forest (Jeremy Cole MTB Trail)",
+    "name": "Friston Forest",
     "siteName": "Friston Forest (Jeremy Cole MTB Trail)",
     "operatorName": "Forestry England",
     "primaryType": "Trail centre",
@@ -973,7 +973,7 @@ const SPOTS = [
   },
   {
     "id": "forest-of-dean-cycle-centre-cannop",
-    "name": "Forest of Dean Cycle Centre (Cannop)",
+    "name": "Forest of Dean Cycle Centre",
     "siteName": "Forest of Dean Cycle Centre (Cannop)",
     "operatorName": "Pedalabikeaway",
     "primaryType": "Downhill / uplift venue",
@@ -1026,7 +1026,7 @@ const SPOTS = [
   },
   {
     "id": "ashton-court-nova-trail",
-    "name": "Ashton Court (Nova trail)",
+    "name": "Ashton Court",
     "siteName": "Bristol",
     "operatorName": "Ride Bristol",
     "primaryType": "Trail centre",
@@ -3022,7 +3022,7 @@ const SPOTS = [
   },
   {
     "id": "thetford-forest-high-lodge",
-    "name": "Thetford Forest (High Lodge)",
+    "name": "Thetford Forest",
     "siteName": "Thetford Forest (High Lodge)",
     "operatorName": "Forestry England",
     "primaryType": "Pump track / skills park",
@@ -3071,7 +3071,7 @@ const SPOTS = [
   },
   {
     "id": "tunstall-forest-viking-trail",
-    "name": "Tunstall Forest (Viking Trail)",
+    "name": "Tunstall Forest",
     "siteName": "Tunstall Forest (Viking Trail)",
     "operatorName": "Forestry England",
     "primaryType": "Trail centre",
@@ -3398,7 +3398,7 @@ const SPOTS = [
   },
   {
     "id": "black-mountains-cycle-centre-dirt-farm",
-    "name": "Black Mountains Cycle Centre (Dirt Farm)",
+    "name": "Black Mountains Cycle Centre",
     "siteName": "Abergavenny",
     "operatorName": "Black Mountains Cycle Centre (Dirt Farm)",
     "primaryType": "Downhill / uplift venue",
@@ -3544,7 +3544,7 @@ const SPOTS = [
   },
   {
     "id": "cwmcarn-y-mynydd-dh",
-    "name": "Cwmcarn (Y Mynydd DH)",
+    "name": "Cwmcarn",
     "siteName": "Newport area",
     "operatorName": "Natural Resources Wales",
     "primaryType": "Downhill / uplift venue",
@@ -4543,7 +4543,7 @@ const SPOTS = [
   },
   {
     "id": "rostrevor-kilbroney",
-    "name": "Rostrevor (Kilbroney)",
+    "name": "Rostrevor",
     "siteName": "County Down",
     "operatorName": "Rostrevor (Kilbroney)",
     "primaryType": "Downhill / uplift venue",
@@ -4675,7 +4675,7 @@ const SPOTS = [
   },
   {
     "id": "cannock-chase-follow-the-dog-monkey-trail",
-    "name": "Cannock Chase (Follow the Dog / Monkey Trail)",
+    "name": "Cannock Chase",
     "siteName": "Cannock",
     "operatorName": "Cannock Chase (Follow the Dog / Monkey Trail)",
     "primaryType": "Downhill / uplift venue",
@@ -4776,7 +4776,7 @@ const SPOTS = [
   },
   {
     "id": "dalbeattie-forest-7stanes",
-    "name": "Dalbeattie Forest (7stanes)",
+    "name": "Dalbeattie Forest",
     "siteName": "Dalbeattie Forest (7stanes)",
     "operatorName": "7stanes",
     "primaryType": "Downhill / uplift venue",
@@ -4822,7 +4822,7 @@ const SPOTS = [
   },
   {
     "id": "glentrool-7stanes",
-    "name": "Glentrool (7stanes)",
+    "name": "Glentrool",
     "siteName": "Galloway Forest Park",
     "operatorName": "7stanes",
     "primaryType": "Trail centre",
@@ -5001,7 +5001,7 @@ const SPOTS = [
   },
   {
     "id": "bulltrack-bike-park-the-bull-track",
-    "name": "Bulltrack Bike Park (The Bull Track)",
+    "name": "Bulltrack Bike Park",
     "siteName": "Bulltrack Bike Park (The Bull Track)",
     "operatorName": "Bulltrack Bike Park (The Bull Track)",
     "primaryType": "Downhill / uplift venue",
@@ -5184,7 +5184,7 @@ const SPOTS = [
   },
   {
     "id": "brechfa-forest-gorlech-raven-derwen",
-    "name": "Brechfa Forest (Gorlech, Raven, Derwen)",
+    "name": "Brechfa Forest",
     "siteName": "Derwen)",
     "operatorName": "Natural Resources Wales",
     "primaryType": "Downhill / uplift venue",
@@ -5513,7 +5513,7 @@ const SPOTS = [
   },
   {
     "id": "paignton-velopark-torbay-velopark",
-    "name": "Paignton Velopark (Torbay Velopark)",
+    "name": "Paignton Velopark",
     "siteName": "Torbay Velopark",
     "operatorName": "",
     "primaryType": "Pump track / skills park",
@@ -5556,7 +5556,7 @@ const SPOTS = [
   },
   {
     "id": "dartmoor-bike-park-river-dart-country-park",
-    "name": "Dartmoor Bike Park (River Dart Country Park)",
+    "name": "Dartmoor Bike Park",
     "siteName": "River Dart Country Park",
     "operatorName": "Dartmoor Bike Park (River Dart Country Park)",
     "primaryType": "Dirt jump park",
@@ -5661,7 +5661,7 @@ const SPOTS = [
   },
   {
     "id": "whippy-trails-whippendell-woods",
-    "name": "Whippy Trails (Whippendell Woods)",
+    "name": "Whippy Trails",
     "siteName": "Whippendell Woods",
     "operatorName": "Bike Park Chilterns",
     "primaryType": "Trail centre",
@@ -5897,7 +5897,7 @@ const SPOTS = [
   },
   {
     "id": "hilltop-bike-park-sandwell-valley",
-    "name": "Hilltop Bike Park (Sandwell Valley)",
+    "name": "Hilltop Bike Park",
     "siteName": "Sandwell Valley",
     "operatorName": "Hilltop Bike Park (Sandwell Valley)",
     "primaryType": "Bike park",
@@ -5940,7 +5940,7 @@ const SPOTS = [
   },
   {
     "id": "skelf-bike-park-edinburgh",
-    "name": "Skelf Bike Park (Edinburgh)",
+    "name": "Skelf Bike Park",
     "siteName": "Skelf Bike Park (Edinburgh)",
     "operatorName": "Skelf Bike Park (Edinburgh)",
     "primaryType": "Pump track / skills park",
@@ -5983,7 +5983,7 @@ const SPOTS = [
   },
   {
     "id": "inverness-pump-track-bike-park-inverness-bught-park",
-    "name": "Inverness Pump Track (Bike Park Inverness, Bught Park)",
+    "name": "Inverness Pump Track",
     "siteName": "Bike Park Inverness, Bught Park",
     "operatorName": "Bike Park Inverness, Bught Park",
     "primaryType": "Pump track / skills park",
@@ -6024,7 +6024,7 @@ const SPOTS = [
   },
   {
     "id": "garw-valley-darren-fawr",
-    "name": "Garw Valley (Darren Fawr)",
+    "name": "Garw Valley",
     "siteName": "Blaengarw",
     "operatorName": "",
     "primaryType": "Trail centre",
@@ -6069,7 +6069,7 @@ const SPOTS = [
   },
   {
     "id": "bedworth-trail-centre-miners-welfare-park",
-    "name": "Bedworth Trail Centre (Miners' Welfare Park)",
+    "name": "Bedworth Trail Centre",
     "siteName": "Miners' Welfare Park",
     "operatorName": "Bedworth Trail Centre (Miners' Welfare Park)",
     "primaryType": "Bike park",
@@ -6111,7 +6111,7 @@ const SPOTS = [
   },
   {
     "id": "queen-elizabeth-country-park-qecp",
-    "name": "Queen Elizabeth Country Park (QECP)",
+    "name": "Queen Elizabeth Country Park",
     "siteName": "Queen Elizabeth Country Park (QECP)",
     "operatorName": "",
     "primaryType": "Pump track / skills park",
@@ -6157,7 +6157,7 @@ const SPOTS = [
   },
   {
     "id": "marsh-tracks-rhyl",
-    "name": "Marsh Tracks (Rhyl)",
+    "name": "Marsh Tracks",
     "siteName": "Glan Y Morfa Industrial Estate",
     "operatorName": "",
     "primaryType": "Pump track / skills park",
@@ -6348,7 +6348,7 @@ const SPOTS = [
   },
   {
     "id": "bogey-trails-devon",
-    "name": "Bogey Trails (Devon)",
+    "name": "Bogey Trails",
     "siteName": "Devon",
     "operatorName": "Bogey Trails (Devon)",
     "primaryType": "Dirt jump park",
@@ -6529,7 +6529,7 @@ const SPOTS = [
   },
   {
     "id": "climachx-dyfi-forest",
-    "name": "ClimachX (Dyfi Forest)",
+    "name": "ClimachX",
     "siteName": "Dyfi Forest",
     "operatorName": "ClimachX (Dyfi Forest)",
     "primaryType": "Downhill / uplift venue",
@@ -6572,7 +6572,7 @@ const SPOTS = [
   },
   {
     "id": "gwydir-mawr-marin-trail",
-    "name": "Gwydir Mawr (Marin Trail)",
+    "name": "Gwydir Mawr",
     "siteName": "Sawbench car park near Llanrwst",
     "operatorName": "Natural Resources Wales",
     "primaryType": "Trail centre",
@@ -6790,7 +6790,7 @@ const SPOTS = [
   },
   {
     "id": "glassie-bike-park-aberfeldy",
-    "name": "Glassie Bike Park (Aberfeldy)",
+    "name": "Glassie Bike Park",
     "siteName": "Glassie Bike Park (Aberfeldy)",
     "operatorName": "Glassie Bike Park (Aberfeldy)",
     "primaryType": "Downhill / uplift venue",
@@ -6838,7 +6838,7 @@ const SPOTS = [
   },
   {
     "id": "aboyne-bike-park-bell-wood",
-    "name": "Aboyne Bike Park (Bell Wood)",
+    "name": "Aboyne Bike Park",
     "siteName": "Bell Wood",
     "operatorName": "Aboyne Bike Park (Bell Wood)",
     "primaryType": "Downhill / uplift venue",
@@ -6885,7 +6885,7 @@ const SPOTS = [
   },
   {
     "id": "banchory-woodland-trails-corsee-woods",
-    "name": "Banchory Woodland Trails (Corsee Woods)",
+    "name": "Banchory Woodland Trails",
     "siteName": "Corsee Woods",
     "operatorName": "Banchory Woodland Trails (Corsee Woods)",
     "primaryType": "Downhill / uplift venue",
@@ -6930,7 +6930,7 @@ const SPOTS = [
   },
   {
     "id": "balfour-forest-aboyne",
-    "name": "Balfour Forest (Aboyne)",
+    "name": "Balfour Forest",
     "siteName": "Balfour Forest (Aboyne)",
     "operatorName": "Balfour Forest (Aboyne)",
     "primaryType": "Downhill / uplift venue",
@@ -7021,7 +7021,7 @@ const SPOTS = [
   },
   {
     "id": "healey-nab-chorley-lancashire",
-    "name": "Healey Nab (Chorley, Lancashire)",
+    "name": "Healey Nab",
     "siteName": "Lancashire)",
     "operatorName": "Healey Nab (Chorley, Lancashire)",
     "primaryType": "Downhill / uplift venue",
@@ -7115,7 +7115,7 @@ const SPOTS = [
   },
   {
     "id": "endura-lifecycle-trust-trails-drymen-loch-lomond",
-    "name": "Endura LifeCycle Trust Trails (Drymen, Loch Lomond)",
+    "name": "Endura LifeCycle Trust Trails",
     "siteName": "Loch Lomond)",
     "operatorName": "",
     "primaryType": "Restricted-access venue",
@@ -7158,7 +7158,7 @@ const SPOTS = [
   },
   {
     "id": "llangollen-downhill-one-giant-leap-llangollen",
-    "name": "Llangollen Downhill / One Giant Leap (Llangollen)",
+    "name": "Llangollen Downhill / One Giant Leap",
     "siteName": "Llangollen Downhill",
     "operatorName": "One Giant Leap (Llangollen)",
     "primaryType": "Event-only venue",
@@ -7203,7 +7203,7 @@ const SPOTS = [
   },
   {
     "id": "foel-gasnach-downhill-clocaenog-forest-ruthin",
-    "name": "Foel Gasnach Downhill (Clocaenog Forest, Ruthin)",
+    "name": "Foel Gasnach Downhill",
     "siteName": "Clocaenog Forest, Ruthin",
     "operatorName": "",
     "primaryType": "Temporarily closed venue",
@@ -7244,7 +7244,7 @@ const SPOTS = [
   },
   {
     "id": "delamere-forest-manley-hill-bike-park-cheshire",
-    "name": "Delamere Forest / Manley Hill Bike Park (Cheshire)",
+    "name": "Delamere Forest / Manley Hill Bike Park",
     "siteName": "Delamere Forest",
     "operatorName": "Forestry England",
     "primaryType": "Pump track / skills park",
@@ -7260,7 +7260,8 @@ const SPOTS = [
       "XC",
       "Skills area",
       "4X",
-      "Dual slalom"
+      "Dual slalom",
+      "Dirt jumps"
     ],
     "trailGrades": [
       "Green",
@@ -7282,7 +7283,7 @@ const SPOTS = [
     "cost": "Free",
     "ownership": "Government",
     "status": "Partial",
-    "notes": "Forest road grey route + new blue graded trail with **jumps and berms**. **Manley Hill Bike Park** (small skills area, accessed via Ashton Road fire road) has **purpose-built 4X track, dirt jumps (tabletops and doubles), short downhill tracks**. The \"No Brains\" line, more informal stuff exists too — but the official skills area still functions. Skills loop near visitor centre. Reviews are mixed (some features removed by forestry over the years) but it's a real, open, accessible bike park area. Grade audit 2026-05-25: Forestry England supports Grey and Blue trails; Manley Hill is described as a skills park with 4X/jumps/downhill but not colour graded. Status audit 2026-05-25: current sources still describe Manley Hill as a small skills area with 4X/dirt jumps/berms; keep open but avoid over-weighting older reports of feature degradation. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; Jump/skills/4X features are sufficient; dirt jumps not separately verified. Access details: Cost: Free (parking £2); Ownership: Forestry (Forestry England); Uplift: No; Status: Open (minor issues possible at Manley Hill skills area).",
+    "notes": "Forest road grey route + new blue graded trail with **jumps and berms**. **Manley Hill Bike Park** (small skills area, accessed via Ashton Road fire road) has **purpose-built 4X track, dirt jumps (tabletops and doubles), short downhill tracks**. The \"No Brains\" line, more informal stuff exists too — but the official skills area still functions. Skills loop near visitor centre. Reviews are mixed (some features removed by forestry over the years) but it's a real, open, accessible bike park area. Grade audit 2026-05-25: Forestry England supports Grey and Blue trails; Manley Hill is described as a skills park with 4X/jumps/downhill but not colour graded. Status audit 2026-05-25: current sources still describe Manley Hill as a small skills area with 4X/dirt jumps/berms; keep open but avoid over-weighting older reports of feature degradation. Dirt jumps feature update 2026-05-31: Dirt jumps added to features at user confirmation. Access details: Cost: Free (parking £2); Ownership: Forestry (Forestry England); Uplift: No; Status: Open (minor issues possible at Manley Hill skills area).",
     "urls": [
       "https://www.forestryengland.uk/delamere-forest",
       "https://www.google.com/maps/search/?api=1&query=Manley+Hill+Bike+Skills+Area&query_place_id=53.2412802,-2.7097391",
@@ -7293,7 +7294,7 @@ const SPOTS = [
   },
   {
     "id": "rheola-forest-downhill-neath-valley-south-wales",
-    "name": "Rheola Forest Downhill (Neath Valley, South Wales)",
+    "name": "Rheola Forest Downhill",
     "siteName": "Neath Valley, South Wales",
     "operatorName": "Pearce Cycles",
     "primaryType": "Event-only venue",
@@ -7340,7 +7341,7 @@ const SPOTS = [
   },
   {
     "id": "learnie-red-rocks-black-isle-highland",
-    "name": "Learnie Red Rocks (Black Isle, Highland)",
+    "name": "Learnie Red Rocks",
     "siteName": "Black Isle, Highland",
     "operatorName": "Forestry and Land Scotland",
     "primaryType": "Downhill / uplift venue",
@@ -7355,7 +7356,8 @@ const SPOTS = [
       "Jump trail",
       "Downhill",
       "XC",
-      "Skills area"
+      "Skills area",
+      "Dirt jumps"
     ],
     "trailGrades": [
       "Blue",
@@ -7376,7 +7378,7 @@ const SPOTS = [
     "cost": "Paid",
     "ownership": "Government",
     "status": "Partial",
-    "notes": "Major Highland trail centre **with dedicated bike park and dirt jump area** adjacent to the car park (orange-graded). **Three levels of dirt jumps** — beginner to expert. 16km of waymarked trails (green, blue, black). Designed by Paul Masson (Laggan Wolftrax designer). FLS-managed. The black trail \"Tracy's Trees\" is considered one of Scotland's trickiest blacks. Black Isle Trails Association maintains and develops the trails. Car park recently expanded due to surging popularity. Status audit 2026-05-25: Forestry and Land Scotland still presents Learnie as a rideable graded trail centre, but 2025 felling impacts and trail losses mean the entry should not imply the full historical network is intact. Dirt-jump taxonomy update 2026-05-30: removed `Dirt jumps`; FLS trail centre with jump/flow/skills riding; dirt jumps not separately verified. Access warning: Partial closures or diversions reported; check official sources before travelling. Access details: Cost: Paid (parking charge — small); Ownership: Forestry (Forestry and Land Scotland); Uplift: No; Status: Open with partial trail losses/closures.",
+    "notes": "Major Highland trail centre **with dedicated bike park and dirt jump area** adjacent to the car park (orange-graded). **Three levels of dirt jumps** — beginner to expert. 16km of waymarked trails (green, blue, black). Designed by Paul Masson (Laggan Wolftrax designer). FLS-managed. The black trail \"Tracy's Trees\" is considered one of Scotland's trickiest blacks. Black Isle Trails Association maintains and develops the trails. Car park recently expanded due to surging popularity. Status audit 2026-05-25: Forestry and Land Scotland still presents Learnie as a rideable graded trail centre, but 2025 felling impacts and trail losses mean the entry should not imply the full historical network is intact. Dirt jumps feature update 2026-05-31: Dirt jumps added to features at user confirmation. Access warning: Partial closures or diversions reported; check official sources before travelling. Access details: Cost: Paid (parking charge — small); Ownership: Forestry (Forestry and Land Scotland); Uplift: No; Status: Open with partial trail losses/closures.",
     "urls": [
       "https://forestryandland.gov.scot/visit/learnie-red-rocks",
       "https://www.google.com/maps/search/?api=1&query=Learnie+Red+Rock+Trails&query_place_id=57.6245918,-4.1176853",
@@ -7387,7 +7389,7 @@ const SPOTS = [
   },
   {
     "id": "mountain-ash-dragon-downhill-rhondda-cynon-taf",
-    "name": "Mountain Ash / Dragon Downhill (Rhondda Cynon Taf)",
+    "name": "Mountain Ash / Dragon Downhill",
     "siteName": "Dragon Downhill (Rhondda Cynon Taf)",
     "operatorName": "",
     "primaryType": "Event-only venue",
@@ -7430,7 +7432,7 @@ const SPOTS = [
   },
   {
     "id": "pitfichie-forest-aberdeenshire",
-    "name": "Pitfichie Forest (Aberdeenshire)",
+    "name": "Pitfichie Forest",
     "siteName": "Aberdeenshire",
     "operatorName": "Forestry and Land Scotland",
     "primaryType": "Downhill / uplift venue",
@@ -7475,7 +7477,7 @@ const SPOTS = [
   },
   {
     "id": "balblair-forest-bonar-bridge-highland",
-    "name": "Balblair Forest (Bonar Bridge, Highland)",
+    "name": "Balblair Forest",
     "siteName": "Bonar Bridge, Highland",
     "operatorName": "Forestry and Land Scotland",
     "primaryType": "Trail centre",
@@ -7517,7 +7519,7 @@ const SPOTS = [
   },
   {
     "id": "tollymore-forest-county-down-ni",
-    "name": "Tollymore Forest (County Down, NI)",
+    "name": "Tollymore Forest",
     "siteName": "County Down, NI",
     "operatorName": "",
     "primaryType": "Pump track / skills park",
@@ -7559,7 +7561,7 @@ const SPOTS = [
   },
   {
     "id": "newnham-park-plymouth-devon",
-    "name": "Newnham Park (Plymouth, Devon)",
+    "name": "Newnham Park",
     "siteName": "Plymouth, Devon",
     "operatorName": "",
     "primaryType": "Event-only venue",
@@ -7599,7 +7601,7 @@ const SPOTS = [
   },
   {
     "id": "pooley-mtb-trails-pooley-country-park",
-    "name": "Pooley MTB Trails (Pooley Country Park)",
+    "name": "Pooley MTB Trails",
     "siteName": "Pooley Country Park",
     "operatorName": "Pooley MTB Trails (Pooley Country Park)",
     "primaryType": "Downhill / uplift venue",
