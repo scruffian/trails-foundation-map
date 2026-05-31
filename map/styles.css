@@ -597,6 +597,7 @@ input:focus {
 
 .list-view {
   display: none;
+  flex-direction: column;
   flex: 1 1 auto;
   min-height: 100vh;
   min-height: 100dvh;
@@ -606,7 +607,7 @@ input:focus {
 }
 
 body.view-list .list-view {
-  display: block;
+  display: flex;
 }
 
 body.view-list .map-wrap {
@@ -656,6 +657,18 @@ body.view-list::before {
   margin: 0 auto;
   padding: 0;
   list-style: none;
+}
+
+.spot-list.is-empty {
+  flex: 1 1 auto;
+  place-content: center;
+  place-items: center;
+}
+
+.spot-list-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
 }
 
 .spot-card {
@@ -1419,7 +1432,7 @@ body.view-list .active-filters {
 
   .list-view,
   body.view-list .list-view {
-    display: block;
+    display: flex;
     flex: 0 0 380px;
     order: 1;
     min-height: 0;

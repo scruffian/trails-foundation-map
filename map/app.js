@@ -69,6 +69,7 @@ const constructionIcon = "icons/construction.svg";
 const linkIconSvgs = {
   website: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>`,
   maps: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-7.5-7-13a7 7 0 1 1 14 0c0 5.5-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  directions: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 22l8-4 8 4-8-20z"/><path d="M12 2v16"/></svg>`,
   instagram: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>`,
   facebook: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9z"/></svg>`,
   komoot: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 15l3-6 2 4 2-3 3 5"/></svg>`,
@@ -77,7 +78,8 @@ const disclosureArrowSvgs = `<span class="disclosure-label disclosure-label--clo
 
 const linkLabels = {
   website: "Website",
-  maps: "Directions",
+  maps: "Google Maps",
+  directions: "Directions",
   instagram: "Instagram",
   facebook: "Facebook",
   komoot: "Komoot",
@@ -103,7 +105,24 @@ function getSpotLinks(spot) {
     seen.add(url);
     links.push({ url, type: classifyUrl(url) });
   });
+
+  const directionsUrl = getDirectionsUrl(spot);
+  if (directionsUrl && !seen.has(directionsUrl)) {
+    const firstMapIndex = links.findIndex((link) => link.type === "maps");
+    const insertIndex = firstMapIndex === -1 ? Math.min(1, links.length) : firstMapIndex + 1;
+    links.splice(insertIndex, 0, {
+      url: directionsUrl,
+      type: "directions",
+    });
+  }
+
   return links;
+}
+
+function getDirectionsUrl(spot) {
+  if (!Number.isFinite(spot.lat) || !Number.isFinite(spot.lng)) return "";
+  const destination = encodeURIComponent(`${spot.lat},${spot.lng}`);
+  return `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
 }
 
 function renderLinkIcons(spot) {
@@ -842,6 +861,8 @@ function render() {
 }
 
 function renderList(filtered) {
+  elements.spotList.classList.toggle("is-empty", filtered.length === 0);
+
   if (filtered.length === 0) {
     elements.spotList.innerHTML = `<li class="spot-list-empty">No spots match your filters.</li>`;
     return;
