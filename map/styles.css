@@ -408,6 +408,38 @@ input:focus {
   color: var(--on-accent);
 }
 
+.option-chip--with-icon {
+  padding-left: 10px;
+}
+
+.option-chip--bike-type {
+  flex-direction: column;
+  gap: 3px;
+  min-height: 52px;
+  padding: 6px 10px;
+  line-height: 1;
+}
+
+.option-chip-icon {
+  display: block;
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+.option-chip-icon--bike {
+  width: 24px;
+  height: 24px;
+}
+
+.option-chip-icon--uplift {
+  width: 20px;
+  height: 20px;
+}
+
+.option-chip.is-active .option-chip-icon--bike {
+  filter: invert(1);
+}
+
 .option-chip--grade {
   background: var(--tag-bg);
   color: var(--chip-color);
@@ -427,6 +459,14 @@ input:focus {
 }
 
 @media (prefers-color-scheme: dark) {
+  .option-chip-icon--bike {
+    filter: invert(1);
+  }
+
+  .option-chip.is-active .option-chip-icon--bike {
+    filter: none;
+  }
+
   .option-chip--grade,
   .option-chip--grade:hover {
     background: #f5f5f4;
