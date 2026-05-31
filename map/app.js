@@ -73,6 +73,7 @@ const costOptions = ["Free", "Paid", "Membership"];
 const ownershipOptions = ["Community", "Commercial", "Government"];
 const statusOptions = ["Open", "Partial", "Under construction"];
 const DEFAULT_SORT_MODE = "distance";
+const DEFAULT_MAP_CENTER = { lat: 53.2, lng: -2.7 };
 
 const gradeColors = {
   Green: "#2f8f57",
@@ -242,7 +243,7 @@ let locationWatchId = null;
 const map = L.map("map", {
   zoomControl: false,
   scrollWheelZoom: true,
-}).setView([53.2, -2.7], 6);
+}).setView([DEFAULT_MAP_CENTER.lat, DEFAULT_MAP_CENTER.lng], 6);
 
 L.control.zoom({ position: "topright" }).addTo(map);
 
@@ -1087,10 +1088,11 @@ function matchesSingle(selectedValues, spotValue) {
 
 function render() {
   const filtered = getFilteredSpots();
-  if (state.sortMode === "distance" && state.userLocation) {
+  if (state.sortMode === "distance") {
+    const distanceOrigin = state.userLocation ?? DEFAULT_MAP_CENTER;
     filtered.sort(
       (a, b) =>
-        distanceKm(state.userLocation, a) - distanceKm(state.userLocation, b),
+        distanceKm(distanceOrigin, a) - distanceKm(distanceOrigin, b),
     );
   } else {
     filtered.sort((a, b) => a.name.localeCompare(b.name));
