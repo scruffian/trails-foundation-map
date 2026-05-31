@@ -100,6 +100,34 @@ const linkTypeOrder = {
   komoot: 5,
 };
 
+function orderSpotLinks(links) {
+  const remaining = [...links];
+  const ordered = [];
+  const takeFirst = (predicate) => {
+    const index = remaining.findIndex(predicate);
+    if (index === -1) return null;
+    return remaining.splice(index, 1)[0];
+  };
+
+  const primaryLink =
+    takeFirst((link) => link.type !== "maps" && link.type !== "directions") ??
+    takeFirst(() => true);
+  const mapsLink = takeFirst((link) => link.type === "maps");
+  const directionsLink = takeFirst((link) => link.type === "directions");
+
+  [primaryLink, mapsLink, directionsLink]
+    .filter(Boolean)
+    .forEach((link) => ordered.push(link));
+
+  remaining.sort(
+    (a, b) =>
+      (linkTypeOrder[a.type] ?? Number.MAX_SAFE_INTEGER) -
+      (linkTypeOrder[b.type] ?? Number.MAX_SAFE_INTEGER),
+  );
+
+  return [...ordered, ...remaining];
+}
+
 function classifyUrl(url) {
   if (/google\.[^/]+\/maps/i.test(url)) return "maps";
   if (/instagram\.com/i.test(url)) return "instagram";
@@ -129,11 +157,7 @@ function getSpotLinks(spot) {
     });
   }
 
-  return links.sort(
-    (a, b) =>
-      (linkTypeOrder[a.type] ?? Number.MAX_SAFE_INTEGER) -
-      (linkTypeOrder[b.type] ?? Number.MAX_SAFE_INTEGER),
-  );
+  return orderSpotLinks(links);
 }
 
 function getDirectionsUrl(spot) {
