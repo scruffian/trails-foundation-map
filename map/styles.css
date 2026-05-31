@@ -862,15 +862,24 @@ body.view-list::before {
   overflow: hidden;
 }
 
-.spot-card-bike-icon {
+.spot-card-bike-icon,
+.spot-card-construction-icon {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 110%;
-  height: 110%;
   transform: translate(-50%, -50%);
   display: block;
   pointer-events: none;
+}
+
+.spot-card-bike-icon {
+  width: 110%;
+  height: 110%;
+}
+
+.spot-card-construction-icon {
+  width: 62%;
+  height: 62%;
 }
 
 .spot-card-body {
@@ -1255,6 +1264,7 @@ body.view-list .active-filters {
 }
 
 .jump-marker {
+  position: relative;
   display: grid;
   place-items: center;
   width: 56px;
@@ -1300,8 +1310,23 @@ body.view-list .active-filters {
 }
 
 .marker-construction-icon {
+  position: absolute;
+  top: 48%;
+  left: 50%;
   width: 60%;
   height: 60%;
+  transform: translate(-50%, -50%);
+  display: block;
+  pointer-events: none;
+}
+
+.marker-uplift-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58%;
+  height: 58%;
+  transform: translate(-50%, -50%);
   display: block;
   pointer-events: none;
 }
