@@ -234,6 +234,7 @@ const filterPanelCloseSwipeDistance = 50;
 let filterPanelTouchStartX = null;
 let filterPanelTouchStartY = null;
 let listScrollAnimationFrame = null;
+let deferredInstallPrompt = null;
 
 function checkNotesOverflow(root) {
   const text = root?.querySelector(".popup-notes-text");
@@ -266,6 +267,7 @@ const elements = {
   listView: document.querySelector("#listView"),
   spotList: document.querySelector("#spotList"),
   locationControls: [...document.querySelectorAll(".location-control")],
+  installAppBtn: document.querySelector("#installAppBtn"),
   panelTabBtns: [...document.querySelectorAll(".panel-tab")],
   filtersTab: document.querySelector("#filtersTab"),
   aboutTab: document.querySelector("#aboutTab"),
@@ -286,6 +288,8 @@ function init() {
   populateFilters();
   syncFiltersUi();
   bindEvents();
+  setupInstallPrompt();
+  registerServiceWorker();
   setFiltersOpen(false);
   render();
   requestAnimationFrame(() => {
@@ -446,6 +450,8 @@ function bindEvents() {
     button.addEventListener("click", activateLocationControl);
   });
 
+  elements.installAppBtn?.addEventListener("click", handleInstallApp);
+
   elements.spotList.addEventListener("click", (event) => {
     const copyButton = event.target.closest(".address-copy-button");
     if (copyButton) {
@@ -531,6 +537,59 @@ function bindEvents() {
     render();
     updateMapViewport();
   });
+}
+
+function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  });
+}
+
+function setupInstallPrompt() {
+  if (!elements.installAppBtn || isStandaloneApp()) return;
+
+  if (isIosDevice()) {
+    elements.installAppBtn.hidden = false;
+  }
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    elements.installAppBtn.hidden = false;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    elements.installAppBtn.hidden = true;
+  });
+}
+
+async function handleInstallApp() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    const choice = await deferredInstallPrompt.userChoice;
+    if (choice.outcome === "accepted") {
+      elements.installAppBtn.hidden = true;
+    }
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  if (isIosDevice()) {
+    window.alert("To install this map, tap Share, then Add to Home Screen.");
+  }
+}
+
+function isStandaloneApp() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function isIosDevice() {
+  return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
 }
 
 function toggleFilterOption(filterName, value) {
