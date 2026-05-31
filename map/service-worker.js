@@ -1,16 +1,17 @@
-const CACHE_NAME = "bike-parks-map-v1";
+const CACHE_NAME = "bike-parks-map-v2";
 const CORE_ASSETS = [
   "./",
   "index.html",
   "styles.css",
   "app.js",
   "spots-data.js",
-  "manifest.webmanifest",
-  "../favicon.ico",
-  "../favicon.svg",
-  "../assets/icons/trails-icon-180.png",
-  "../assets/icons/trails-icon-192.png",
-  "../assets/icons/trails-icon-512.png",
+  "site.webmanifest",
+  "favicon.ico",
+  "favicon.svg",
+  "favicon-96x96.png",
+  "apple-touch-icon.png",
+  "web-app-manifest-192x192.png",
+  "web-app-manifest-512x512.png",
 ];
 
 self.addEventListener("install", (event) => {
