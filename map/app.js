@@ -9,14 +9,26 @@ const featureOptions = [
   "Jump trail",
   "Pro line",
   "Slopestyle",
+  "Air bag / resi",
   "Flow trail",
   "Downhill",
   "Freeride",
+  "Enduro",
+  "Technical singletrack",
+  "Natural trails",
   "XC",
+  "Family trail",
+  "Gravel/estate routes",
+  "Dual slalom",
   "Dual / 4X",
+  "4X",
   "Pump track",
   "BMX track",
   "Skills area",
+  "Trials",
+  "Uplift",
+  "Coaching / guided riding",
+  "Bike hire / trailhead services",
 ];
 
 const trailGradeOptions = [
@@ -29,7 +41,18 @@ const trailGradeOptions = [
   "Unmarked",
 ];
 
-const bikeTypeOptions = ["DH", "XC", "Trail", "Enduro", "Dirt jump", "BMX"];
+const bikeTypeOptions = [
+  "DH",
+  "XC",
+  "Trail",
+  "Enduro",
+  "Dirt jump",
+  "BMX",
+  "E-bike",
+  "Gravel",
+  "MTB",
+  "Trials",
+];
 
 const bikeTypeLabels = {
   DH: { code: "DH", title: "Downhill" },
@@ -38,6 +61,10 @@ const bikeTypeLabels = {
   Enduro: { code: "EN", title: "Enduro" },
   "Dirt jump": { code: "DJ", title: "Dirt jump" },
   BMX: { code: "BMX", title: "BMX" },
+  "E-bike": { code: "E", title: "E-bike" },
+  Gravel: { code: "GR", title: "Gravel" },
+  MTB: { code: "MTB", title: "Mountain bike" },
+  Trials: { code: "TRI", title: "Trials" },
 };
 
 const seasonalityOptions = ["Spring", "Summer", "Autumn", "Winter"];
@@ -819,19 +846,8 @@ function getAddressParts(spot) {
     .split(",")
     .map((part) => part.trim())
     .filter(Boolean);
-  const addressLine = addressParts.join(", ");
-  const siteName = spot.siteName?.trim();
-  if (!siteName) return addressLine ? [addressLine] : [];
-
-  const siteKey = normalizeAddressPart(siteName);
-  const remainingAddressLine = addressParts
-    .filter((part) => normalizeAddressPart(part) !== siteKey)
-    .join(", ");
-  return [siteName, remainingAddressLine].filter(Boolean);
-}
-
-function normalizeAddressPart(value) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  if (addressParts.length > 0) return [addressParts.join(", ")];
+  return spot.siteName?.trim() ? [spot.siteName.trim()] : [];
 }
 
 function getAddressLabel(spot) {
