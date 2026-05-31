@@ -696,7 +696,8 @@ body.view-list::before {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: flex-start;
-  gap: 12px;
+  column-gap: 12px;
+  row-gap: 4px;
   padding: 14px 16px;
   cursor: pointer;
   list-style: none;
@@ -795,6 +796,11 @@ body.view-list::before {
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 4px;
+}
+
+.spot-card-summary > .spot-card-links {
+  grid-column: 1 / -1;
+  margin-top: 0;
 }
 
 .spot-link-icon {
