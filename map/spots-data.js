@@ -1,4 +1,4 @@
-// Generated from .context/attachments/aArsK4/uk-bike-parks-st-albans-facebook-group-update-2026-06-01.zip.
+// Generated from .context/attachments/L7qP6M/uk-bike-parks-brabyns-bike-track-update-2026-06-01.zip.
 // Do not edit by hand; regenerate after updating the audit data.
 
 const SPOTS = [
@@ -8137,11 +8137,11 @@ const SPOTS = [
     "operatorName": "St Albans Cycle Hub C.I.C",
     "primaryType": "Pump track / skills park",
     "primaryBike": "Trail",
-    "location": "Old Oak, Cottonmill Lane, St Albans, Hertfordshire",
+    "location": "Old Oak, Cottonmill Lane, St Albans, Hertfordshire, AL1 2EF",
     "address": "Old Oak, Cottonmill Lane, St Albans, Hertfordshire, AL1 2EF",
     "postcode": "AL1 2EF",
-    "lat": 51.738221,
-    "lng": -0.330191,
+    "lat": 51.73822,
+    "lng": -0.33019,
     "features": [
       "XC",
       "Dirt jumps",
@@ -8175,5 +8175,51 @@ const SPOTS = [
       "https://www.facebook.com/groups/432907840462466/"
     ],
     "sourceUrl": "https://www.stalbanscyclehub.co.uk/"
+  },
+  {
+    "id": "brabyns-bike-track",
+    "name": "Brabyns Bike Track",
+    "siteName": "Brabyns Bike Track",
+    "operatorName": "Brabyns Bike Track Group",
+    "primaryType": "BMX / 4X venue",
+    "primaryBike": "Dirt jump",
+    "location": "Rollins Lane, Cherry Tree, Marple Bridge, Stockport, Greater Manchester, SK6 5LB",
+    "address": "Rollins Lane, Cherry Tree, Marple Bridge, Stockport, Greater Manchester, SK6 5LB",
+    "postcode": "SK6 5LB",
+    "lat": 53.4075,
+    "lng": -2.05681,
+    "features": [
+      "Jump trail",
+      "Dirt jumps",
+      "Pump track",
+      "BMX track"
+    ],
+    "trailGrades": [
+      "Unmarked"
+    ],
+    "bikeTypes": [
+      "Trail",
+      "Dirt jump",
+      "BMX"
+    ],
+    "seasonality": [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter"
+    ],
+    "uplift": "No",
+    "cost": "Free",
+    "ownership": "Community",
+    "status": "Open",
+    "notes": "Community-built BMX / mountain bike track in Brabyns Park with berms, doubles, jumps and tabletops; listed as partially/open in 2026 community updates. Access details: Cost: Free; Ownership: Community / volunteer maintained; Uplift: No; Status: Open.",
+    "urls": [
+      "https://www.marple.website/community-projects/brabyns-bike-track.html",
+      "https://www.google.com/maps/search/?api=1&query=Brabyns%20Bike%20Track%20Rollins%20Lane%20Marple%20Bridge%20SK6%205LB",
+      "https://www.facebook.com/groups/969440853878936/",
+      "https://www.moredirt.com/trail/United-Kingdom_North-West/Brabyns-Bike-Track/344",
+      "https://pumptrack.uk/trackview.php?id=459"
+    ],
+    "sourceUrl": "https://www.marple.website/community-projects/brabyns-bike-track.html"
   }
 ];
