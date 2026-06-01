@@ -1,4 +1,4 @@
-// Generated from .context/attachments/jwsQjC/uk-bike-parks-family-trail-feature-rename-2026-05-31.zip.
+// Generated from .context/attachments/aArsK4/uk-bike-parks-st-albans-facebook-group-update-2026-06-01.zip.
 // Do not edit by hand; regenerate after updating the audit data.
 
 const SPOTS = [
@@ -8129,5 +8129,51 @@ const SPOTS = [
       "https://glyncorrwgmtbcandcampsite.co.uk/"
     ],
     "sourceUrl": "https://naturalresources.wales/Glyncorrwg?lang=en"
+  },
+  {
+    "id": "st-albans-cycle-hub",
+    "name": "St Albans Cycle Hub",
+    "siteName": "Cottonmill Community and Cycling Centre",
+    "operatorName": "St Albans Cycle Hub C.I.C",
+    "primaryType": "Pump track / skills park",
+    "primaryBike": "Trail",
+    "location": "Old Oak, Cottonmill Lane, St Albans, Hertfordshire",
+    "address": "Old Oak, Cottonmill Lane, St Albans, Hertfordshire, AL1 2EF",
+    "postcode": "AL1 2EF",
+    "lat": 51.738221,
+    "lng": -0.330191,
+    "features": [
+      "XC",
+      "Dirt jumps",
+      "Pump track",
+      "Family trail"
+    ],
+    "trailGrades": [
+      "Unmarked"
+    ],
+    "bikeTypes": [
+      "XC",
+      "Trail",
+      "Dirt jump",
+      "BMX"
+    ],
+    "seasonality": [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter"
+    ],
+    "uplift": "No",
+    "cost": "Free",
+    "ownership": "Community",
+    "status": "Partial",
+    "notes": "Added 2026-06-01 from user-supplied St Albans Cycle Hub links. Pump track, Cyclocross/XC Track and Leisure Track listed as open; Dirt Jumps listed as closed on the official website at time of update. Facebook group update 2026-06-01: added Facebook group as an additional social URL.",
+    "urls": [
+      "https://www.stalbanscyclehub.co.uk/",
+      "https://www.google.com/maps/search/?api=1&query=St%20Albans%20Cycle%20Hub%20Cottonmill%20Community%20and%20Cycling%20Centre%20AL1%202EF",
+      "https://www.facebook.com/stacyclehub",
+      "https://www.facebook.com/groups/432907840462466/"
+    ],
+    "sourceUrl": "https://www.stalbanscyclehub.co.uk/"
   }
 ];
