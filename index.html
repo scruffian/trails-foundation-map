@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L84NF3T165"></script>
     <script>
@@ -12,65 +12,267 @@
 
       gtag('config', 'G-L84NF3T165');
     </script>
-    <title>Trails Foundation — Support your local trailscene</title>
-    <meta name="description" content="Trails Foundation is a planned UK charity supporting grassroots trails and the people who build them.">
-    <link rel="icon" href="/favicon.ico" sizes="any">
+    <title>Map | Trails Foundation</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="Bike Parks">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="site-header__inner">
-        <a class="brand" href="/" aria-label="Trails Foundation home" aria-current="page"><span>Tr<span class="brand-spade" aria-hidden="true">♠</span>ils Foundation</span></a>
-        <nav class="nav" aria-label="Main navigation">
-          <a href="/dig/">Dig</a>
-          <a href="/ride/">Ride</a>
-        </nav>
-        <a class="site-header__map-link" href="/map/">UK Bike Parks Map</a>
+    <main class="app-shell">
+      <section id="filterPanel" class="side-panel" aria-label="Filters" aria-hidden="true" inert>
+        <header class="brand">
+          <div>
+            <p class="eyebrow"><a href="https://trails.foundation">Trails Foundation</a></p>
+            <h1>UK Bike Parks Map</h1>
+          </div>
+          <div class="panel-actions">
+            <button id="filterClose" class="icon-button" type="button" aria-label="Close filters">&times;</button>
+          </div>
+        </header>
+
+        <div class="panel-tabs" role="tablist" aria-label="Panel sections">
+          <button
+            id="filtersTabBtn"
+            class="panel-tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="filtersTab"
+            data-tab="filters"
+          >Filters</button>
+          <button
+            id="aboutTabBtn"
+            class="panel-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="aboutTab"
+            data-tab="about"
+          >About</button>
+        </div>
+
+        <div id="filtersTab" class="panel-tab-content is-active" role="tabpanel" aria-labelledby="filtersTabBtn">
+          <div class="filters" aria-label="Filters">
+            <div class="filters-actions">
+              <span class="spot-count" data-spot-count aria-label="Matching spots">0</span>
+              <button id="clearFiltersBtn" class="text-button" type="button">Clear all</button>
+            </div>
+
+            <div class="filter-row">
+              <div class="field filter-group">
+                <span id="featureFilterLabel">Feature</span>
+                <div id="featureFilter" class="option-row" role="group" aria-labelledby="featureFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="trailGradeFilterLabel">Trail grade</span>
+                <div id="trailGradeFilter" class="option-row" role="group" aria-labelledby="trailGradeFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="upliftFilterLabel">Uplift</span>
+                <div id="upliftFilter" class="option-row" role="group" aria-labelledby="upliftFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="statusFilterLabel">Status</span>
+                <div id="statusFilter" class="option-row" role="group" aria-labelledby="statusFilterLabel"></div>
+              </div>
+
+              <div class="field filter-group">
+                <span id="costFilterLabel">Cost</span>
+                <div id="costFilter" class="option-row" role="group" aria-labelledby="costFilterLabel"></div>
+              </div>
+
+              <details id="advancedFilters" class="filter-more">
+                <summary class="icon-button disclosure-icon-button" aria-label="Toggle filters" title="Toggle filters">
+                  <span class="disclosure-label disclosure-label--closed">MORE</span>
+                  <span class="disclosure-label disclosure-label--open">LESS</span>
+                  <svg class="disclosure-arrow disclosure-arrow--closed" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor">
+                    <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"></path>
+                  </svg>
+                  <svg class="disclosure-arrow disclosure-arrow--open" viewBox="0 -960 960 960" width="24" height="24" aria-hidden="true" fill="currentColor">
+                    <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"></path>
+                  </svg>
+                </summary>
+                <div class="filter-more-content">
+                  <div class="field filter-group">
+                    <span id="bikeTypeFilterLabel">Bikes</span>
+                    <div id="bikeTypeFilter" class="option-row" role="group" aria-labelledby="bikeTypeFilterLabel"></div>
+                  </div>
+
+                  <div class="field filter-group">
+                    <span id="typeFilterLabel">Type</span>
+                    <div id="typeFilter" class="option-row" role="group" aria-labelledby="typeFilterLabel"></div>
+                  </div>
+
+                  <div class="field filter-group">
+                    <span id="seasonalityFilterLabel">Seasonality</span>
+                    <div id="seasonalityFilter" class="option-row" role="group" aria-labelledby="seasonalityFilterLabel"></div>
+                  </div>
+
+                  <div class="field filter-group">
+                    <span id="ownershipFilterLabel">Ownership</span>
+                    <div id="ownershipFilter" class="option-row" role="group" aria-labelledby="ownershipFilterLabel"></div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <div id="aboutTab" class="panel-tab-content" role="tabpanel" aria-labelledby="aboutTabBtn" hidden>
+          <div class="about-content">
+            <section>
+              <h2>What's on this map</h2>
+              <p>
+                A map of UK bike parks — official trails with permission from the landowner, where members of the public are welcome to ride.
+              </p>
+              <p>
+                Only official or formalised spots are listed — those with a land agreement, lease, council partnership, commercial operation, or established public access. Informal locations aren't listed to protect them.
+              </p>
+            </section>
+
+            <section>
+              <h2>Suggest a change</h2>
+              <p>
+                Spotted something missing, out of date, or wrong? Get in touch and I'll update it.
+              </p>
+              <p>
+                <a class="contact-link" href="https://ben.blog/contact/" target="_blank" rel="noreferrer">Contact us →</a>
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <div id="filterBackdrop" class="panel-backdrop"></div>
+
+      <div class="top-bar">
+        <div class="view-toggle" role="tablist" aria-label="View">
+          <button
+            id="viewMapBtn"
+            class="view-toggle-btn is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="map"
+            data-view="map"
+          >Map</button>
+          <button
+            id="viewListBtn"
+            class="view-toggle-btn"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="listView"
+            data-view="list"
+          >List</button>
+        </div>
       </div>
-    </header>
 
-    <main id="main">
-      <header class="page-header">
-        <div class="section">
-          <p class="eyebrow">The Trails Foundation</p>
-          <p class="lead">The Trails Foundation supports trails and trails builders, to create a strong community and enable more people to enjoy trails.</p>
-        </div>
-      </header>
+      <div class="content-stack">
+        <section id="listView" class="list-view" aria-label="Spot list" aria-hidden="true">
+          <div class="list-toolbar">
+            <input
+              id="searchInput"
+              class="list-search"
+              type="search"
+              placeholder="Search"
+              aria-label="Search spots"
+            >
+            <select id="sortSelect" class="sort-select" aria-label="Sort spots">
+              <option value="distance" selected>Distance</option>
+              <option value="az">A-Z</option>
+            </select>
+          </div>
+          <ul id="spotList" class="spot-list"></ul>
+        </section>
 
-      <section class="section section--split">
-        <div>
-          <p class="eyebrow">What are trails?</p>
-        </div>
-        <div class="content">
-          <p>The word trails has many meanings. In this context we mean smooth, flowing bicycle jumps, berms and rollers, built using dirt.</p>
-        </div>
-      </section>
+        <section class="map-wrap" aria-label="Map">
+          <div id="map"></div>
+        </section>
+      </div>
 
-      <section class="section section--split">
-        <div>
-          <p class="eyebrow">Why support trails?</p>
-        </div>
-        <div class="content">
-          <p>Trails are:</p>
-          <ul>
-            <li>fun to ride</li>
-            <li>fun to build</li>
-            <li>a good excuse to be outside</li>
-            <li>good excercise</li>
-          </ul>
-          <p>Trails are often built by volunteers on land they don't own, and this can lead to many problems — vandalism, conflicts with landowners, and many hours of wasted work.</p>
-          <p>The Trails Foundation aims to support existing trails and trails builders, to create a strong community and enable more people to enjoy trails.</p>
-        </div>
-      </section>
+      <button
+        id="locateBtn"
+        class="location-control map-location-btn"
+        type="button"
+        aria-label="Find my location and sort by distance"
+        title="Find my location and sort by distance"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="8"></circle>
+          <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+          <line x1="12" y1="1" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="23"></line>
+          <line x1="1" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="23" y2="12"></line>
+        </svg>
+      </button>
+
+      <button
+        id="installAppBtn"
+        class="install-app-button"
+        type="button"
+        hidden
+      >Install app</button>
+
+      <aside
+        id="bottomSheet"
+        class="bottom-sheet"
+        aria-label="Selected spot"
+        hidden
+      >
+        <button
+          id="bottomSheetHandle"
+          class="bottom-sheet-handle"
+          type="button"
+          aria-label="Toggle details"
+          aria-expanded="false"
+        ></button>
+        <button
+          id="bottomSheetClose"
+          class="bottom-sheet-close"
+          type="button"
+          aria-label="Close"
+        >&times;</button>
+        <div id="bottomSheetContent" class="bottom-sheet-content"></div>
+      </aside>
+
+      <button
+        id="filterToggle"
+        class="filter-toggle"
+        type="button"
+        aria-controls="filterPanel"
+        aria-expanded="false"
+        aria-label="Open filters"
+      >
+        <svg class="filter-icon" viewBox="0 -960 960 960" aria-hidden="true">
+          <path d="M440-120v-240h80v80h320v80H520v80h-80Zm-320-80v-80h240v80H120Zm160-160v-80H120v-80h160v-80h80v240h-80Zm160-80v-80h400v80H440Zm160-160v-240h80v80h160v80H680v80h-80Zm-480-80v-80h400v80H120Z"></path>
+        </svg>
+      </button>
+      <span class="filter-count" data-spot-count data-count-format="number" aria-live="polite">0</span>
+
+      <div id="activeFilters" class="active-filters" aria-label="Active filters" hidden></div>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer__inner">
-        <p class="footer__brand" aria-label="trails foundation">tr<span class="brand-spade" aria-hidden="true">♠</span>ils foundation</p>
-        <p><a href="https://ben.blog/contact">Get in touch</a></p>
-      </div>
-    </footer>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+    <script src="spots-data.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
