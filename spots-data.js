@@ -8221,5 +8221,55 @@ const SPOTS = [
       "https://pumptrack.uk/trackview.php?id=459"
     ],
     "sourceUrl": "https://www.marple.website/community-projects/brabyns-bike-track.html"
+  },
+  {
+    "id": "richmond-bike-park",
+    "name": "Richmond Bike Park",
+    "siteName": "Richmond Bike Park",
+    "operatorName": "Richmond Bike Park Committee / Richmond Yorkshire CIC",
+    "primaryType": "Bike park",
+    "primaryBike": "Trail",
+    "location": "Off Green Howards Road, Richmond, North Yorkshire, DL10 4SX",
+    "address": "Off Green Howards Road, Richmond, North Yorkshire, DL10 4SX",
+    "postcode": "DL10 4SX",
+    "lat": 54.41061,
+    "lng": -1.73816,
+    "features": [
+      "Flow trail",
+      "Jump trail",
+      "Dirt jumps",
+      "Dual / 4X",
+      "Skills area",
+      "Family trail"
+    ],
+    "trailGrades": [
+      "Green",
+      "Blue",
+      "Red"
+    ],
+    "bikeTypes": [
+      "Trail",
+      "Dirt jump"
+    ],
+    "seasonality": [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter"
+    ],
+    "uplift": "No",
+    "cost": "Free",
+    "ownership": "Community",
+    "status": "Open",
+    "notes": "Community-built bike park on a hillside on the northern edge of Richmond, with views across the valley to Richmond Castle. Designed and built by Velosolutions UK alongside local volunteer dig days on a 4.25-acre field leased from Zetland Estates. Roughly 1.8km of trails on one hill: a green descent, green climb trail and green loop, a blue with berms and rollable jumps, two reds (one jump-focused, one more technical with stone features), a dual slalom, a jump line and a balance bike track. Opened to riders on 18-19 October 2026 after two and a half years of community fundraising (over GBP 250,000 from Harmony Energy, Sport England, the National Lottery, York and North Yorkshire Combined Authority and 50+ local businesses). Maintained by a weekly volunteer rota; a cafe, bike library and volunteer coaching sessions are planned, with an official launch expected in spring 2027. Parking: bottom car park off Green Howards Road, top car park beside Whashton Road above the park - please don't park on the nearby residential streets. Access details: Cost: Free, no booking needed; Ownership: Community (Richmond Bike Park Committee with Richmond Yorkshire CIC); Uplift: No; Status: Open.",
+    "urls": [
+      "https://www.richmondbikepark.co.uk/",
+      "https://www.instagram.com/richmondbike_park",
+      "https://www.facebook.com/groups/3723695457956759",
+      "https://ibikeride.com/england/richmond-bike-park",
+      "https://www.richmondshiretoday.co.uk/richmond-bike-park-opens-as-mums-dream-becomes-reality/",
+      "https://www.google.com/maps/search/?api=1&query=54.41061,-1.73816"
+    ],
+    "sourceUrl": "https://www.richmondbikepark.co.uk/"
   }
 ];
