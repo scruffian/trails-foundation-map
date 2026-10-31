@@ -8303,7 +8303,7 @@ const SPOTS = [
     "cost": "Free",
     "ownership": "Government",
     "status": "Open",
-    "notes": "Dirt jump park at Steam Mills on the northern edge of Cinderford in the Forest of Dean. Cinderford Town Council hosted the official opening on 31 October 2026. Location from the Google Maps listing (plus code RFRQ+C2, near Drybrook GL14 3JD). Trail grades and line details not yet verified. Access details: Cost: Free (public recreation ground; to confirm); Ownership: Government (Cinderford Town Council; to confirm); Uplift: No; Status: Open (opened 31 October 2026).",
+    "notes": "Dirt jump park at Steam Mills on the northern edge of Cinderford in the Forest of Dean. Cinderford Town Council hosted the official opening on 31 October 2026. Location from the Google Maps listing (plus code RFRQ+C2, near Drybrook GL14 3JD). No colour grades; unmarked jump lines. Rideable year-round. Access details: Cost: Free; Ownership: Government (Cinderford Town Council); Uplift: No; Status: Open (opened 31 October 2026).",
     "urls": [
       "https://cinderfordtowncouncil.gov.uk/event/steam-mills-dirt-jump-park-opening",
       "https://ibikeride.com/england/steam-mills-dirt-jumps",
