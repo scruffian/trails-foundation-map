@@ -1,4 +1,4 @@
-const CACHE_NAME = "bike-parks-map-v7";
+const CACHE_NAME = "bike-parks-map-v8";
 const CORE_ASSETS = [
   "./",
   "index.html",

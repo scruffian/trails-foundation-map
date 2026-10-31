@@ -1372,6 +1372,18 @@ body.view-list .active-filters {
   border-color: var(--ink);
 }
 
+.spot-cluster {
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #0a0a0a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .marker-feature-label {
   position: relative;
   display: flex;

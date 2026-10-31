@@ -6,21 +6,23 @@ Domain: **trails.foundation**
 
 ## Status
 
-Pre-launch. Currently building a static v1 prototype of the website. WordPress is deferred for now.
+Pre-launch. The live site is a static, installable map of UK bike parks served from the repo root. WordPress is deferred for now.
 
 ## Local development
 
-It's just static HTML — open `index.html` in a browser. All links and asset paths are relative, so no server is needed.
+Run `npm install` then `npm run dev` and open http://localhost:3143 (the service worker and install prompt need a server rather than `file://`).
 
-The site is just plain HTML pages with one shared stylesheet:
+- `index.html` — the map app (Leaflet + OpenStreetMap, with marker clustering)
+- `app.js` — filters, list, map markers, location and install prompt
+- `styles.css` — map app styling
+- `spots-data.js` — the spot data (`SPOTS` array); edit it directly
+- `icons/` — bike-type and status icons used on markers and cards
+- `service-worker.js`, `site.webmanifest` — offline cache and installable app. Bump `CACHE_NAME` in the service worker when shipping changes.
+- `assets/css/styles.css`, `assets/fonts/` — leftovers from the earlier multi-page prototype
 
-- `index.html` — homepage
-- `map/index.html` — placeholder while the map is built separately
-- `spots/index.html` — placeholder until verified listings are ready
-- `about/index.html` — project context
-- `assets/css/styles.css` — shared styling
+### Adding or editing a spot
 
-The `<header>` nav block is duplicated across each page. When the nav changes, update all four files. Spot data lives in `docs/spots-seed.md` for now.
+Add an object to `SPOTS` in `spots-data.js` with every field the other entries have. Filter values must match the option lists at the top of `app.js` exactly — for example `seasonality` may only contain `Spring`, `Summer`, `Autumn`, `Winter`; put any caveats in `notes`. `docs/spots-seed.md` is the original research list, not the live data.
 
 ## For coding agents
 
@@ -36,12 +38,14 @@ Start with `docs/proposal.md` to understand what this is about.
 .
 ├── CLAUDE.md                    # Context for coding agents
 ├── README.md                    # This file
+├── index.html, app.js, styles.css, spots-data.js   # The map app
+├── icons/                       # Marker and card icons
 └── docs/
     ├── build-brief.md           # The v1 build specification
     ├── proposal.md              # The founding document
     ├── scope.md                 # What qualifies as a trails spot
     ├── data-model.md            # Fields for spot listings
-    ├── spots-seed.md            # Initial list of UK spots
+    ├── spots-seed.md            # Original research list of UK spots
     ├── website-plan.md          # Site structure and mobile design
     └── naming-and-language.md   # Terminology guide
 ```
