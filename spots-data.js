@@ -8271,5 +8271,44 @@ const SPOTS = [
       "https://www.google.com/maps/search/?api=1&query=54.41061,-1.73816"
     ],
     "sourceUrl": "https://www.richmondbikepark.co.uk/"
+  },
+  {
+    "id": "steam-mills-dirt-jump-park",
+    "name": "Steam Mills Dirt Jump Park",
+    "siteName": "Steam Mills",
+    "operatorName": "Cinderford Town Council",
+    "primaryType": "Dirt jump park",
+    "primaryBike": "Dirt jump",
+    "location": "Steam Mills, Cinderford, Gloucestershire",
+    "address": "Steam Mills, Cinderford, Gloucestershire, GL14 3JD",
+    "postcode": "GL14 3JD",
+    "lat": 51.8410625,
+    "lng": -2.5124375,
+    "features": [
+      "Dirt jumps"
+    ],
+    "trailGrades": [
+      "Unmarked"
+    ],
+    "bikeTypes": [
+      "Dirt jump"
+    ],
+    "seasonality": [
+      "Spring",
+      "Summer",
+      "Autumn",
+      "Winter"
+    ],
+    "uplift": "No",
+    "cost": "Free",
+    "ownership": "Government",
+    "status": "Open",
+    "notes": "Dirt jump park at Steam Mills on the northern edge of Cinderford in the Forest of Dean. Cinderford Town Council hosted the official opening on 31 October 2026. Location from the Google Maps listing (plus code RFRQ+C2, near Drybrook GL14 3JD). No colour grades; unmarked jump lines. Rideable year-round. Access details: Cost: Free; Ownership: Government (Cinderford Town Council); Uplift: No; Status: Open (opened 31 October 2026).",
+    "urls": [
+      "https://cinderfordtowncouncil.gov.uk/event/steam-mills-dirt-jump-park-opening",
+      "https://ibikeride.com/england/steam-mills-dirt-jumps",
+      "https://www.google.com/maps/search/?api=1&query=51.8410625%2C-2.5124375"
+    ],
+    "sourceUrl": "https://cinderfordtowncouncil.gov.uk/event/steam-mills-dirt-jump-park-opening"
   }
 ];
