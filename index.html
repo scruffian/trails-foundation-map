@@ -3,15 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L84NF3T165"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-L84NF3T165');
-    </script>
+    <!-- Google Analytics loads from consent.js only after the visitor accepts -->
+    <script src="consent.js"></script>
     <title>Map | Trails Foundation</title>
     <meta name="theme-color" content="#0a0a0a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,6 +19,10 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
     >
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -154,6 +151,16 @@
                 <a class="contact-link" href="https://ben.blog/contact/" target="_blank" rel="noreferrer">Contact us →</a>
               </p>
             </section>
+
+            <section>
+              <h2>Cookies</h2>
+              <p>
+                We only use analytics cookies (Google Analytics) if you say yes.
+              </p>
+              <p>
+                <button id="cookieSettingsBtn" class="contact-link text-button" type="button">Cookie settings</button>
+              </p>
+            </section>
           </div>
         </div>
       </section>
@@ -271,6 +278,9 @@
 
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+    <script
+      src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"
     ></script>
     <script src="spots-data.js"></script>
     <script src="app.js"></script>

@@ -186,13 +186,29 @@ function getDirectionsUrl(spot) {
   return `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
 }
 
+function getLinkLabel({ url, type }) {
+  if (type !== "website") return linkLabels[type];
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return linkLabels.website;
+  }
+}
+
 function renderLinkIcons(spot) {
-  const links = getSpotLinks(spot);
+  // Several plain website links would all show the same globe icon, so keep
+  // the first link of each type here; the full list is in the details panel.
+  const seenTypes = new Set();
+  const links = getSpotLinks(spot).filter(({ type }) => {
+    if (seenTypes.has(type)) return false;
+    seenTypes.add(type);
+    return true;
+  });
   if (links.length === 0) return "";
   return `<div class="spot-card-links">${links
     .map(
-      ({ url, type }) =>
-        `<a class="spot-link-icon" href="${url}" target="_blank" rel="noreferrer" aria-label="${linkLabels[type]}" title="${linkLabels[type]}">${linkIconSvgs[type]}</a>`,
+      (link) =>
+        `<a class="spot-link-icon" href="${link.url}" target="_blank" rel="noreferrer" aria-label="${getLinkLabel(link)}" title="${getLinkLabel(link)}">${linkIconSvgs[link.type]}</a>`,
     )
     .join("")}</div>`;
 }
@@ -244,8 +260,26 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const markers = new Map();
-const markerLayer = L.layerGroup().addTo(map);
 const selectedSpotZoom = 9;
+const markerLayer = L.markerClusterGroup({
+  // Show individual markers from the zoom we fly to when a spot is selected,
+  // so the selected marker is never hidden inside a cluster.
+  // From the selected-spot zoom upwards, only spots at the same point stay
+  // grouped, so they can be spread apart instead of hiding one another.
+  maxClusterRadius: (zoom) => (zoom >= selectedSpotZoom ? 1 : 48),
+  showCoverageOnHover: false,
+  spiderfyOnMaxZoom: true,
+  iconCreateFunction: (cluster) => {
+    const count = cluster.getChildCount();
+    const size = count < 10 ? 40 : count < 50 ? 46 : 52;
+    return L.divIcon({
+      className: "",
+      html: `<div class="spot-cluster" style="width:${size}px;height:${size}px">${count}</div>`,
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+    });
+  },
+}).addTo(map);
 const selectedSpotScrollDuration = 180;
 const bottomSheetExpandSwipeDistance = 34;
 let bottomSheetTouchStartY = null;
@@ -314,10 +348,12 @@ function init() {
   requestAnimationFrame(() => {
     updateMapViewport();
   });
-  requestUserLocation();
+  requestLocationIfAlreadyGranted();
   window.addEventListener("resize", () => {
     updateMapViewport();
   });
+  map.on("zoomend", revealSelectedMarker);
+  markerLayer.on("animationend", revealSelectedMarker);
   filtersPinnedQuery.addEventListener("change", () => {
     setFiltersOpen(document.body.classList.contains("filters-open"));
     updateMapViewport();
@@ -727,6 +763,18 @@ function setView(view) {
   });
 }
 
+// Only ask for location silently if the visitor has already allowed it; first-time
+// visitors get the prompt when they tap the locate button or choose distance sort.
+async function requestLocationIfAlreadyGranted() {
+  if (!("geolocation" in navigator) || !navigator.permissions?.query) return;
+  try {
+    const status = await navigator.permissions.query({ name: "geolocation" });
+    if (status.state === "granted") requestUserLocation();
+  } catch {
+    // Permissions API unsupported for geolocation in this browser.
+  }
+}
+
 function requestUserLocation() {
   if (!("geolocation" in navigator)) {
     setLocateStatus("Location not supported");
@@ -798,12 +846,19 @@ function startLocationWatch() {
   );
 }
 
+const LOCATION_RERENDER_DISTANCE_KM = 0.5;
+
 function handleLocationFix(position, { fly }) {
   const { latitude, longitude } = position.coords;
+  const previous = state.userLocation;
   state.userLocation = { lat: latitude, lng: longitude };
   setLocateStatus("Recenter on my location and sort by distance");
   updateUserLocationMarker();
-  render();
+  // watchPosition fires often with tiny changes; rebuilding every marker and
+  // list item each time wastes battery and resets what the rider is reading.
+  const moved =
+    !previous || distanceKm(previous, state.userLocation) >= LOCATION_RERENDER_DISTANCE_KM;
+  if (fly || moved) render();
   if (fly) {
     map.flyTo([latitude, longitude], Math.max(map.getZoom(), 9), {
       duration: 0.7,
@@ -1078,8 +1133,10 @@ function matchesSingle(selectedValues, spotValue) {
 
 function render() {
   const filtered = getFilteredSpots();
-  if (state.sortMode === "distance") {
-    const distanceOrigin = state.userLocation ?? DEFAULT_MAP_CENTER;
+  // Distance sort needs the rider's location; until we have it, list A-Z
+  // rather than sorting by distance from an arbitrary default point.
+  if (state.sortMode === "distance" && state.userLocation) {
+    const distanceOrigin = state.userLocation;
     filtered.sort(
       (a, b) =>
         distanceKm(distanceOrigin, a) - distanceKm(distanceOrigin, b),
@@ -1087,6 +1144,10 @@ function render() {
   } else {
     filtered.sort((a, b) => a.name.localeCompare(b.name));
   }
+  // Show the sort actually applied, so choosing "Distance" later is a real
+  // change event that prompts for location.
+  elements.sortSelect.value =
+    state.sortMode === "distance" && !state.userLocation ? "az" : state.sortMode;
   if (state.selectedId && !filtered.some((spot) => spot.id === state.selectedId)) {
     state.selectedId = null;
     if (!elements.bottomSheet.hidden) hideBottomSheet({ preserveSelection: true });
@@ -1176,11 +1237,32 @@ function renderMarkers(filtered) {
       popupAnchor: [0, -(markerSize / 2 + 1)],
     });
 
-    const marker = L.marker([spot.lat, spot.lng], { icon }).addTo(markerLayer);
+    const marker = L.marker([spot.lat, spot.lng], { icon });
 
     marker.on("click", () => selectSpot(spot.id, { moveMap: true, focus: true }));
+    // Clustering removes and re-adds marker elements, so reapply selection state.
+    marker.on("add", () => syncMarkerSelection(spot.id, marker));
     markers.set(spot.id, marker);
   });
+  markerLayer.addLayers([...markers.values()]);
+}
+
+// If the selected spot shares its point with another, spread the group out so
+// the selected marker is visible once the map is zoomed in.
+function revealSelectedMarker() {
+  const marker = state.selectedId ? markers.get(state.selectedId) : null;
+  if (!marker || map.getZoom() < selectedSpotZoom) return;
+  const parent = markerLayer.getVisibleParent(marker);
+  if (parent && parent !== marker && typeof parent.spiderfy === "function") {
+    parent.spiderfy();
+  }
+}
+
+function syncMarkerSelection(id, marker) {
+  marker
+    .getElement()
+    ?.querySelector(".jump-marker")
+    ?.classList.toggle("is-selected", id === state.selectedId);
 }
 
 function renderMarkerIcon(spot) {
@@ -1261,8 +1343,8 @@ function renderPopupContent(spot) {
     const heading = links.length === 1 ? "Link" : "Links";
     const items = links
       .map(
-        ({ url, type }) =>
-          `<li><a href="${url}" target="_blank" rel="noreferrer">${linkLabels[type]}</a></li>`,
+        (link) =>
+          `<li><a href="${link.url}" target="_blank" rel="noreferrer">${getLinkLabel(link)}</a></li>`,
       )
       .join("");
     return `<section class="popup-section popup-section--inline"><h4>${heading}</h4><ul class="popup-links">${items}</ul></section>`;
@@ -1373,12 +1455,8 @@ function syncSelectedSpotUi({ revealListItem = false } = {}) {
     }
   });
 
-  markers.forEach((marker, id) => {
-    marker
-      .getElement()
-      ?.querySelector(".jump-marker")
-      ?.classList.toggle("is-selected", id === state.selectedId);
-  });
+  markers.forEach((marker, id) => syncMarkerSelection(id, marker));
+  revealSelectedMarker();
 
   if (!state.selectedId) {
     resetListEndSpacer();

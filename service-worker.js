@@ -1,9 +1,10 @@
-const CACHE_NAME = "bike-parks-map-v7";
+const CACHE_NAME = "bike-parks-map-v8";
 const CORE_ASSETS = [
   "./",
   "index.html",
   "styles.css",
   "app.js",
+  "consent.js",
   "spots-data.js",
   "site.webmanifest",
   "favicon.ico",
