@@ -4,6 +4,7 @@ const CORE_ASSETS = [
   "index.html",
   "styles.css",
   "app.js",
+  "consent.js",
   "spots-data.js",
   "site.webmanifest",
   "favicon.ico",
